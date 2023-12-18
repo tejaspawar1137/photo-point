@@ -78,7 +78,7 @@ import { time } from "console";
   return (
     <section className="bg-gray-50 dark:bg-gray-900 login-img  backdrop-blur-2xl">
       <NavBar></NavBar>
-      <div className="flex flex-col items-baseline justify-center sm: ml-0 px-6 py-8 mx-auto md:h-screen lg:py-0 ml-20">
+      <div className="flex flex-col items-baseline justify-center sm:ml-0 px-6 py-8 mx-auto md:h-screen lg:py-0 lg:ml-20">
         <ToastContainer></ToastContainer>
           {/* Your existing contact form JSX */}
         <a
