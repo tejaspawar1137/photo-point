@@ -51,7 +51,7 @@ const FullScreenImageModal: React.FC<FullScreenImageModalProps> = ({
   );
 };
 
-const Photos: React.FC<PhotoProps> = ({}) => {
+const Photos = () => {
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
