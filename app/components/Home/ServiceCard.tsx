@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 // SwiperSlider.js
-export const ServiceCard = ({ imageUrl, title, description, link }) => {
+export const ServiceCard = ({ imageUrl , title, description, link }:any) => {
 
   return (
     <Link href={link}>
