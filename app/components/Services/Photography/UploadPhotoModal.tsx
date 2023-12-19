@@ -9,6 +9,8 @@ import {
 import ImageUpload from "../ImageUpload";
 import ProgressBarComponent from "../../ProgressBar/ProgressBar";
 import ImageUploadTwo from "../ImageUploadTwo";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function UploadPhotoModal({
   id,
@@ -80,11 +82,11 @@ export default function UploadPhotoModal({
       let tempUrl = await ImageUpload(e, `${uploadPreset}`, `${cloudname}`);
       updateProgressDispatch(100);
       if (tempUrl === "Error") {
-        alert("Error uploading image, please try again.");
+        toast.error("Error uploading image, please try again.");
       setprogressBarDisplay(false);
       } else if (tempUrl === "File size exceeds the maximum limit of 5 MB.") {
         {
-          alert(`${tempUrl}`);
+          toast.error(`${tempUrl}`);
           setprogressBarDisplay(false);
         }
       } else {
@@ -97,11 +99,11 @@ export default function UploadPhotoModal({
       let tempUrl = await ImageUploadTwo(e, `${apiKey}`);
       updateProgressDispatch(100);
       if (tempUrl === "Error") {
-        alert("Error uploading image, please try again.");
+        toast.error("Error uploading image, please try again.");
         setprogressBarDisplay(false);
       } else if (tempUrl === "File size exceeds the maximum limit of 5 MB.") {
         {
-          alert(`${tempUrl}`);
+          toast.error(`${tempUrl}`);
           setprogressBarDisplay(false);
         }
       } else {
@@ -120,7 +122,7 @@ export default function UploadPhotoModal({
           setprogress(0);
           setprogressBarDisplay(false);
           setloading(false);
-          return alert("This image already exists.");
+          return toast.error("This image already exists.");
         } else {
           const temp = response.photoFolder.images;
           const uploadedImage = temp[temp.length - 1];
@@ -141,12 +143,14 @@ export default function UploadPhotoModal({
       setprogress(0);
       setprogressBarDisplay(false);
       setloading(false);
-      return alert("Please fill all the details");
+      return toast.error("Please fill all the details");
     }
   };
   return (
     <>
+     
       <div onClick={openModal} className="flex items-center gap-2">
+     
         <AddImage h={25} w={25}  fill="black" /> Add a photo
       </div>
       <Transition show={isOpen} as={Fragment}>
@@ -156,7 +160,7 @@ export default function UploadPhotoModal({
           onClose={closeModal}
         >
           <div className="flex  text-black items-center justify-center min-h-screen">
-            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl">
+            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl sm:m-[12px]">
               <Dialog.Title className="text-xl font-semibold text-gray-900 mb-4">
                 <b className="uppercase">Upload image</b>
               </Dialog.Title>

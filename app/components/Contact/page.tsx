@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader/Loader";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +44,8 @@ const Contact = () => {
     const sendBody = {
       formData,
     };
+    console.log("sendBody", sendBody);
+
     try {
       const response = await fetch("/api/routes/Email/Send", {
         method: "POST",
@@ -51,6 +54,7 @@ const Contact = () => {
         },
         body: JSON.stringify(sendBody),
       });
+      console.log("Response", response);
 
       const res = await response.json();
       if (res.success) {
@@ -63,9 +67,8 @@ const Contact = () => {
         });
       }
       return res; // Return the created folder
-    } catch (error) {}
-
-    finally {
+    } catch (error) {
+    } finally {
       // Set loading to false after the email is sent (whether successful or not)
       setLoading(false);
     }
@@ -75,60 +78,61 @@ const Contact = () => {
     // Optionally, reset the form
   };
 
+  const contactVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const inputVariants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: { opacity: 1, x: 10 , transition: { duration: 1 } },
+  };
+
   return (
-    <div className="relative contect-img">
+    <div >
       <NavBar />
-      <section className=" z-10 overflow-hidden h-screen dark:bg-dark py-20 lg:py-[120px]  ">
+      <section className=" z-10 overflow-hidden h-screen dark:bg-dark py-20 lg:py-[120px] relative contect-img ">
         <ToastContainer></ToastContainer>
         <div>
           {/* Your existing contact form JSX */}
-          {loading && (
-           <Loader />
-          )}
+          {loading && <Loader />}
         </div>
         <div className="container mx-auto">
-          <div className="flex flex-wrap -mx-4 lg:justify-between">
-            <span className="lg:hidden sm: ml-10 sm: text-4xl sm: font-bold sm: mb-0 sm: text-center">
-              Contact Us
+          <div className="flex flex-wrap   mt-28">
+            <span className="lg:hidden sm: ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg opacity-80 ">
+            GET IN TOUCH WITH US
             </span>
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className=" max-w-[570px] lg:mb-0 sm: hidden lg:flex lg:flex-col">
-                <span className="block mb-4 text-base font-semibold text-primary ">
-                  Contact Us
-                </span>
-                <h2 className="font-sans lg:flex sm: hidden rounded-md items-center justify-center text-center dark:text-white mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
+                
+                <motion.h2 
+                initial="hidden"
+                animate="visible"
+                variants={contactVariants}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                className="font-sans lg:flex sm: hidden rounded-md items-center justify-center text-center dark:text-white mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
                   GET IN TOUCH WITH US
-                </h2>
-                <p className="text-base leading-relaxed text-body-color dark:text-dark-6 mb-9 text-white lg:flex sm: hidden">
+                </motion.h2>
+                <motion.p 
+                 initial="hidden"
+                animate="visible"
+                variants={contactVariants}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                className="text-base leading-relaxed text-body-color dark:text-dark-6 mb-9 text-white lg:flex sm: hidden">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eius tempor incididunt ut labore et dolore magna aliqua. Ut
                   enim adiqua minim veniam quis nostrud exercitation ullamco
-                </p>
+                </motion.p>
                 <div className="mb-8 flex w-full max-w-[370px]">
-                  <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]">
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30.6 11.8002L17.7 3.5002C16.65 2.8502 15.3 2.8502 14.3 3.5002L1.39998 11.8002C0.899983 12.1502 0.749983 12.8502 1.04998 13.3502C1.39998 13.8502 2.09998 14.0002 2.59998 13.7002L3.44998 13.1502V25.8002C3.44998 27.5502 4.84998 28.9502 6.59998 28.9502H25.4C27.15 28.9502 28.55 27.5502 28.55 25.8002V13.1502L29.4 13.7002C29.6 13.8002 29.8 13.9002 30 13.9002C30.35 13.9002 30.75 13.7002 30.95 13.4002C31.3 12.8502 31.15 12.1502 30.6 11.8002ZM13.35 26.7502V18.5002C13.35 18.0002 13.75 17.6002 14.25 17.6002H17.75C18.25 17.6002 18.65 18.0002 18.65 18.5002V26.7502H13.35ZM26.3 25.8002C26.3 26.3002 25.9 26.7002 25.4 26.7002H20.9V18.5002C20.9 16.8002 19.5 15.4002 17.8 15.4002H14.3C12.6 15.4002 11.2 16.8002 11.2 18.5002V26.7502H6.69998C6.19998 26.7502 5.79998 26.3502 5.79998 25.8502V11.7002L15.5 5.4002C15.8 5.2002 16.2 5.2002 16.5 5.4002L26.3 11.7002V25.8002Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <div className="w-full text-white ">
-                    <h4 className="mb-1 text-xl font-bold   text-white">
-                      Our Location
-                    </h4>
-                    <p className="text-base text-body-color text-white">
-                      99 S.t Jomblo Park Pekanbaru 28292. Indonesia
-                    </p>
-                  </div>
+                  <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"></div>
                 </div>
-                <div className="mb-8 flex w-full max-w-[370px]">
+                <motion.div
+                  className="mb-8 flex w-full max-w-[370px]"
+                  initial="hidden"
+                  animate="visible"
+                  variants={contactVariants}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
                   <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]">
                     <svg
                       width="32"
@@ -159,16 +163,53 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-white  ">
+                    <h4 className="mb-1 text-xl font-bold text-white">
                       Phone Number
                     </h4>
                     <p className="text-base text-body-color text-white">
                       (+62)81 414 257 9980
                     </p>
                   </div>
-                </div>
-                <div className="mb-8 flex w-full max-w-[370px]">
-                  <div className=" text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]">
+                </motion.div>
+                {/* Contact Block 4 */}
+                <motion.div
+                  className="mb-8 flex w-full max-w-[370px]"
+                  initial="hidden"
+                  animate="visible"
+                  variants={contactVariants}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]">
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M30.6 11.8002L17.7 3.5002C16.65 2.8502 15.3 2.8502 14.3 3.5002L1.39998 11.8002C0.899983 12.1502 0.749983 12.8502 1.04998 13.3502C1.39998 13.8502 2.09998 14.0002 2.59998 13.7002L3.44998 13.1502V25.8002C3.44998 27.5502 4.84998 28.9502 6.59998 28.9502H25.4C27.15 28.9502 28.55 27.5502 28.55 25.8002V13.1502L29.4 13.7002C29.6 13.8002 29.8 13.9002 30 13.9002C30.35 13.9002 30.75 13.7002 30.95 13.4002C31.3 12.8502 31.15 12.1502 30.6 11.8002ZM13.35 26.7502V18.5002C13.35 18.0002 13.75 17.6002 14.25 17.6002H17.75C18.25 17.6002 18.65 18.0002 18.65 18.5002V26.7502H13.35ZM26.3 25.8002C26.3 26.3002 25.9 26.7002 25.4 26.7002H20.9V18.5002C20.9 16.8002 19.5 15.4002 17.8 15.4002H14.3C12.6 15.4002 11.2 16.8002 11.2 18.5002V26.7502H6.69998C6.19998 26.7502 5.79998 26.3502 5.79998 25.8502V11.7002L15.5 5.4002C15.8 5.2002 16.2 5.2002 16.5 5.4002L26.3 11.7002V25.8002Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                  <div className="w-full">
+                    <h4 className="mb-1 text-xl font-bold text-white">
+                      Our Location
+                    </h4>
+                    <p className="text-base text-body-color text-white">
+                      99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                    </p>
+                  </div>
+                </motion.div>
+                <motion.div
+                  className="mb-8 flex w-full max-w-[370px]"
+                  initial="hidden"
+                  animate="visible"
+                  variants={contactVariants}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]">
                     <svg
                       width="32"
                       height="32"
@@ -183,21 +224,25 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark text-white">
-                      Email Address
+                    <h4 className="mb-1 text-xl font-bold text-white">
+                      Another Block
                     </h4>
-                    <p className="text-base text-body-color dark:text-dark-6 text-white">
-                      info@yourdomain.com
+                    <p className="text-base text-body-color text-white">
+                      Another piece of information
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative bg-white p-8 dark:bg-dark-2 lg:mt-0 sm: mt-[12px]">
                 <form onSubmit={handleSubmit}>
-                  <div className="mb-6">
-                    <input
+                  <motion.div 
+                   initial="hidden"
+                   animate="visible"
+                   variants={contactVariants}
+                  className="mb-6">
+                    <motion.input
                       required
                       type="text"
                       name="name"
@@ -205,10 +250,15 @@ const Contact = () => {
                       className="border-stroke text-black dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                       value={formData.name}
                       onChange={handleChange}
+                      variants={inputVariants}
                     />
-                  </div>
-                  <div className="mb-6">
-                    <input
+                  </motion.div>
+                  <motion.div 
+                  initial="hidden"
+                  animate="visible"
+                  variants={contactVariants}
+                  className="mb-6">
+                    <motion.input
                       required
                       type="email"
                       name="email"
@@ -216,10 +266,15 @@ const Contact = () => {
                       className="border-stroke text-black dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                       value={formData.email}
                       onChange={handleChange}
+                      variants={inputVariants}
                     />
-                  </div>
-                  <div className="mb-6">
-                    <input
+                  </motion.div>
+                  <motion.div
+                   initial="hidden"
+                   animate="visible"
+                   variants={contactVariants}
+                    className="mb-6">
+                    <motion.input
                       required
                       type="text"
                       name="phoneNumber"
@@ -227,26 +282,36 @@ const Contact = () => {
                       className="border-stroke text-black dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                       value={formData.phoneNumber}
                       onChange={handleChange}
+                      variants={inputVariants}
                     />
-                  </div>
-                  <div className="mb-6">
-                    <textarea
+                  </motion.div>
+                  <motion.div 
+                   initial="hidden"
+                   animate="visible"
+                   variants={contactVariants}
+                  className="mb-6">
+                    <motion.textarea
                       required
                       name="message"
                       placeholder="Your Message"
                       className="border-stroke text-black dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
                       value={formData.message}
                       onChange={handleChange}
-                    ></textarea>
-                  </div>
-                  <div>
+                      variants={inputVariants}
+                    ></motion.textarea>
+                  </motion.div>
+                  <motion.div
+                   initial="hidden"
+                   animate="visible"
+                   variants={contactVariants}
+                   >
                     <button
                       type="submit"
                       className="bg-blue-700 w-full p-3 text-white transition border rounded border-primary bg-primary hover:bg-opacity-90"
                     >
                       Send Message
                     </button>
-                  </div>
+                  </motion.div>
                 </form>
                 <div>
                   <span className="absolute -top-10 -right-9 z-[-1]">
@@ -259,7 +324,7 @@ const Contact = () => {
                     >
                       <path
                         fillRule="evenodd"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                         d="M0 100C0 44.7715 0 0 0 0C55.2285 0 100 44.7715 100 100C100 100 100 100 0 100Z"
                         fill="#3056D3"
                       />

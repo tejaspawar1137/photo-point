@@ -2,6 +2,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { useRouter } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function AccessConfirmationModal({photos,index,isAccessConfirmationModalOpen,setisAccessConfirmationModalOpen}:{photos:any,index:any,isAccessConfirmationModalOpen:boolean,setisAccessConfirmationModalOpen:any}) {
   let [isOpen, setIsOpen] = useState(false)
@@ -11,12 +12,14 @@ export default function AccessConfirmationModal({photos,index,isAccessConfirmati
   if(password===photos?.password){
     router.push(`/components/ClientGallery/Photos?id=${photos?._id}&index=${index}`);
   }else{
-  return alert("Access denied. Incorrect password");
+    toast.error("Access Denied You have enter the Wrong password");
   }
 }
   
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
+    setpassword("")
+
   }
 
   function openModal() {
@@ -62,6 +65,7 @@ export default function AccessConfirmationModal({photos,index,isAccessConfirmati
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
+                
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
@@ -81,7 +85,7 @@ export default function AccessConfirmationModal({photos,index,isAccessConfirmati
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={()=>{closeModal(); decideAccess();}}
                     >
                      Enter

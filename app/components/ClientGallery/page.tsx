@@ -11,6 +11,14 @@ import { inititalizeClientGallery } from "@/app/redux/actions/clientGalleryActio
 import Loader from "../Loader/Loader";
 import AccessConfirmationModal from "./AccessConfirmationModal";
 import { CircularLoader } from "../Services/Photography/Photos";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+import { motion } from "framer-motion";
+
+const isLoggedIn =
+  typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
+
+console.log(isLoggedIn);
 
 const Photography = () => {
   const [folderName, setFolderName] = useState(0);
@@ -20,10 +28,7 @@ const Photography = () => {
   const [isAccessConfirmationModalOpen, setisAccessConfirmationModalOpen] =
     useState(false);
   const [isImageLoading, setIsImageLoading] = useState<any>(false);
-  const isLoggedIn =
-    typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
 
-  console.log(isLoggedIn);
   useEffect(() => {
     setloading(true);
     const fetchPhotosForInitialization = async () => {
@@ -60,16 +65,22 @@ const Photography = () => {
       <div style={{ zIndex: 30 }} className="fixed top-0 w-full">
         <NavBar />
       </div>
+      <ToastContainer></ToastContainer>
       {!loading ? (
         <>
           <div className="py-6 mt-16 min-h-[100vh]">
-            <h1 className=" font-sans flex justify-center py-6 text-4xl sm:text-5xl font-bold tracking-wide">
+            <motion.h1
+              className="font-sans flex mb-10 justify-center text-4xl md:text-5xl font-bold tracking-wide"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
               Client Gallery
-            </h1>
+            </motion.h1>
             {/* Header  */}
-            <div className="flex gap-4 flex-col items-center px-2  pb-8 sm:p-10 overflow-y-hidden">
+            <div className="flex gap-4 flex-col items-center px-2  pb-8">
               <div className=" px-[3.8rem] justify-end flex w-full">
-                <CreateFolderModal />
+                {isLoggedIn && <CreateFolderModal />}
               </div>
               <div
                 style={{ zIndex: 0 }}
@@ -108,7 +119,7 @@ const Photography = () => {
                               onClick={() => {
                                 setisAccessConfirmationModalOpen(true);
                               }}
-                              className="text-sm hover:cursor-pointer z-10 absolute top-0 bg-black bg-opacity-[0] hover:bg-opacity-[0.25] h-full "
+                              className="text-sm hover:cursor-pointer z-10 absolute top-0 bg-black bg-opacity-[0] hover:bg-opacity-[0.25] h-full w-full"
                             ></div>
                             <div className="20">
                               <LazyLoadImage

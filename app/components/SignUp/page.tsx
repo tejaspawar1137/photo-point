@@ -1,15 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../Navbar/page";
 import Footer from "../Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import Loader from "../Loader/Loader";
+import { motion } from "framer-motion";
 
-
- const SignUp = () => {
+const SignUp = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,6 +23,7 @@ import Loader from "../Loader/Loader";
 
   const router = useRouter();
   const [loading, setLoading] = useState(false); // Added loading state
+  const [textload, setTextload] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ import Loader from "../Loader/Loader";
       formData,
     };
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await fetch("/api/routes/User/Create", {
         method: "POST",
         headers: {
@@ -45,8 +46,7 @@ import Loader from "../Loader/Loader";
       // Check if the response indicates success (you may need to adjust this based on your API)
       if (response.ok) {
         // Navigate to the homepage
-        router.push("/components/Login")
-
+        router.push("/components/Login");
       } else {
         // Handle error or display a message
         toast.error(res.message);
@@ -54,14 +54,11 @@ import Loader from "../Loader/Loader";
       }
 
       return res;
-
     } catch (error: any) {
       console.log(error.messages);
       toast.error(error.message);
-    }
-    finally {
-    setLoading(false);
-    
+    } finally {
+      setLoading(false);
     }
     // Optionally, reset the form
     setFormData({
@@ -80,154 +77,173 @@ import Loader from "../Loader/Loader";
     }));
   };
 
+  useEffect(() => {
+    // Set textload to true after a delay or any other condition you prefer
+    const timeout = setTimeout(() => {
+      setTextload(true);
+    }, 500); // Change the delay as needed
+
+    // Cleanup the timeout to avoid memory leaks
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const formVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const inputVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  };
+
   return (
-    <section className="bg-gray-50 :bg-gray-900 signup-img">
-      <NavBar></NavBar>
-      {
-            loading && (
-              <Loader></Loader>
-            )
-          }
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
-      <ToastContainer></ToastContainer>
-        <img
-          className="mb-5"
-          src="https://www.yourperfectweddingphotographer.co.uk/wp-content/themes/ypwphoto/img/logo3.png"
-          alt="logo"
-        />
-        <a
-          href="#"
-          className="flex items-center mb-6 text-3xl font-semibold text-gray-900 text-white "
-        >
-          LET'S GET YOU SET UP.
-        </a>
-        <div className="w-full bg-white rounded-lg shadow :border md:mt-0 sm:max-w-md xl:p-0 :bg-gray-800 :border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl :text-white">
-              CREATE YOUR ACCCOUNT.
-            </h1>
-            <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  id="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 :text-white"
+    <>
+      <section className="signup-img ">
+        <NavBar></NavBar>
+        {loading && <Loader></Loader>}
+        <div className="flex flex-col px-6 py-8 mx-auto md:h-screen lg:py-0 mt-20 ml-10 ">
+          <ToastContainer></ToastContainer>
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: textload ? 1 : 0, y: textload ? 0 : -20 }}
+            whileHover={{ scale: 1, transition: { duration: 0.3 } }}
+            className=" font-bold text-6xl opacity-30  text-white font-sans mt-3 mb-5"
+          >
+            Abhay Studio
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: textload ? 1 : 0, y: textload ? -20 : 0 }}
+            whileHover={{ scale: 1, transition: { duration: 0.3 } }}
+            className="flex items-center mb-6 text-3xl font-semibold text-white "
+          >
+            LET'S GET YOU SET UP.
+          </motion.p>
+          <div className="w-full bg-gray-200 rounded-lg shadow :border md:mt-0 sm:max-w-md xl:p-0 :bg-gray-800 :border-gray-700">
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl :text-white">
+                CREATE YOUR ACCCOUNT.
+              </h1>
+              <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+                <motion.div
+                  variants={formVariants}
+                  initial="hidden"
+                  animate="visible"
                 >
-                  Your Name
-                </label>
-                <input
-                  type="name"
-                  name="name"
-                  required
-                  id="name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-                  placeholder="Enter your name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label
-                  id="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 :text-white"
-                >
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-                  placeholder="name@company.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label
-                  id="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 :text-white"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  required
-                  id="password"
-                  placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label
-                  id="PhoneNumber"
-                  className="block mb-2 text-sm font-medium text-gray-900 :text-white"
-                >
-                  Phone Number
-                </label>
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  required
-                  id="phoneNumber"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="639761XXXX"
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="flex items-start">
-                <div className="flex items-center h-5">
-                  <input
-                    id="terms"
-                    aria-describedby="terms"
-                    type="checkbox"
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 :bg-gray-700 :focus:ring-primary-600 :ring-offset-gray-800"
-                  />
-                </div>
-                <div className="ml-3 text-sm">
                   <label
-                    id="terms"
-                    className="font-light text-gray-500 :text-gray-300"
+                    id="name"
+                    className="block mb-2 text-sm font-medium text-gray-900 :text-white"
                   >
-                    I accept the{" "}
-                    <a
-                      className="font-medium text-primary-600 hover:underline :text-primary-500"
-                      href="#"
-                    >
-                      Terms and Conditions
-                    </a>
+                    Your Name
                   </label>
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center :bg-primary-600 :hover:bg-primary-700 :focus:ring-primary-800 bg-blue-700"
-              >
-                Create an account
-              </button>
-              <p className="text-sm font-light text-gray-500 :text-gray-400">
-                Already have an account?{" "}
-                <a
-                  href="/components/Login"
-                  className="font-medium text-primary-600 hover:underline :text-primary-500"
+                  <motion.input
+                    variants={inputVariants}
+                    type="name"
+                    name="name"
+                    required
+                    id="name"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                    placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </motion.div>
+
+                <motion.div
+                  variants={formVariants}
+                  initial="hidden"
+                  animate="visible"
                 >
-                  Login here
-                </a>
-              </p>
-            </form>
+                  <label
+                    id="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 :text-white"
+                  >
+                    Your Email
+                  </label>
+                  <motion.input
+                    type="email"
+                    name="email"
+                    required
+                    id="email"
+                    variants={inputVariants}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                    placeholder="name@company.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </motion.div>
+
+                <motion.div
+                  variants={formVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <label
+                    id="password"
+                    className="block mb-2 text-sm font-medium text-gray-900 :text-white"
+                  >
+                    Password
+                  </label>
+                  <motion.input
+                    type="password"
+                    name="password"
+                    required
+                    id="password"
+                    placeholder="••••••••"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                    value={formData.password}
+                    variants={inputVariants}
+                    onChange={handleChange}
+                  />
+                </motion.div>
+
+                <motion.div
+                  variants={formVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <label
+                    id="PhoneNumber"
+                    className="block mb-2 text-sm font-medium text-gray-900 :text-white"
+                  >
+                    Phone Number
+                  </label>
+                  <motion.input
+                    type="text"
+                    name="phoneNumber"
+                    required
+                    id="phoneNumber"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="639761XXXX"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    variants={inputVariants}
+                  />
+                </motion.div>
+
+                <motion.button
+                  type="submit"
+                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center :bg-primary-600 :hover:bg-primary-700 :focus:ring-primary-800 bg-blue-700"
+                >
+                  Create an account
+                </motion.button>
+                <p className="text-sm font-light text-gray-500 :text-gray-400">
+                  Already have an account?{" "}
+                  <a
+                    href="/components/Login"
+                    className="font-medium text-primary-600 hover:underline :text-primary-500"
+                  >
+                    Login here
+                  </a>
+                </p>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
       <Footer></Footer>
-    </section>
+    </>
   );
 };
 

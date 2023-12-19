@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Footer from "../Footer";
 import NavBar from "../Navbar/page";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,18 +10,31 @@ import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader/Loader";
 import { time } from "console";
 
- const Login: React.FC = () => {
+const Login: React.FC = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [textload, setTextload] = useState(false);
+  const [formLoad, setFormLoad] = useState(false);
+  const [loading, setLoading] = useState(false); // Added loading state
+
   const authtoken = useSelector(
     (state) => (state as any).userReducer?.authtoken
   );
 
-  const router = useRouter();
+  useEffect(() => {
+    // Set textload to true after a delay or any other condition you prefer
+    setFormLoad(true);
+    const timeout = setTimeout(() => {
+      setTextload(true);
+    }, 500); // Change the delay as needed
 
-  const [loading, setLoading] = useState(false); // Added loading state
+    // Cleanup the timeout to avoid memory leaks
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -30,7 +44,7 @@ import { time } from "console";
     const sendBody = {
       formData,
     };
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await fetch("/api/routes/User/Login", {
         method: "POST",
@@ -55,8 +69,7 @@ import { time } from "console";
       return res; // Return the created folder
     } catch (error: any) {
       console.log(error.messages);
-    }
-    finally {
+    } finally {
       // Set loading to false after the email is sent (whether successful or not)
       setLoading(false);
     }
@@ -76,25 +89,34 @@ import { time } from "console";
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 login-img  backdrop-blur-2xl">
+    <>   
+     <section className="login-img bg-gray-500 ">
       <NavBar></NavBar>
       <div className="flex flex-col items-baseline justify-center sm:ml-0 px-6 py-8 mx-auto md:h-screen lg:py-0 lg:ml-20">
         <ToastContainer></ToastContainer>
-          {/* Your existing contact form JSX */}
+        {/* Your existing contact form JSX */}
         <a
-          href="#"
+          href="/"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
         >
-          <img
-            className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-            alt="logo"
-          />
-          Login
+          <motion.p
+            className="font-bold text-6xl opacity-70 text-black font-sans mt-10 mb-5"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: textload ? 1 : 0, y: textload ? 0 : -20 }}
+            whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+            onClick={() => setTextload(!textload)}
+          >
+            Abhay Studio
+          </motion.p>
         </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+        <motion.div
+          className="w-full bg-gray-200 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: formLoad ? 1 : 0, y: formLoad ? 0 : 20 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Login in to your account
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
@@ -127,7 +149,7 @@ import { time } from "console";
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  className="bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   value={formData.password}
                   onChange={handleChange}
                 />
@@ -139,7 +161,7 @@ import { time } from "console";
                       id="remember"
                       aria-describedby="remember"
                       type="checkbox"
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
+                      className="w-4 h-4 border border-gray-300 rounded bg-white focus:ring-3 focus:ring-primary-300"
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -150,7 +172,7 @@ import { time } from "console";
                 </div>
                 <a
                   href="#"
-                  className="text-sm font-medium text-primary-600 hover:underline "
+                  className="text-sm font-medium text-black hover:underline  "
                 >
                   Forgot password?
                 </a>
@@ -173,10 +195,13 @@ import { time } from "console";
               </p>
             </form>
           </div>
-        </div>
+        </motion.div>
       </div>
-      <Footer></Footer>
     </section>
+    <Footer></Footer>
+   
+    </>
+
   );
 };
 

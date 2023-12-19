@@ -3,7 +3,8 @@ import { Fragment, useState } from "react";
 import PlusIcon from "@/public/assets/Icons/PlusIcon";
 import { useDispatch, useSelector } from "react-redux"; 
 import { createVideoFolder } from "@/app/redux/actions/videoAction";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function CreateFolderModal({}: {}) {
   const dispatch = useDispatch();
   let [isOpen, setIsOpen] = useState(false);
@@ -43,7 +44,7 @@ export default function CreateFolderModal({}: {}) {
       return res.videoFolder; // Return the created folder
     } catch (error) {
       console.log(error);
-      alert("Failed to create the folder, please try again.")
+      toast.error("Failed to create the folder, please try again.")
       throw new Error("Failed to create folder"); // Throw an error for better handling
     }
   };
@@ -54,12 +55,13 @@ export default function CreateFolderModal({}: {}) {
       dispatch(createVideoFolder(createdFolder));
       closeModal(); 
     }else{
-      return alert("Fill both the details")
+      return toast.error("Please fill both the details")
     }
   };
   return (
     <>
       <div className="">
+        <ToastContainer></ToastContainer>
         <button
           onClick={openModal}
           className=" items-center gap-3 hidden md:flex text-white rounded-full  "
@@ -83,7 +85,7 @@ export default function CreateFolderModal({}: {}) {
           onClose={closeModal}
         >
           <div className="flex text-black items-center justify-center min-h-screen">
-            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl">
+            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl sm: m-[12px]">
               <Dialog.Title className="text-xl text-gray-900 uppercase mb-4">
                Create a Video Folder  
               </Dialog.Title>

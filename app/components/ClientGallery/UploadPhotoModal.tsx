@@ -6,6 +6,8 @@ import ImageUpload from "../Services/ImageUpload";
 import ImageUploadTwo from "../Services/ImageUploadTwo";
 import ProgressBarComponent from "../ProgressBar/ProgressBar";
 import { uploadPhotoClientGallery } from "@/app/redux/actions/clientGalleryAction";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UploadPhotoModal({
   id,
@@ -78,11 +80,11 @@ export default function UploadPhotoModal({
       updateProgressDispatch(100);
       if (tempUrl === "Error") {
         setprogressBarDisplay(false);
-        alert("Error uploading image, please try again.");
+        toast.error("Error uploading image, please try again.");
       } else if (tempUrl === "File size exceeds the maximum limit of 5 MB.") {
         {
           setprogressBarDisplay(false);
-          alert(`${tempUrl}`);
+          toast.error(`${tempUrl}`);
         }
       } else { 
         setImageUrl(tempUrl); 
@@ -98,7 +100,7 @@ export default function UploadPhotoModal({
           setImageUrl(null);
           setprogress(0);
           setprogressBarDisplay(false);
-          return alert("This image already exists.");
+          return toast.error("This image already exists.");
         } else {
           setprogressBarDisplay(true);
           const temp = response.clientGallery.images;
@@ -119,15 +121,17 @@ export default function UploadPhotoModal({
     } else {
       setprogress(0);
       setprogressBarDisplay(false);
-      return alert("Please fill all the details");
+      return toast.error("Please fill all the details");
     }
   };
   return (
     <>
+
       <button
         onClick={openModal}
         className="flex w-full   text-lg text-black items-end gap-1"
       >
+               <ToastContainer></ToastContainer>
         <AddImage h={27} w={27} fill="black" />
         <span className=" translate-y-1">Add a photo</span>
       </button>
@@ -138,7 +142,7 @@ export default function UploadPhotoModal({
           onClose={closeModal}
         >
           <div className="flex  text-black items-center justify-center min-h-screen">
-            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl">
+            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl sm:m-[12px]">
               <Dialog.Title className="text-xl font-semibold text-gray-900 mb-4">
                 <b className="uppercase">Upload image</b>
               </Dialog.Title>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-12 mt-10 overflow-y-hidden">
+    <footer className="bg-gray-800 text-white py-12 overflow-y-hidden">
       <div className="container mx-auto flex flex-col items-center ">
         <p className="text-4xl font-bold   font-sans">Dheeraj Studio</p>
         <p className="mb-4 font-sans"> create Something Special</p>
@@ -34,7 +34,7 @@ const Footer = () => {
           &copy; 2023 Your Website. All rights reserved Dheeraj Studio.
         </p>
         <p className="text-sm text-gray-500">
-          &copy; Creater of this Website
+          &copy; Creator of this Website :
           <a href="https://www.linkedin.com/in/abhay-ratnakar-4925b221b/"  target="blank"
           className="text-white ml-2 mr-2"
           >

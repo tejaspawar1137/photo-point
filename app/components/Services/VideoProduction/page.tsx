@@ -8,6 +8,7 @@ import CreateFolderModal from "./CreateFolderModal";
 import Videos from "@/app/components/Services/VideoProduction/Videos";
 import Loader from "../../Loader/Loader";
 import { inititalizeVideography } from "@/app/redux/actions/videoAction";
+import { motion } from "framer-motion";
 
 const Videography = () => {
   const [folderName, setFolderName] = useState(0);
@@ -49,13 +50,18 @@ const Videography = () => {
     <div>
       <NavBar />
       <div className="bg-white text-black py-6  min-h-[100vh]">
-        <h1 className=" font-sans flex justify-center text-4xl md:text-5xl font-bold tracking-wide">
-          Videography
-        </h1>
+        <motion.h1
+          className="font-sans flex justify-center text-4xl md:text-5xl font-bold tracking-wide"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          VideoGraphy
+        </motion.h1>
         {/* Header  */}
         <div className="flex justify-between items-center px-2 py-8">
           <div className="block"></div>
-          <div className="flex justify-between items-center px-4 py-4 overflow-x-auto  lg:text-sm xl:text-base  text-[0.8rem] whitespace-nowrap mx-5   space-x-4 lg:space-x-6 list-none font-light">
+          <div className="lg:flex lg:flex-row justify-between items-center px-4 py-4 overflow-x-auto sm:flex-col  lg:text-sm xl:text-base  text-[0.8rem] whitespace-nowrap mx-5   space-x-4 lg:space-x-6 list-none font-light">
             {(videos as any).length > 0
               ? videos.map((e: any, i: any) => {
                   return (
@@ -91,7 +97,7 @@ const Videography = () => {
               : ""}
           </div>
           <div className="pr-6 hover:scale-[1.05] transition">
-            <CreateFolderModal />
+            {isLoggedIn && <CreateFolderModal />}
           </div>
         </div>
         {/* Photos  */}

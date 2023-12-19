@@ -3,7 +3,8 @@ import { Fragment, useState } from "react";
 import Dustbin from "@/public/assets/Icons/dustbin";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAFolder } from "@/app/redux/actions/photographyReducerAction";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function DeleteFolderModal({
   fId,
   setFoldername,
@@ -42,6 +43,7 @@ export default function DeleteFolderModal({
       );
       const res = await deletedFolder.json();
       console.log(res);
+      toast.success("Photography Folder Deleted Successfully")
     } catch (error) {
       console.log(error);
     }

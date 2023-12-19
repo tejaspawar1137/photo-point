@@ -4,6 +4,8 @@ import Dustbin from "@/public/assets/Icons/dustbin";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAPhoto } from "@/app/redux/actions/photographyReducerAction";
 import { deleteAVideo } from "@/app/redux/actions/videoAction";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function DeleteVideoModal({ id, url }: { id: any; url: any }) {
   let [isOpen, setIsOpen] = useState(false);
@@ -37,6 +39,7 @@ export default function DeleteVideoModal({ id, url }: { id: any; url: any }) {
         }
       );
       const res = await deletedImage.json();
+      toast.success("Video deleted successfully")
       console.log(res);
     } catch (error) {
       console.log(error);

@@ -3,6 +3,8 @@ import { Fragment, useEffect, useState } from "react";
 import AddImage from "@/public/assets/Icons/AddImage";
 import { useDispatch, useSelector } from "react-redux"; 
 import { uploadVideo } from "@/app/redux/actions/videoAction";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UploadVideoModal({
   id,
@@ -50,13 +52,13 @@ export default function UploadVideoModal({
       console.log(res);
       return res.videoFolder
     } catch (error) {
-      throw new Error("Failed to create folder"); // Throw an error for better handling
+     toast.error("Failed to create folder"); // Throw an error for better handling
     }
   };
 
 
   const uploadVideoFunc = async () => {
-    const response=await uploadVideoApi();
+    const response = await uploadVideoApi();
     const temp = response.images;
     const uploadedVideo = temp[temp.length - 1];
     dispatch(uploadVideo({ UfId: id, Uurl: uploadedVideo }));
@@ -74,7 +76,7 @@ export default function UploadVideoModal({
           onClose={closeModal}
         >
           <div className="flex  text-black items-center justify-center min-h-screen">
-            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl">
+            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl sm:m-[12px]">
               <Dialog.Title className="text-xl font-semibold text-gray-900 mb-4">
                 Upload video 
               </Dialog.Title>

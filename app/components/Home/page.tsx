@@ -49,7 +49,7 @@ const HomePage = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1000,
     responsive: [
       {
         breakpoint: 768, // Breakpoint for mobile devices
@@ -87,16 +87,16 @@ const HomePage = () => {
   }, [controls, TextView]);
 
   return (
-    <div className="absolute bg-gray-100 w-full min-h-screen overflow-y-hidden sm: overdlow-y-hidden">
+    <div className="absolute bg-gray-100 w-full min-h-screen overflow-x-hidden ">
       {/* Main Section */}
       <NavBar></NavBar>
       <div className="bg-cover bg-center homePage min-h-screen flex flex-col items-center justify-center text-white sm:p-10">
-        <h1 className="text-5xl font-bold sm: p-10">
+        <h1 className="text-5xl font-sans sm: p-10">
           Contemporary and Off-Beat
         </h1>
-        <p className="text-4xl font-bold mb-3">Wedding Stories </p>
-        <p className="text-3xl font-bold ">For the Modern Couple</p>
-        <div className="text-5xl font-extrabold text-white mb-8 p-5">
+        <p className="text-4xl font-sans ">Wedding Stories </p>
+        <p className="text-3xl font-sans ">For the Modern Couple</p>
+        <div className="text-5xl ffont-sans text-white p-5">
           <Typed
             strings={[
               "Indian Wedding Photography!",
@@ -154,14 +154,15 @@ const HomePage = () => {
       {/* Services section */}
       <section className="bg-white  py-10 mt-20 p-4 ">
         <div className="container mx-auto text-center mt-10">
-          <h2 className="text-4xl font-sans font-bold text-indigo-800 mb-10">
+          <h2 className="text-5xl font-sans font-bold text-indigo-800 mb-10 mt-10">
             Our Photography Services
           </h2>
+          <hr></hr>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 mt-10">
             {/* Service 1 */}
             <ServiceCard
-              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1701055892/pgzzhspz0h6prfepjddr.jpg"
+              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702985674/ougvf31qkd4u2lursmio.jpg"
               title="Portrait Photography"
               description="Capture beautiful and timeless portraits that tell your unique story."
               link="/components/Services/Photography"
@@ -169,7 +170,7 @@ const HomePage = () => {
 
             {/* Service 2 */}
             <ServiceCard
-              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1701055892/pgzzhspz0h6prfepjddr.jpg"
+              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702985886/db9eq8j6ckv1j4znagd5.jpg"
               title="Portrait Photography"
               description="Capture beautiful and timeless portraits that tell your unique story."
               link="/components/Services/Photography"
@@ -177,7 +178,7 @@ const HomePage = () => {
 
             {/* Service 3 */}
             <ServiceCard
-              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1701055892/pgzzhspz0h6prfepjddr.jpg"
+              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702985789/vbtaqg0a65o7mhzt0zkn.jpg"
               title="Portrait Photography"
               description="Capture beautiful and timeless portraits that tell your unique story."
               link="/components/Services/Photography"
@@ -217,62 +218,63 @@ const HomePage = () => {
       {/* {brand section } */}
       <section className="bg-gray-100 py-16 mt-20">
         <div className="mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-8 sm:mb-20">
+          <h2 className="text-5xl sm:text-5xl font-sans text-gray-800 mb-8 sm:mb-20">
             Our Partners
           </h2>
+          <hr></hr>
 
           <Slider
             {...settings}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 mt-8 p-5 gap-4" // Add gap between images
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 mt-8 p-5 " // Add gap between images
           >
             {/* Branded Image 1 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md h-[500px]">
+            <div className="relative overflow-hidden rounded-lg shadow-md  object-contain">
               <img
-                src="https://as1.ftcdn.net/v2/jpg/05/19/52/52/1000_F_519525221_f40EiVbsqdV03yFXB25XgvbnEbDH2zH9.jpg"
+                src="https://res.cloudinary.com/dnsydvkyd/image/upload/v1702985483/w4stfswa9mczq9pjuhbk.jpg"
                 alt="Branded Image 1"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
             </div>
 
             {/* Branded Image 2 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md h-[500px] mx-4">
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
               {" "}
               {/* Add margin between images */}
               <img
-                src="https://assets.architecturaldigest.in/photos/641575ee0b0aca3cd1591dd9/16:9/w_1920,c_limit/Untitled%20design%20(11).png"
+                src="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702986098/bpbbmsaha7uucbxkqnux.jpg"
                 alt="Branded Image 2"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
             </div>
 
             {/* Branded Image 3 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md h-[500px] mx-4">
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
               {" "}
               {/* Add margin between images */}
               <img
-                src="https://hips.hearstapps.com/hmg-prod/images/gemma-landon-naba-zabih-photography-640a5ca12a846.jpg?crop=1.00xw:0.334xh;0,0.249xh&resize=1200:*"
+                src="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702985302/iqusrjsn1cclsgyivxav.jpg"
                 alt="Branded Image 3"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
             </div>
 
             {/* Branded Image 4 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md h-[500px] mx-4">
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
               {" "}
               {/* Add margin between images */}
               <img
-                src="https://res.cloudinary.com/dnr7thjlu/image/upload/v1701055344/sgd1s81vt7xjxsyw71qv.jpg"
+                src="https://res.cloudinary.com/dnsydvkyd/image/upload/v1702986719/u52c4rlr4ksmhpzdbsa4.jpg"
                 alt="Branded Image 4"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
             </div>
 
             {/* Branded Image 5 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md h-[500px] mx-4">
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
               {" "}
               {/* Add margin between images */}
               <img
-                src="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1701055892/pgzzhspz0h6prfepjddr.jpg"
+                src="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702986653/rpbb4pqo1oi5rzzmocf4.jpg"
                 alt="Branded Image 5"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
@@ -289,7 +291,7 @@ const HomePage = () => {
         <div className="container mx-auto text-center">
           <div className="mb-8 hireus h-[400px]"></div>
           <motion.h2
-            className="text-4xl font-extrabold mb-8 font-sans"
+            className="text-5xl font-extrabold mb-8 font-sans"
             variants={textVariants}
             initial="hidden"
             animate={controls}
@@ -297,7 +299,7 @@ const HomePage = () => {
             Hire Us for Your Next Project
           </motion.h2>
           <motion.p
-            className="text-lg font-bold"
+            className="text-1xl font-bold  "
             variants={textVariants}
             initial="hidden"
             animate={controls}
@@ -313,7 +315,7 @@ const HomePage = () => {
           </motion.p>
 
           <motion.p
-            className="text-lg mb-10 font-bold"
+            className="text-1xl mb-10 font-bold"
             variants={textVariants}
             initial="hidden"
             animate={controls}
@@ -332,9 +334,11 @@ const HomePage = () => {
           >
             Get in Touch
           </Link>
+          
         </div>
+        
+      {/* Dark overlay */}
       </section>
-
       {/* Footer */}
       <Footer />
     </div>

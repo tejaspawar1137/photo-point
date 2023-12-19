@@ -8,6 +8,7 @@ import SettingPopover from "./SettingsPopover";
 import CreateFolderModal from "./CreateFolderModal";
 import Photos from "@/app/components/Services/Photography/Photos";
 import Loader from "../../Loader/Loader";
+import { motion } from 'framer-motion';
 
 const isLoggedIn =
   typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
@@ -53,11 +54,15 @@ const Photography = () => {
   return !loading ? (
     <div> 
      <NavBar></NavBar>
-      <div className="bg-white text-black py-6  min-h-[100vh]">
-      
-        <h1 className=" font-sans flex justify-center text-4xl md:text-5xl font-bold tracking-wide">
-          Photography
-        </h1>
+      <div className="bg-white text-black py-6  min-h-[100vh]">      
+      <motion.h1
+      className="font-sans flex justify-center text-4xl md:text-5xl font-bold tracking-wide"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      Photography
+    </motion.h1>
         {/* Header  */}
         <div className="flex flex-col md:flex-row justify-between items-center px-2 py-8">
           <div className="mb-4 md:mb-0"></div>
@@ -109,8 +114,9 @@ const Photography = () => {
         {/* Photos  */}
         <Photos photos={photos} folderName={folderName} />
         {/* Footer */}
-        <Footer />
+       
       </div>
+      <Footer />
     </div>
   ) : (
     <div className="h-full bg-white">

@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createFolder } from "@/app/redux/actions/photographyReducerAction";
 import ImageUpload from "../ImageUpload";
 import ProgressBarComponent from "../../ProgressBar/ProgressBar";  
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateFolderModal({h,w}: {h:any,w:any}) {
   const dispatch = useDispatch();
@@ -82,12 +84,13 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
     } else {
       setprogress(0);
       setprogressBarDisplay(false)
-      return alert("Please fill all the details");
+      return toast.error("Please fill all the details");
     }
   };
   return (
     <>
       <div className="">
+        <ToastContainer></ToastContainer>
         <button
           onClick={openModal}
           className="flex items-center gap-3 text-white rounded-full  "
@@ -103,7 +106,7 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
           onClose={closeModal}
         >
           <div className="flex text-black items-center justify-center min-h-screen">
-            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl">
+            <Dialog.Panel className="w-full max-w-md p-6 rounded-md bg-white shadow-xl sm: m-[12px]">
               <Dialog.Title className="text-xl text-gray-900 mb-4">
                 <b className="uppercase">Create an Image Folder</b> 
               </Dialog.Title>

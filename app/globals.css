@@ -16,17 +16,17 @@
   }
 }
 .contect-img{
-  background: url("/assets/bg.jpg")no-repeat center center/cover;
+  background: url("/assets/contect.jpg")no-repeat center center/cover;
 }
 .login-img{
-  background: url("/assets/Loginimg.jpg")no-repeat center center/cover;
+  background: url("/assets/login-img.jpg")no-repeat center center/cover;
 }
 
 .signup-img{
-  background: url("/assets/signup.jpg")no-repeat center center/cover;
+  background: url("/assets/Signup.jpg")no-repeat center center/cover;
 }
 .hireUs{
-  background: url("/assets/hireus.jpg")no-repeat center center/cover;
+  background: url("/assets/bg-img.jpg")no-repeat center center/cover;
 }
 body {
   color: rgb(var(--foreground-rgb));
@@ -38,7 +38,7 @@ body {
     rgb(var(--background-start-rgb));
 }
 .homePage{
-  background: url("/assets/bgimage2.jpg")no-repeat center center/cover;
+  background: url("/assets/bg2.jpg")no-repeat center center/cover;
 }
 
 

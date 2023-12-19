@@ -4,6 +4,8 @@ import Dustbin from "@/public/assets/Icons/dustbin";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAFolder } from "@/app/redux/actions/photographyReducerAction";
 import { deleteAVideoFolder } from "@/app/redux/actions/videoAction";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function DeleteFolderModal({
   fId,
@@ -39,7 +41,9 @@ export default function DeleteFolderModal({
         }
       );
       const res = await deletedFolder.json();
+      toast.success("Videography Folder Deleted Successfully")
       console.log(res);
+
     } catch (error) {
       console.log(error);
     }
