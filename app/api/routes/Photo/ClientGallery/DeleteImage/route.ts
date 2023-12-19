@@ -1,5 +1,5 @@
 import { authMiddleware } from "@/app/api/middleware/AuthMiddleware";
-import ClientGallery from "@/app/api/models/ClientGallery/route";
+import ClientGallery from "@/app/api/models/ClientGallery/ClientGallery";
 import { NextRequest, NextResponse } from "next/server";
 
 export type ImageType = {

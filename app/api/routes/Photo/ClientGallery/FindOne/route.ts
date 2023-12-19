@@ -1,4 +1,4 @@
-import ClientGallery from "@/app/api/models/ClientGallery/route";
+import ClientGallery from "@/app/api/models/ClientGallery/ClientGallery";
 import { NextRequest, NextResponse } from "next/server";
 
 
