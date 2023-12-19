@@ -4,7 +4,9 @@ import nodemailer from "nodemailer";
 export async function POST(req: Request, res: Response) {
   try {
     const reqBody = await req.json();
-    const { name, email, phone, message } = reqBody;
+    const { formData } = reqBody;
+    console.log( "Backend hitting " , formData.name, formData.email, formData.phoneNumber, formData.message );
+    
 
     // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -17,13 +19,13 @@ export async function POST(req: Request, res: Response) {
 
     // Setup email data
     const mailOptions = {
-      from: email,
-      to: "sharmaaniket682@gmail.com",
+      from: formData.email,
+      to: "abhayratnakar03@gmail.com",
       subject: "Dheeraj Photo Point: New Inquiry",
-      html: `<p>Name: ${name}</p>
-           <p>Email: ${email}</p>
-           <p>Phone: ${phone}</p>
-           <p>Message: ${message}</p>`,
+      html: `<p>Name: ${formData.name}</p>
+           <p>Email: ${formData.email}</p>
+           <p>Phone: ${formData.phoneNumber}</p>
+           <p>Message: ${formData.message }</p>`,
     };
 
     // Send the email
