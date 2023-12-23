@@ -37,44 +37,40 @@ const Login: React.FC = () => {
   const router = useRouter();
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    // Do something with the email and password values (e.g., send them to a server)
+    e.preventDefault(); 
     console.log("Email:", formData.email);
     console.log("Password:", formData.password);
-    const sendBody = {
-      email:formData.email,
-      password:formData.password
-    };
+ 
     setLoading(true);
     try {
       const response = await fetch("/api/routes/User/Login", {
-        method: "POST",
-        headers: {
-          authtoken: authtoken,
-        },
-        body: JSON.stringify(sendBody),
+        method: "GET", 
       });
-
       const res = await response.json();
-      console.log(res);
-
-      if (response.ok) {
-        // Navigate to the homepage
-        router.push("/");
-        localStorage.setItem("authToken", authtoken);
-      } else {
-        // Handle error or display a message
+      console.log(res.users);
+      const users=res.users; 
+      if (response.ok) { 
+        const foundUser=users.find((e:any,index:any)=>e.email===formData.email && e.password===formData.password)
+         if(foundUser){
+           console.log(foundUser);
+           router.push("/");
+          toast.success("Welcome back");
+          const role=foundUser.role;
+          console.log(role)
+          // localStorage.setItem("authToken", authtoken);
+         }else{ 
+        toast.error("Incorrect email or password");
+         }
+      } else { 
         console.log("API request failed:", res);
         toast.error("Incorrect email or password");
       }
-      return res; // Return the created folder
+      return res;  
     } catch (error: any) {
       console.log(error.messages);
-    } finally {
-      // Set loading to false after the email is sent (whether successful or not)
+    } finally { 
       setLoading(false);
-    }
-    // Optionally, reset the form
+    } 
     setFormData({
       email: "",
       password: "",
