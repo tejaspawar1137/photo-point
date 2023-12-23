@@ -7,10 +7,8 @@ const About = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <NavBar />
-
       <div className="container mx-auto p-10 text-black">
         <h1 className="text-4xl font-bold mb-8 text-black">About Us</h1>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Team Member 1 */}
           <div className="bg-white p-6 rounded-md shadow-md">
@@ -23,7 +21,6 @@ const About = () => {
               beautiful and timeless moments.
             </p>
           </div>
-
           {/* Team Member 2 */}
           <div className="bg-white p-6 rounded-md shadow-md">
             <FaVideo className="text-5xl text-blue-500 mb-4" />
@@ -33,7 +30,6 @@ const About = () => {
               cinematic masterpiece.
             </p>
           </div>
-
           {/* Team Member 3 */}
           <div className="bg-white p-6 rounded-md shadow-md">
             <FaRing className="text-5xl text-blue-500 mb-4" />
@@ -57,7 +53,6 @@ const About = () => {
             dedicated to capturing the essence of your love story and creating
             memories that last a lifetime.
           </p>
-
           <p className="text-gray-800">
             Congratulations on your upcoming celebration of love! At [Your
             Wedding Photography Studio], we understand the significance of your
@@ -65,13 +60,11 @@ const About = () => {
             masterpiece. Why Choose [Your Wedding Photography Studio]? Capturing
             Moments, Creating Memories
           </p>
-
           <p className="text-gray-800 mt-20">
             <span className="font-bold text-2xl font-sans">
               Why Choose [Your Wedding Photography Studio] ?
             </span>
           </p>
-
           <ul className="list-disc list-inside text-gray-800 mt-10 ml-6">
             <li className="mt-5">
               Experienced and passionate team of photographers and videographers
@@ -99,14 +92,11 @@ const About = () => {
             </li>
           </ul>
         </div>
-
         <h1 className=" mt-20 font-bold font-sans text-center text-4xl text-blue-500 mb-10">
           Video Services
         </h1>
         <hr className="mb-10"></hr>
-
         <span className="text-2xl font-bold mt-10">Weading Video –</span>
-
         <p className=" mb-5 mt-5">
           Video contents have become a key tool for building brands. In fact,
           brand video is the latest form or approach of marketing, which is
@@ -116,7 +106,6 @@ const About = () => {
           to appeal to the audience.
         </p>
         <span className="text-2xl font-bold mt-10">Brand Video –</span>
-
         <p className=" mb-5 mt-5">
           Video contents have become a key tool for building brands. In fact,
           brand video is the latest form or approach of marketing, which is
@@ -125,18 +114,14 @@ const About = () => {
           These videos make a better impact by mean of sharing wonderful stories
           to appeal to the audience.
         </p>
-
         <span className="text-2xl font-bold mt-10">Social Video –</span>
-
         <p className=" mb-5 mt-5">
           A social video is a short video that is created precisely to enhance
           audience engagement. Social videos are effective for driving and
           growing engagement of audiences and to highlight a single story. They
           are shared through social media networks.
         </p>
-
         <span className="text-2xl font-bold mt-10">Corporate Video –</span>
-
         <p className=" mb-5 mt-5">
           Corporate videos help in promoting a brand by using visual content. It
           thus helps is the marketing of your brand and company. With best
@@ -144,9 +129,7 @@ const About = () => {
           business to a great level. These videos help in creating a bond with
           the audience or clients.
         </p>
-
         <span className="text-2xl font-bold mt-10">Testimonial Videos –</span>
-
         <p className=" mb-5 mt-5">
           Testimonial Video is a video that captures the views and opinions of a
           customer or client as they talk about a product or service that they
@@ -156,7 +139,6 @@ const About = () => {
           prospective customers.
         </p>
       </div>
-
       <Footer></Footer>
     </div>
   );

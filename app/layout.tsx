@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import StoreProvider from './redux/StoreProvider'
+import connectToDB from './api/Db'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +16,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  connectToDB();
   return (
     <StoreProvider>
     <html lang="en">

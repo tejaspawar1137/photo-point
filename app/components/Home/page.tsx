@@ -257,10 +257,8 @@ const HomePage = () => {
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
             </div>
-
             {/* Branded Image 4 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
-              {" "}
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4"> 
               {/* Add margin between images */}
               <img
                 src="https://res.cloudinary.com/dnsydvkyd/image/upload/v1702986719/u52c4rlr4ksmhpzdbsa4.jpg"
@@ -333,10 +331,8 @@ const HomePage = () => {
             className="bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition duration-300"
           >
             Get in Touch
-          </Link>
-          
-        </div>
-        
+          </Link>         
+        </div>       
       {/* Dark overlay */}
       </section>
       {/* Footer */}

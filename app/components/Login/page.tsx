@@ -42,7 +42,8 @@ const Login: React.FC = () => {
     console.log("Email:", formData.email);
     console.log("Password:", formData.password);
     const sendBody = {
-      formData,
+      email:formData.email,
+      password:formData.password
     };
     setLoading(true);
     try {

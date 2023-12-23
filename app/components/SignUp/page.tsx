@@ -28,9 +28,13 @@ const SignUp = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const sendBody = {
-      formData,
+      name:formData.name,
+      email:formData.email,
+      password:formData.password,
+      phone:formData.phoneNumber
     };
     try {
+      console.log("creds",formData)
       setLoading(true);
       const response = await fetch("/api/routes/User/Create", {
         method: "POST",

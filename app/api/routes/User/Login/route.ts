@@ -8,12 +8,8 @@ export const POST = async (request: NextRequest, response: Response) => {
   //  await  authMiddleware
     try {
       const reqBody = await request.json(); 
-      const { formData } = reqBody;
-      console.log("log request body", formData);
-      const email = formData.email;
-      const password = formData.password;
-  
-      console.log("email password in login ", email, password);
+      const { email,password } = reqBody; 
+   
     
       const existingUser = await User.findOne({ email });
       if (!existingUser) {

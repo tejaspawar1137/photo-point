@@ -8,13 +8,8 @@ const secret = "aniket";
 export const POST = async (request: NextRequest) => {
   try {
     const reqBody = await request.json();
-    const {formData} = reqBody;
-    const name = formData.name
-    const email = formData.email;
-    const password = formData.password;
-    const phone = formData.phoneNumber;
-    
-
+    const {name,email,password,phone} = reqBody;    
+  
     const isUser = await User.findOne({ email });
     if (isUser) {
       return NextResponse.json(
