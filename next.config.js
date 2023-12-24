@@ -1,12 +1,5 @@
 module.exports = {
-    images: {
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: '*',
-          port: '',
-          pathname: '',
-        },
-      ],
-    },
-  };
+  images: {
+    domains: ['*'], // Allow all domains for remote images
+  },
+};
