@@ -6,6 +6,7 @@ import connectToDB from "@/app/api/Db";
 
 const secret = "aniket";
 
+export const dynamic = 'force-dynamic';
 export const POST = async (request: NextRequest) => {
   try {
     await connectToDB();

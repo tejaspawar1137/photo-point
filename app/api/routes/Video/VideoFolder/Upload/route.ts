@@ -7,6 +7,7 @@ export type ImageType = {
   url: string;
 };
 
+export const dynamic = 'force-dynamic';
 export const PUT = async (req: NextRequest, res: Response) => { 
     try {
       await connectToDB();

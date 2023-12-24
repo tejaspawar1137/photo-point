@@ -2,6 +2,7 @@ import connectToDB from "@/app/api/Db";
 import User from "@/app/api/models/User/User";
 import { NextResponse, NextRequest } from "next/server";
 
+export const dynamic = 'force-dynamic';
 export const GET = async (request: NextRequest, response: Response) => { 
   try { 
     await connectToDB();

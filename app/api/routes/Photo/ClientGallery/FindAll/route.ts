@@ -2,6 +2,7 @@ import connectToDB from "@/app/api/Db";
 import ClientGallery from "@/app/api/models/ClientGallery/ClientGallery";
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
 export async function GET(req: Request, res: Response) {
     try {
         await connectToDB();

@@ -7,6 +7,7 @@ function getUrlParam(url:string, param:any) {
   return urlSearchParams.get(param);
 }
 
+export const dynamic = 'force-dynamic';
 export const GET = async (req: NextRequest, res: Response) => {  
     try { 
       await connectToDB();

@@ -2,6 +2,7 @@ import connectToDB from '@/app/api/Db';
 import VideoFolder from '@/app/api/models/VideoFolder/VideoFolder';
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
 export async function GET(req: Request, res: Response) {
     try {
         await connectToDB();

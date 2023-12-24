@@ -3,6 +3,7 @@ import connectToDB from "@/app/api/Db";
 import Review from "@/app/api/models/Review/Review";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
 export async function DELETE(req: NextRequest, res: Response) { 
     try {
       await connectToDB();

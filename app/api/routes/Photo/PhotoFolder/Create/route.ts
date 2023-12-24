@@ -6,6 +6,7 @@ export type ImageType = {
   url: string;
 };
 
+export const dynamic = 'force-dynamic';
 export const POST = async (req: NextRequest, res: Response) => { 
     try { 
       console.log("request hit");
@@ -46,5 +47,3 @@ export const POST = async (req: NextRequest, res: Response) => {
       );
     } 
 };
-
-connectToDB();

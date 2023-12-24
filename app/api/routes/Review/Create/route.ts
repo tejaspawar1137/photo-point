@@ -2,6 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import Review from "@/app/api/models/Review/Review";
 import connectToDB from "@/app/api/Db";
 
+export const dynamic = 'force-dynamic';
 export const POST = async (request: NextRequest) => {
   try {
     await connectToDB();
