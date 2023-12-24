@@ -131,8 +131,14 @@ const Photos = () => {
   }, [hitRedux]);
 
   const downloadImage = (url: string, index: number) => {
+    console.log("Downloading image from URL:", url); // Log URL for debugging
     fetch(url)
-      .then((res) => res.blob())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.blob();
+      })
       .then((blob) => {
         const imageUrl = URL.createObjectURL(blob);
         const link = document.createElement("a");
@@ -144,6 +150,7 @@ const Photos = () => {
       })
       .catch((error) => console.error("Error downloading image:", error));
   };
+  
 
   const openFullScreenImage = (imageUrl: string) => {
     setFullScreenImage(imageUrl);
