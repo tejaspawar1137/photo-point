@@ -51,11 +51,13 @@ const Photography = () => {
     const fetchPhotosForInitialization = async () => {
           setloading(true);
       try {
+        console.log("yo")
         const response = await fetch("/api/routes/Photo/PhotoFolder/FindAll", {
           method: "GET",
         });
         const resPhotos = await response.json();
-
+          
+        console.log("mil gya")
         console.log(resPhotos);
         if (
           Array.isArray(resPhotos.photoFolder) &&
@@ -63,13 +65,16 @@ const Photography = () => {
         ) {
           setlastIndex(resPhotos.photoFolder.length);
           dispatch(inititalizePhotography(resPhotos.photoFolder));
+          console.log("dipatched ALL PHOTOS",resPhotos.photoFolder)
       
         }
       } catch (error) {
+        console.log("nahi")
         console.error("Error fetching photos:", error);;
       }
       finally{
         setloading(false)
+        console.log("finally milgya")
       }
     };
     fetchPhotosForInitialization();
