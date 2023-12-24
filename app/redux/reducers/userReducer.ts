@@ -1,17 +1,35 @@
+ 
+const getCookie=(name:any)=> {
+  if (typeof document !== "undefined") {
+  let nameEQ = name + "=";
+  let cookies = document?.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i];
+    while (cookie.charAt(0) === ' ') {
+      cookie = cookie.substring(1, cookie.length);
+    }
+    if (cookie.indexOf(nameEQ) === 0) {
+      return cookie.substring(nameEQ.length, cookie.length);
+    }
+  }
+  return null;
+}
+return null;
+}
+ 
 const initialState = {
-  authtoken:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NThjODc0MjBlYjc5NzM5MTk1M2QzMSIsImlhdCI6MTcwMTAxMDczMX0.Vvb1vFls9XdUpwhlVJI3v82jIHCojfLQ_iZ_uO9o_Tk",
+  role: getCookie("role") || "",
 };
 
-const UPDATE_AUTHTOKEN = "UPDATE_AUTHTOKEN";
+const UPDATE_ROLE = "UPDATE_ROLE";
 
 export const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case UPDATE_AUTHTOKEN:
-      const authtoken = action.payload;
+    case UPDATE_ROLE:
+      const role = action.payload;
       return {
         ...state,
-        authtoken: authtoken,
+        role: role,
       };
     default:
       return state;

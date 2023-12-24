@@ -8,17 +8,40 @@ import CreateFolderModal from "./CreateFolderModal";
 import Videos from "@/app/components/Services/VideoProduction/Videos";
 import Loader from "../../Loader/Loader";
 import { inititalizeVideography } from "@/app/redux/actions/videoAction";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; 
 
-const Videography = () => {
+const Videography = () => { 
   const [folderName, setFolderName] = useState(0);
   const [loading, setloading] = useState(false);
   const videos = useSelector((state) => (state as any).videosReducer?.videos);
-  const dispatch = useDispatch();
-  const isLoggedIn =
-    typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
+  const dispatch = useDispatch(); 
+   const userRoleFromRedux=useSelector((state)=>(state as any).userReducer.role)
+  const [role, setRole ] = useState<any>("")
 
-  console.log(isLoggedIn);
+  
+
+  const getCookie = (name: any) => {
+    if (typeof document !== "undefined") {
+      let nameEQ = name + "=";
+      let cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === " ") {
+          cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+          return cookie.substring(nameEQ.length, cookie.length);
+        }
+      }
+      return null;
+    }
+    return null;
+  }; 
+  
+  useEffect(() => {
+    const userRole=getCookie("role");
+    setRole(userRole);
+  }, [userRoleFromRedux]);
 
   useEffect(() => {
     setloading(true);
@@ -46,6 +69,7 @@ const Videography = () => {
     fetchVideosForInitialization();
   }, []);
 
+
   return !loading ? (
     <div>
       <NavBar />
@@ -61,8 +85,8 @@ const Videography = () => {
         {/* Header  */}
         <div className="flex justify-between items-center px-2 py-8">
           <div className="block"></div>
-          <div className="lg:flex lg:flex-row justify-between items-center px-4 py-4 overflow-x-auto sm:flex-col  lg:text-sm xl:text-base  text-[0.8rem] whitespace-nowrap mx-5   space-x-4 lg:space-x-6 list-none font-light">
-            {(videos as any).length > 0
+          <div className="flex justify-between items-center px-4 py-4 overflow-x-auto  lg:text-sm xl:text-base  text-[0.8rem] whitespace-nowrap mx-5   space-x-4 lg:space-x-6 list-none font-light">
+          {(videos as any).length > 0
               ? videos.map((e: any, i: any) => {
                   return (
                     <div
@@ -83,7 +107,7 @@ const Videography = () => {
                         >
                           {e.name}
                         </span>{" "}
-                        {isLoggedIn && (
+                        {role && (
                           <SettingPopover
                             index={folderName}
                             fId={e._id}
@@ -97,7 +121,7 @@ const Videography = () => {
               : ""}
           </div>
           <div className="pr-6 hover:scale-[1.05] transition">
-            {isLoggedIn && <CreateFolderModal />}
+            {role  && <CreateFolderModal />}
           </div>
         </div>
         {/* Photos  */}

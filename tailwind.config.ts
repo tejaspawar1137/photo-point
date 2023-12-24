@@ -23,7 +23,7 @@ const config: Config = {
 
         'll':'1070px',
   
-        'xl': '1280px', 
+        'xl': '1330px', 
   
         '2xl': '1536px', 
       }

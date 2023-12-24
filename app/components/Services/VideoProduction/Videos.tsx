@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DeleteVideoModal from "./DeleteVideoModal";  
 import Loader from "../../Loader/Loader";
+import { useSelector } from "react-redux"; 
 
 interface VideoProps {
   videos: any[]; // Adjust this to the actual type of your videos array
@@ -17,15 +18,39 @@ const Videos: React.FC<VideoProps> = ({ videos, folderName }) => {
   const isLoggedIn =
   typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
 
-console.log(isLoggedIn);
+  const userRoleFromRedux = useSelector(
+    (state) => (state as any).userReducer.role
+  );
+  const [role, setRole] = useState<any>(""); 
+
+  const getCookie = (name: any) => {
+    if (typeof document !== "undefined") {
+      let nameEQ = name + "=";
+      let cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === " ") {
+          cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+          return cookie.substring(nameEQ.length, cookie.length);
+        }
+      }
+      return null;
+    }
+    return null;
+  }; 
+  
+  useEffect(() => {
+    const userRole = getCookie("role");
+    setRole(userRole);
+  }, [userRoleFromRedux]);
 
   useEffect(() => {
     if (videos) {
       setLoading(false);
     }
-    setLoading(false);
-    console.log(videos);
-    console.log("thos os", isLoading);
+    setLoading(false); 
   }, [videos]);
 
   return !loading ? (
@@ -63,7 +88,7 @@ console.log(isLoggedIn);
                     {!isLoading && (
                       <div className="absolute right-2 top-2">
                         <div>
-                          { isLoggedIn &&
+                          { role &&
                           (<DeleteVideoModal
                             id={videos.find((_, i) => i === folderName)?._id}
                             url={video.url}

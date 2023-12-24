@@ -15,15 +15,15 @@ import { toast, ToastContainer } from "react-toastify";
 export default function UploadPhotoModal({
   id,
   index,
-  setloading
+  setloading,
 }: {
   id: any;
   index: any;
-  setloading:any;
+  setloading: any;
 }) {
   const dispatch = useDispatch();
   let [isOpen, setIsOpen] = useState(false);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState<any>(null);
   const [progressBarDisplay, setprogressBarDisplay] = useState(false);
   const [progress, setprogress] = useState(0);
   const authtoken = useSelector(
@@ -37,12 +37,9 @@ export default function UploadPhotoModal({
   function openModal() {
     setIsOpen(true);
   }
-
-  const updateProgressDispatch = (progress: any) => {
-    setprogress(progress);
-  };
-
+ 
   useEffect(() => {
+    console.log(imageUrl);
   }, [imageUrl]);
 
   const uploadImageApi = async () => {
@@ -77,14 +74,19 @@ export default function UploadPhotoModal({
     setprogressBarDisplay(true);
     if (index === 0 || index === 1 || index === 2 || index >= 6) {
       setprogressBarDisplay(true);
-      updateProgressDispatch(10);
-      updateProgressDispatch(30);
-      let tempUrl = await ImageUpload(e, `${uploadPreset}`, `${cloudname}`);
-      updateProgressDispatch(100);
+      setprogress(10);
+      setprogress(30);
+      let tempUrl;
+      try {
+        tempUrl = await ImageUpload(e, uploadPreset, cloudname);
+        setprogress(100);
+      } catch (error) { 
+        toast.error("Error uploading image, please try again.");
+      }
       if (tempUrl === "Error") {
         toast.error("Error uploading image, please try again.");
-      setprogressBarDisplay(false);
-      } else if (tempUrl === "File size exceeds the maximum limit of 5 MB.") {
+        setprogressBarDisplay(false);
+      } else if (tempUrl === "File size exceeds the maximum limit of 20 MB.") {
         {
           toast.error(`${tempUrl}`);
           setprogressBarDisplay(false);
@@ -94,20 +96,20 @@ export default function UploadPhotoModal({
       }
     } else {
       setprogressBarDisplay(true);
-      updateProgressDispatch(10);
-      updateProgressDispatch(30);
+      setprogress(10);
+      setprogress(30);
       let tempUrl = await ImageUploadTwo(e, `${apiKey}`);
-      updateProgressDispatch(100);
+      setprogress(100);
       if (tempUrl === "Error") {
         toast.error("Error uploading image, please try again.");
         setprogressBarDisplay(false);
-      } else if (tempUrl === "File size exceeds the maximum limit of 5 MB.") {
+      } else if (tempUrl === "File size exceeds the maximum limit of 10 MB.") {
         {
           toast.error(`${tempUrl}`);
           setprogressBarDisplay(false);
         }
       } else {
-        setImageUrl(tempUrl); 
+        setImageUrl(tempUrl);
       }
     }
   };
@@ -115,7 +117,7 @@ export default function UploadPhotoModal({
   const uploadImageFunc = async () => {
     if (typeof imageUrl === "string") {
       try {
-        setloading(true); 
+        setloading(true);
         const response = await uploadImageApi();
         if (response.message === "Image already exists") {
           setImageUrl(null);
@@ -148,10 +150,8 @@ export default function UploadPhotoModal({
   };
   return (
     <>
-     
       <div onClick={openModal} className="flex items-center gap-2">
-     
-        <AddImage h={25} w={25}  fill="black" /> Add a photo
+        <AddImage h={25} w={25} fill="black" /> Add a photo
       </div>
       <Transition show={isOpen} as={Fragment}>
         <Dialog
@@ -170,65 +170,58 @@ export default function UploadPhotoModal({
                 </label>
                 <input
                   onChange={async (e: any) => {
-                    if (index === 0) {
+                    let newIndex = index % 7;
+                    if (newIndex === 0) {
                       uplaodImageHelper(
-                        0,
+                        newIndex,
                         e,
                         "DHEERAJ_PHOTO_POINT",
                         "ds5fdn2yu",
                         "ss"
-                      );
-
-                      updateProgressDispatch(100);
-                    }
-                    if (index === 1) {
+                      ); 
+                    } else if (index === 1) {
                       uplaodImageHelper(
-                        1,
+                        newIndex,
                         e,
                         "DHEERAJ_PHOTO_POINT",
                         "dnr7thjlu",
                         "ss"
                       );
-                    }
-                    if (index === 2) {
+                    } else if (index === 2) {
                       uplaodImageHelper(
-                        2,
+                        newIndex,
                         e,
                         "DHEERAJ_PHOTO_POINT",
                         "dimv7myy9",
                         "ss"
                       );
-                    }
-                    if (index === 3) {
+                    } else if (index === 3) {
                       uplaodImageHelper(
-                        3,
+                        newIndex,
                         e,
                         "DHEERAJ_PHOTO",
                         "dimv7y9",
                         "4ff3af5727bbcad03796"
                       );
-                    }
-                    if (index === 4) {
+                    } else if (index === 4) {
                       uplaodImageHelper(
-                        4,
+                        newIndex,
                         e,
                         "DHEERAJ_PHOTO",
                         "dimv7y9",
                         "25df74b02bcfa20387fd"
                       );
-                    }
-                    if (index === 5) {
+                    } else if (index === 5) {
                       uplaodImageHelper(
-                        5,
+                        newIndex,
                         e,
                         "DHEERAJ_PHOTO",
                         "dimv7y9",
                         "f172a9bfe4613bd3df39"
                       );
-                    }
-                    if (index === 6) {
+                    } else if (index === 6) {
                       uplaodImageHelper(
-                        6,
+                        newIndex,
                         e,
                         "DHEERAJ_PHOTO_POINT",
                         "dnsydvkyd",
@@ -236,13 +229,12 @@ export default function UploadPhotoModal({
                       );
                     } else {
                       uplaodImageHelper(
-                        7,
+                        newIndex,
                         e,
                         "DHEERAJ_PHOTO_POINT",
                         "dnsydvkyd",
                         "ss"
                       );
-
                     }
                   }}
                   type="file"

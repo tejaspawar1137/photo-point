@@ -1,33 +1,55 @@
 import { uploadFile } from "@uploadcare/upload-client";
+import Compressor from 'compressorjs';
 
-const MAX_FILE_SIZE_MB = 10;
-const ImageUploadTwo = async (event: any, ak: any) => {
-  let url: any = "";
+const MAX_FILE_SIZE_MB = 20;
+
+const compressAndUpload = async (file:any,ak:any) => {
+  const fileSizeInMb=file.size/ (1024 * 1024); 
+  return new Promise((resolve, reject) => {
+    new Compressor(file, {
+      quality: fileSizeInMb<=6?0.3:0.2,
+      success: async (compressedFile) => {
+        try {
+          const result = await uploadFile(compressedFile, {
+            publicKey: ak,
+            store: "auto",
+            metadata: {
+              subsystem: "uploader",
+              pet: "cat",
+            },
+          });
+          resolve(result.cdnUrl);
+        } catch (error) {
+          reject(error);
+        }
+      },
+      error: (err) => {
+        reject(err);
+      },
+    });
+  });
+};
+
+const ImageUploadTwo = async (event:any, ak:any) => {
+  let url = "";
+
   const selectedFile = event.target.files[0];
-  // Check if the file size exceeds the maximum allowed size (10 MB)
+
+  if (!selectedFile) {
+    alert("Please select a file first");
+    return;
+  }
+
   if (selectedFile.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
     return `File size exceeds the maximum limit of ${MAX_FILE_SIZE_MB} MB.`;
-  } else {
-    try {
-      if (!selectedFile) {
-        alert("Please select a file first");
-        return;
-      }
-      const fileData = new File([selectedFile], "filename.ext");
-      const result = await uploadFile(fileData, {
-        publicKey: ak,
-        store: "auto",
-        metadata: {
-          subsystem: "uploader",
-          pet: "cat",
-        },
-      });
-      console.log(`URL: ${result.cdnUrl}`);
-      url = result.cdnUrl;
-      return url;
-    } catch (error) {
-      return "Error";
-    }
+  }
+
+  try {
+    const compressedUrl:any = await compressAndUpload(selectedFile,ak); 
+    url = compressedUrl;
+    return url;
+  } catch (error) { 
+    return "Error";
   }
 };
 

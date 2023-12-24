@@ -6,9 +6,7 @@ export type ImageType = {
   url: string;
 };
 
-export const PUT = async (req: NextRequest, res: Response) => {
-  const isAuthenticated = await authMiddleware(req);
-  if (isAuthenticated) {
+export const PUT = async (req: NextRequest, res: Response) => { 
     try {
       const reqBody = await req.json();
       const  { url } = reqBody;
@@ -19,25 +17,20 @@ export const PUT = async (req: NextRequest, res: Response) => {
           { success: false, message: "Folder doesn't exist" },
           { status: 400 }
         );
-      }
-      // Initialize imageArray as an empty array if it is undefined
+      } 
       let imageArray: ImageType[] = VideoFolderExists?.images; 
       if (imageArray.find((e) => e.url === url)) {
         return NextResponse.json(
           { success: false, message: "Video already exists" },
           { status: 200 }
         );
-      }
-      // Push the new url into the imageArray
-      imageArray.push({ url: url });
-      // Create or update the VideoFolder document
+      } 
+      imageArray.push({ url: url }); 
       const videoFolder = await VideoFolder.findOneAndUpdate(
         { _id: id },
         {  images: imageArray },
         { new: true, upsert: true }
-      );
-
-      // Do whatever you want
+      ); 
       return NextResponse.json(
         { success: true, videoFolder },
         { status: 200 }
@@ -47,11 +40,5 @@ export const PUT = async (req: NextRequest, res: Response) => {
         { success: false, message: (error as Error).message },
         { status: 400 }
       );
-    }
-  } else {
-    return NextResponse.json(
-      { success: false, message: "You don't have access to this resource" },
-      { status: 400 }
-    );
-  }
+    } 
 };

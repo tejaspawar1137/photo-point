@@ -13,7 +13,7 @@ import AccessConfirmationModal from "./AccessConfirmationModal";
 import { CircularLoader } from "../Services/Photography/Photos";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; 
 
 const isLoggedIn =
   typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
@@ -21,13 +21,37 @@ const isLoggedIn =
 console.log(isLoggedIn);
 
 const Photography = () => {
-  const [folderName, setFolderName] = useState(0);
+  const [folderName, setFolderName] = useState<any>(null);
   const photos = useSelector((state) => (state as any).photosReducer?.photos);
   const dispatch = useDispatch();
   const [loading, setloading] = useState(false);
   const [isAccessConfirmationModalOpen, setisAccessConfirmationModalOpen] =
     useState(false);
   const [isImageLoading, setIsImageLoading] = useState<any>(false);
+  const userRoleFromRedux=useSelector((state)=>(state as any).userReducer.role)
+  const [role, setRole ] = useState<any>("");
+
+
+  const getCookie=(name:any)=> {
+    let nameEQ = name + "=";
+    let cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i];
+      while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1, cookie.length);
+      }
+      if (cookie.indexOf(nameEQ) === 0) {
+        return cookie.substring(nameEQ.length, cookie.length);
+      }
+    }
+    return null;
+  } 
+
+  
+  useEffect(() => {
+    const userRole=getCookie("role");
+    setRole(userRole);
+  }, [userRoleFromRedux]);
 
   useEffect(() => {
     setloading(true);
@@ -80,7 +104,7 @@ const Photography = () => {
             {/* Header  */}
             <div className="flex gap-4 flex-col items-center px-2  pb-8">
               <div className=" px-[3.8rem] justify-end flex w-full">
-                {isLoggedIn && <CreateFolderModal />}
+                {role && <CreateFolderModal />}
               </div>
               <div
                 style={{ zIndex: 0 }}
@@ -105,7 +129,7 @@ const Photography = () => {
                                   {e.name}
                                 </span>
                                 <span className="">
-                                  {isLoggedIn && (
+                                  {role && (
                                     <SettingPopover
                                       index={folderName}
                                       fId={e._id}
@@ -133,10 +157,11 @@ const Photography = () => {
                                 }}
                                 className="shadow-md  h-[17rem] object-cover "
                                 alt={`Image not found`}
-                              />{" "}
+                              /> 
                               <AccessConfirmationModal
-                                index={i}
-                                photos={photos[i]}
+                                index={folderName}
+                                photos={photos[folderName]}
+                                folderPassword={photos[folderName]?.password}
                                 isAccessConfirmationModalOpen={
                                   isAccessConfirmationModalOpen
                                 }

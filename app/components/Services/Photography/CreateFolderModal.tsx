@@ -27,6 +27,10 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
     setIsOpen(true);
   }
 
+  useEffect(() => { 
+    console.log(imageUrl)
+  }, [imageUrl])
+  
   const updateProgressDispatch=(progress:any)=>{
     setprogress(progress)
   }

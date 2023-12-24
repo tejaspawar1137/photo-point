@@ -5,11 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteAPhoto } from "@/app/redux/actions/photographyReducerAction";
 
 export default function MyModal({ id, url }: { id: any; url: any }) {
-  let [isOpen, setIsOpen] = useState(false);
-  const isLoggedIn =
-    typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
-
-  console.log(isLoggedIn);
+  let [isOpen, setIsOpen] = useState(false); 
+ 
 
   function closeModal() {
     setIsOpen(false);
@@ -53,16 +50,14 @@ export default function MyModal({ id, url }: { id: any; url: any }) {
 
   return (
     <>
-      <div className="">
-        {isLoggedIn && (
+      <div className=""> 
           <button
             type="button"
             onClick={openModal}
             className="bg-blue-500 bg-opacity-60 flex justify-center  w-[2.5rem] px-2 py-2 rounded-sm"
           >
             <Dustbin w={20} h={20} fill="white" />
-          </button>
-        )}
+          </button> 
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>

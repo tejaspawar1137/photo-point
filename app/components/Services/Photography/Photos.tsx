@@ -4,6 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import DownloadIcon from "@/public/assets/Icons/DownloadIcon";
 import Loader from "../../Loader/Loader";
+import { useSelector } from "react-redux"; 
 
 interface PhotoProps {
   photos: any[];
@@ -27,6 +28,7 @@ const FullScreenImageModal: React.FC<FullScreenImageModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
       <div className="max-w-3xl max-h-3/4">
         <button
+            style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",zIndex:100 }} 
           className="absolute top-2 right-2 text-white text-4xl"
           onClick={onClose}
         >
@@ -41,11 +43,35 @@ const FullScreenImageModal: React.FC<FullScreenImageModalProps> = ({
 const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
   const [isLoading, setIsLoading] = useState<any>(false);
   const [fullScreenImage, setFullScreenImage] = useState<string | null>(null);
-  const [loading, setloading] = useState(false);
-  const isLoggedIn =
-    typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
+  const [loading, setloading] = useState(false); 
+  const userRoleFromRedux = useSelector(
+    (state) => (state as any).userReducer.role
+  );
+  const [role, setRole] = useState<any>(""); 
 
-  console.log(isLoggedIn);
+  const getCookie = (name: any) => {
+    if (typeof document !== "undefined") {
+      let nameEQ = name + "=";
+      let cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === " ") {
+          cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+          return cookie.substring(nameEQ.length, cookie.length);
+        }
+      }
+      return null;
+    }
+    return null;
+  };
+ 
+
+  useEffect(() => {
+    const userRole = getCookie("role");
+    setRole(userRole);
+  }, [userRoleFromRedux]);
 
   useEffect(() => {
     if (photos) {
@@ -92,7 +118,7 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
                 ?.images.map((image: any, index: number) => {
                   return (
                     <div
-                      className="h-[20rem] sm:h-[15rem] md:h-[11.5rem] xl:h-[17rem] border-red-500 flex justify-center"
+                      className="sm:h-[15rem] md:h-[11.5rem] xl:h-[17rem] border-red-500 flex justify-center"
                       key={image.url}
                     >
                       <div className="relative h-full ">
@@ -104,7 +130,7 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
                               setIsLoading(true);
                             }}
                             onLoad={handleImageLoad}
-                            className="cursor-pointer shadow-md object-cover h-[20rem] sm:h-[15rem] md:h-[11.5rem] xl:h-[17rem] "
+                            className="cursor-pointer shadow-md object-cover sm:h-[15rem] md:h-[11.5rem] xl:h-[17rem] "
                             alt={`Image ${index}`}
                             onClick={() => openFullScreenImage(image.url)}
                           />
@@ -119,21 +145,15 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
                         )}
                         {!isLoading && (
                           <div className="absolute right-2 top-2">
-                            <div>
-                              <MyModal
-                                id={
-                                  photos.find((_, i) => i === folderName)?._id
-                                }
-                                url={image.url}
-                              />
-                            </div>
-                            {isLoggedIn && (
-                              <button
-                                className="bg-blue-500 bg-opacity-60 mt-1 flex justify-center w-[2.5rem] px-2 py-2 rounded-sm"
-                                onClick={() => downloadImage(image.url, index)}
-                              >
-                                <DownloadIcon height={20} width={20} />
-                              </button>
+                            {role && (
+                              <div>
+                                <MyModal
+                                  id={
+                                    photos.find((_, i) => i === folderName)?._id
+                                  }
+                                  url={image.url}
+                                />
+                              </div>
                             )}
                           </div>
                         )}

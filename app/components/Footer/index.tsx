@@ -2,15 +2,14 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-12 overflow-y-hidden">
+    <footer className="bg-black bg-opacity-80 text-white py-7 overflow-y-hidden">
       <div className="container mx-auto flex flex-col items-center ">
-        <p className="text-4xl font-bold   font-sans">Dheeraj Studio</p>
+        <p className="text-4xl font-bold   font-sans">Dheeraj Photo Studio</p>
         <p className="mb-4 font-sans"> create Something Special</p>
         <p className="text-lg mb-2 ">Email: info@example.com</p>
         <p className="text-lg mb-6">Phone: (123) 456-7890</p>
         <p className="mb-4">
-          #6, 1st C Main Road, Jakkasandra, Koramangala 1st Block, Bengaluru -
-          560 034
+        Hardoi Rd, Thakurganj, Chauraha, Thana, Lucknow, Uttar Pradesh 226003
         </p>
 
         <div className="lg: flex lg:flex-row sm: flex-col space-x-4 mb-8 sm: items-center sm: justify-center">
@@ -44,7 +43,7 @@ const Footer = () => {
           <a
           className="text-white ml-2"
           href="https://www.linkedin.com/in/dhruv-kumar-sharma-419a4a204/" target="blank">@Dhruv Kumar Sharma </a>
-          Contect Us - +91 6397618319 , +91 9548673363.
+          Contact Us - +91 6397618319 , +91 9548673363.
         </p>
       </div>
     </footer>

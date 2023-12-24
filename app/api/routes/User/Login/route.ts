@@ -3,8 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 
 export const GET = async (request: NextRequest, response: Response) => { 
   try { 
-    const users = await User.find();
-    console.log(users);
+    const users = await User.find(); 
     if (!users) {
       return NextResponse.json(
         { message: "Users do not exist" },

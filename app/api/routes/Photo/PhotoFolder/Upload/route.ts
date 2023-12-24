@@ -6,9 +6,7 @@ export type ImageType = {
   url: string;
 };
 
-export const PUT = async (req: NextRequest, res: Response) => {
-  const isAuthenticated = await authMiddleware(req);
-  if (isAuthenticated) {
+export const PUT = async (req: NextRequest, res: Response) => { 
     try {
       const reqBody = await req.json();
       const {url} = reqBody;
@@ -47,11 +45,5 @@ export const PUT = async (req: NextRequest, res: Response) => {
         { success: false, message: (error as Error).message },
         { status: 400 }
       );
-    }
-  } else {
-    return NextResponse.json(
-      { success: false, message: "You don't have access to this resource" },
-      { status: 400 }
-    );
-  }
+    } 
 };

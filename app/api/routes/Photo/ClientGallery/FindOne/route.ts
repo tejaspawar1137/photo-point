@@ -1,10 +1,17 @@
 import ClientGallery from "@/app/api/models/ClientGallery/ClientGallery";
 import { NextRequest, NextResponse } from "next/server";
 
+function getUrlParam(url:string, param:any) {
+  const urlSearchParams = new URLSearchParams(new URL(url).search);
+  return urlSearchParams.get(param);
+}
 
 export const GET = async (req: NextRequest, res: Response) => {  
     try { 
-      const id=req.url.split("id=")[1]
+
+       const queryUrl=req.url;   
+      const id = getUrlParam(queryUrl, 'id');
+      console.log(id);
       const clientGalleryExists = await ClientGallery.findOne({_id:id });
       if (!clientGalleryExists) {
         return NextResponse.json(
@@ -14,7 +21,7 @@ export const GET = async (req: NextRequest, res: Response) => {
       }
       // Do whatever you want
       return NextResponse.json(
-        { success: true, clientGalleryExists },
+        {  success: true, clientGalleryExists },
         { status: 200 }
       );
     } catch (error) {

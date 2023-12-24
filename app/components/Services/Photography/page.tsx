@@ -8,7 +8,7 @@ import SettingPopover from "./SettingsPopover";
 import CreateFolderModal from "./CreateFolderModal";
 import Photos from "@/app/components/Services/Photography/Photos";
 import Loader from "../../Loader/Loader";
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; 
 
 const isLoggedIn =
   typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
@@ -21,9 +21,33 @@ const Photography = () => {
   const photos = useSelector((state) => (state as any).photosReducer?.photos);
   const dispatch = useDispatch();
   const [lastIndex, setlastIndex] = useState(0);
+  const userRoleFromRedux=useSelector((state)=>(state as any).userReducer.role)
+  const [role, setRole ] = useState<any>("")
+ 
+  const getCookie = (name: any) => {
+    if (typeof document !== "undefined") {
+      let nameEQ = name + "=";
+      let cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === " ") {
+          cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+          return cookie.substring(nameEQ.length, cookie.length);
+        }
+      }
+      return null;
+    }
+    return null;
+  }; 
+  
+  useEffect(() => {
+    const userRole=getCookie("role");
+    setRole(userRole);
+  }, [userRoleFromRedux]);
 
   useEffect(() => {
-
     const fetchPhotosForInitialization = async () => {
           setloading(true);
       try {
@@ -64,10 +88,10 @@ const Photography = () => {
       Photography
     </motion.h1>
         {/* Header  */}
-        <div className="flex flex-col md:flex-row justify-between items-center px-2 py-8">
-          <div className="mb-4 md:mb-0"></div>
-          <div className="flex flex-col md:flex-row justify-between items-center px-4 py-4 overflow-x-auto lg:text-sm xl:text-base text-[0.8rem] whitespace-nowrap mx-5 space-x-4 md:space-x-6 list-none font-light">
-            {(photos as any).length > 0
+        <div className="flex justify-between items-center px-2 py-8">
+            <div className="block"></div>
+            <div className="flex justify-between items-center px-4 overflow-x-auto  lg:text-sm xl:text-base  text-[0.8rem] whitespace-nowrap mx-5   space-x-4 lg:space-x-6 list-none font-light">
+                {(photos as any).length > 0
               ? photos.map((e: any, i: any) => {
                   return (
                     <div
@@ -88,7 +112,7 @@ const Photography = () => {
                           {e.name}
                         </div>
                         <div className="" onClick={() => setFolderName(i)}>
-                          {isLoggedIn && (
+                          {role && (
                             <SettingPopover
                               lastIndex={photos?.length}
                               setloading={setloading}
@@ -105,10 +129,10 @@ const Photography = () => {
               : ""}
           </div>
           <div className="md:pr-6 block lg:hidden hover:scale-[1.05] transition">
-            {isLoggedIn && <CreateFolderModal h={20} w={20} />}
+            {role && <CreateFolderModal h={20} w={20} />}
           </div>
           <div className="pr-6 hidden lg:block hover:scale-[1.05] transition">
-            {isLoggedIn && <CreateFolderModal h={35} w={35} />}
+            {role && <CreateFolderModal h={35} w={35} />}
           </div>
         </div>
         {/* Photos  */}

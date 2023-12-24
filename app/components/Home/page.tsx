@@ -86,25 +86,48 @@ const HomePage = () => {
     }
   }, [controls, TextView]);
 
+  // .homePage{
+  //   background: url("/assets/bg2.jpg")no-repeat center center/cover;
+  // }
+
   return (
     <div className="absolute bg-gray-100 w-full min-h-screen overflow-x-hidden ">
       {/* Main Section */}
       <NavBar></NavBar>
-      <div className="bg-cover bg-center homePage min-h-screen flex flex-col items-center justify-center text-white sm:p-10">
-        <h1 className="text-5xl font-sans sm: p-10">
-          Contemporary and Off-Beat
+      <div
+        style={{
+          background: 'url("/assets/bg4.webp")no-repeat center center/cover',
+        }}
+        className="bg-cover  text-center bg-center min-h-screen flex flex-col items-center justify-center text-white sm:p-10"
+      >
+        <h1
+          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          className="text-4xl font-Ikaros sm:text-5xl font-[800] font-sans md:text-6xl lg:max-w-[60%] text-center leading-none sm:leading-[3.5rem] md:leading-[4.5rem]"
+        >
+          Elevating <br /> Moments Through Artistry
         </h1>
-        <p className="text-4xl font-sans ">Wedding Stories </p>
-        <p className="text-3xl font-sans ">For the Modern Couple</p>
-        <div className="text-5xl ffont-sans text-white p-5">
+        <i
+          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          className="text-xl font-Ikaros sm:text-2xl font-sans font-semibold my-6"
+        >
+          "Capturing Moments, Creating Memories"
+        </i>
+        <div
+          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          className="text-2xl font-[800] font-Ikaros uppercase sm:text-3xl md:text-4xl font-sans text-blue-400 p-5"
+        >
           <Typed
             strings={[
-              "Indian Wedding Photography!",
-              "Films for the Modern Couple!",
-              // Add more text as needed
+              "Photography",
+              "Videography",
+              "Portrait Sessions",
+              "Event Coverage",
+              "Fine Art Photography",
+              "Drone Photography",
+              "Product Photography",
             ]}
-            typeSpeed={50}
-            backSpeed={50}
+            typeSpeed={100}
+            backSpeed={30}
             backDelay={1000}
             loop
           />
@@ -152,9 +175,9 @@ const HomePage = () => {
       </motion.div>
 
       {/* Services section */}
-      <section className="bg-white  py-10 mt-20 p-4 ">
+      <section className="bg-white w-full py-10 mt-20 p-4 ">
         <div className="container mx-auto text-center mt-10">
-          <h2 className="text-5xl font-sans font-bold text-indigo-800 mb-10 mt-10">
+          <h2 className="text-5xl font-Revaux font-bold text-indigo-800 mb-10 mt-10">
             Our Photography Services
           </h2>
           <hr></hr>
@@ -162,26 +185,26 @@ const HomePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 mt-10">
             {/* Service 1 */}
             <ServiceCard
-              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702985674/ougvf31qkd4u2lursmio.jpg"
-              title="Portrait Photography"
+              imageUrl="/assets/service1.webp"
+              title="Photgraphy"
               description="Capture beautiful and timeless portraits that tell your unique story."
               link="/components/Services/Photography"
             />
 
             {/* Service 2 */}
             <ServiceCard
-              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702985886/db9eq8j6ckv1j4znagd5.jpg"
-              title="Portrait Photography"
-              description="Capture beautiful and timeless portraits that tell your unique story."
+              imageUrl="/assets/service2.webp"
+              title="Videography"
+              description="Animating Timeless Narratives: Portraying Your Unique Tale"
               link="/components/Services/Photography"
             />
 
             {/* Service 3 */}
             <ServiceCard
-              imageUrl="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702985789/vbtaqg0a65o7mhzt0zkn.jpg"
-              title="Portrait Photography"
-              description="Capture beautiful and timeless portraits that tell your unique story."
-              link="/components/Services/Photography"
+              imageUrl="/assets/service3.webp"
+              title="And more"
+              description="We are open to unique requests. Let us know what you guys need !"
+              link="/components/Contact"
             />
           </div>
         </div>
@@ -190,7 +213,7 @@ const HomePage = () => {
       {/* Testimonial Section */}
       <section className="bg-gray-300 mt-20 py-16 p-10">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-indigo-800 mb-10">
+          <h2 className="text-4xl font-Revaux font-extrabold text-indigo-800 mb-10">
             Testimonials
           </h2>
           {/* <p className="text-2xl ">Over the last decade we've worked with hundreds of happy couples. Here's what a few of them had to say!</p> */}
@@ -218,8 +241,8 @@ const HomePage = () => {
       {/* {brand section } */}
       <section className="bg-gray-100 py-16 mt-20">
         <div className="mx-auto text-center">
-          <h2 className="text-5xl sm:text-5xl font-sans text-gray-800 mb-8 sm:mb-20">
-            Our Partners
+          <h2 className="text-5xl sm:text-5xl font-Revaux uppercase font-bold font-sans text-gray-800 mb-8 sm:mb-20">
+            Have a look !!
           </h2>
           <hr></hr>
 
@@ -228,9 +251,9 @@ const HomePage = () => {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 mt-8 p-5 " // Add gap between images
           >
             {/* Branded Image 1 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md  object-contain">
+            <div className="relative overflow-hidden rounded-lg shadow-md object-contain">
               <img
-                src="https://res.cloudinary.com/dnsydvkyd/image/upload/v1702985483/w4stfswa9mczq9pjuhbk.jpg"
+                src="/assets/slider1.webp"
                 alt="Branded Image 1"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
@@ -241,7 +264,7 @@ const HomePage = () => {
               {" "}
               {/* Add margin between images */}
               <img
-                src="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702986098/bpbbmsaha7uucbxkqnux.jpg"
+                src="/assets/slider2.webp"
                 alt="Branded Image 2"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
@@ -252,16 +275,16 @@ const HomePage = () => {
               {" "}
               {/* Add margin between images */}
               <img
-                src="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702985302/iqusrjsn1cclsgyivxav.jpg"
+                src="/assets/slider3.webp"
                 alt="Branded Image 3"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
             </div>
             {/* Branded Image 4 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4"> 
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
               {/* Add margin between images */}
               <img
-                src="https://res.cloudinary.com/dnsydvkyd/image/upload/v1702986719/u52c4rlr4ksmhpzdbsa4.jpg"
+                src="/assets/slider4.webp"
                 alt="Branded Image 4"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
@@ -272,8 +295,18 @@ const HomePage = () => {
               {" "}
               {/* Add margin between images */}
               <img
-                src="https://res.cloudinary.com/ds5fdn2yu/image/upload/v1702986653/rpbb4pqo1oi5rzzmocf4.jpg"
+                src="/assets/slider5.webp"
                 alt="Branded Image 5"
+                className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
+              />
+            </div>
+            {/* Branded Image 6 */}
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
+              {" "}
+              {/* Add margin between images */}
+              <img
+                src="/assets/slider6.webp"
+                alt="Branded Image 6"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
             </div>
@@ -281,60 +314,42 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Hire Us Section */}
       <section
         ref={Textref}
-        className="bg-gray-400 text-white py-16 mt-10 p-5 mb-10  hireUs"
+        className="bg-gray-400 text-white  mt-10 hireUs"
       >
-        <div className="container mx-auto text-center">
-          <div className="mb-8 hireus h-[400px]"></div>
-          <motion.h2
-            className="text-5xl font-extrabold mb-8 font-sans"
-            variants={textVariants}
-            initial="hidden"
-            animate={controls}
-          >
-            Hire Us for Your Next Project
-          </motion.h2>
-          <motion.p
-            className="text-1xl font-bold  "
-            variants={textVariants}
-            initial="hidden"
-            animate={controls}
-          >
-            Your wedding day is a once-in-a-lifetime moment, and we're here to
-            make it unforgettable. Get in touch with us to discuss how we can
-            bring your vision to life and capture the moments that will be
-            cherished for generations. Ready to bring your ideas to life? The
-            team at [Your Creative Studio Name] is here to turn your vision into
-            reality. Whether it's a special event, a creative project, or
-            professional photography services, we've got you covered. Let's
-            create something extraordinary together!
-          </motion.p>
-
-          <motion.p
-            className="text-1xl mb-10 font-bold"
-            variants={textVariants}
-            initial="hidden"
-            animate={controls}
-          >
-            No two love stories are the same, and neither should be the way they
-            are captured. We offer customizable packages to suit your unique
-            style, preferences, and budget. From intimate elopements to grand
-            celebrations, we tailor our services to ensure your wedding
-            photography is as unique as your love story. Professionalism You Can
-            Trust.
-          </motion.p>
-
-          <Link
-            href="components/Contact"
-            className="bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition duration-300"
-          >
-            Get in Touch
-          </Link>         
-        </div>       
-      {/* Dark overlay */}
+        <div className="   flex  justify-center items-center h-[800px] text-center">
+          <div className=" py-10 rounded-xl   flex flex-col  justify-center items-center h-full w-full bg-black bg-opacity-10">
+            <h1
+              style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.5)" }}
+              className="text-4xl font-Revaux brightness-200 md:text-5xl font-extrabold mb-4 font-sans"
+            >
+              Elevate Your Moments with Us
+            </h1>
+            <div className="w-full flex justify-center">
+              <h1
+                style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.5)" }}
+                className="text-lg brightness-200 lg:w-[50%] md:text-xl  font-bold mb-6"
+              >
+                Your special moments deserve exceptional capture. Let us turn
+                your vision into timeless artistry. From weddings to creative
+                projects, our team at{" "}
+                <span className="text-blue-600 font-extrabold">
+                  DHEERAJ PHOTO STUDIO
+                </span>{" "}
+                is dedicated to creating extraordinary memories.
+              </h1>
+            </div>
+            <Link
+              href="components/Contact"
+              className="bg-white text-black px-6 py-2 rounded-md font-semibold hover:bg-gray-200 transition duration-300"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
       </section>
+
       {/* Footer */}
       <Footer />
     </div>

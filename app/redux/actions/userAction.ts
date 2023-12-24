@@ -1,10 +1,10 @@
 
-const UPDATE_AUTHTOKEN = "UPDATE_AUTHTOKEN";
+const UPDATE_ROLE = "UPDATE_ROLE";
 
 
 // Actions
-export const updateAuthtoken = (payload: any) => ({
-  type: UPDATE_AUTHTOKEN,
+export const updateUserRole = (payload: any) => ({
+  type: UPDATE_ROLE,
   payload,
 });
 
