@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function GET(req: Request, res: Response) {
   try {
     console.log("req hit")
-    await connectToDB();
     console.log("db hit")
     const photoFolder = await PhotoFolder.find(); 
     console.log("PhotoFolder hit",photoFolder);
