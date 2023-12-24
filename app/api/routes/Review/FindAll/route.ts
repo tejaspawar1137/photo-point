@@ -1,8 +1,10 @@
+import connectToDB from "@/app/api/Db";
 import Review from "@/app/api/models/Review/Review";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request, res: Response) {
   try {
+    await connectToDB();
     const review = await Review.find();
     // Do whatever you want
     return NextResponse.json({ success: true, review }, { status: 200 });

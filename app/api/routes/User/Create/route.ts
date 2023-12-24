@@ -2,11 +2,13 @@ import User from "@/app/api/models/User/User";
 import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import connectToDB from "@/app/api/Db";
 
 const secret = "aniket";
 
 export const POST = async (request: NextRequest) => {
   try {
+    await connectToDB();
     const reqBody = await request.json();
     const {name,email,password,phone} = reqBody;    
   

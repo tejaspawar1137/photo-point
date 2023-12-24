@@ -1,11 +1,11 @@
-import { authMiddleware } from "@/app/api/middleware/AuthMiddleware";
+ 
+import connectToDB from "@/app/api/Db";
 import Review from "@/app/api/models/Review/Review";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function DELETE(req: NextRequest, res: Response) {
-  const isAuthenticated = await authMiddleware(req);
-  if (isAuthenticated) {
+export async function DELETE(req: NextRequest, res: Response) { 
     try {
+      await connectToDB();
       const reqBody = await req.json();
       const { email } = reqBody;
       const ReviewExists = await Review.findOne({ email: email });
@@ -24,10 +24,4 @@ export async function DELETE(req: NextRequest, res: Response) {
         { status: 400 }
       );
     }
-  } else {
-    return NextResponse.json(
-      { success: false, message: "You don't have access to this resource" },
-      { status: 400 }
-    );
-  }
-}
+  }  

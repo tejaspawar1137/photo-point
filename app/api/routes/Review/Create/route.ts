@@ -1,8 +1,10 @@
 import { NextResponse, NextRequest } from "next/server";
 import Review from "@/app/api/models/Review/Review";
+import connectToDB from "@/app/api/Db";
 
 export const POST = async (request: NextRequest) => {
   try {
+    await connectToDB();
     const reqBody = await request.json();
     const { name,email, message, rating } = reqBody; 
     const isReview = await Review.findOne({ email: email });
