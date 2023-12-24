@@ -8,7 +8,7 @@ export type ImageType = {
 
 export async function PUT(req: NextRequest, res: Response) { 
     try { 
-      await connectToDB();
+      connectToDB();
       const id=req.url.split("id=")[1];
       const PhotoFolderExists = await PhotoFolder.find({ _id:id });
       if (!PhotoFolderExists) {
@@ -31,5 +31,4 @@ export async function PUT(req: NextRequest, res: Response) {
       );
     } 
 }
-
-connectToDB();
+ 
