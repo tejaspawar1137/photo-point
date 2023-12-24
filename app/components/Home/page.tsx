@@ -1,7 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
-import Typist from "react-typist";
-import "react-typist/dist/Typist.css"; // Import the styles
+import React, { useEffect } from "react";  
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

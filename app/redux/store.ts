@@ -15,7 +15,7 @@ export const store = configureStore({
     userReducer,
     videosReducer
   },
-  middleware: [logger],
+  middleware: [],
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

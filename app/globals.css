@@ -32,7 +32,7 @@
 
 @font-face{
   font-family: 'Bavro'; 
-  src: url('../public/assets/Fonts/bavro/TTF/Bavro-Regular.ttf') format('opentype');   
+  src: url('../public/assets/Fonts/bavro/OTF/Bavro-Regular.otf') format('opentype');   
 }
 
 @font-face{
@@ -72,7 +72,7 @@
 }
 
 .contect-img{
-  background: url("/assets/bg4.jpg")no-repeat center center/cover;
+  background: url("/assets/contect.jpg")no-repeat center center/cover;
 }
 .login-img{
   background: url("/assets/login-img.jpg")no-repeat center center/cover;
