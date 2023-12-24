@@ -1,4 +1,4 @@
-import { authMiddleware } from "@/app/api/middleware/AuthMiddleware";
+import connectToDB from "@/app/api/Db"; 
 import ClientGallery from "@/app/api/models/ClientGallery/ClientGallery";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -8,6 +8,7 @@ export type ImageType = {
 
 export async function PUT(req: NextRequest, res: Response) { 
     try {
+      await connectToDB();
       const reqBody = await req.json();
       const {  url } = reqBody;
       const id=req.url.split("id=")[1]

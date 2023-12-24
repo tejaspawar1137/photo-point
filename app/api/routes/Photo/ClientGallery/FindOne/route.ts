@@ -1,3 +1,4 @@
+import connectToDB from "@/app/api/Db";
 import ClientGallery from "@/app/api/models/ClientGallery/ClientGallery";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -8,7 +9,7 @@ function getUrlParam(url:string, param:any) {
 
 export const GET = async (req: NextRequest, res: Response) => {  
     try { 
-
+      await connectToDB();
        const queryUrl=req.url;   
       const id = getUrlParam(queryUrl, 'id');
       console.log(id);

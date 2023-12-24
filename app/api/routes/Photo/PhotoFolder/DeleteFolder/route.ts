@@ -1,5 +1,4 @@
-import connectToDB from "@/app/api/Db";
-import { authMiddleware } from "@/app/api/middleware/AuthMiddleware";
+import connectToDB from "@/app/api/Db"; 
 import PhotoFolder from "@/app/api/models/PhotoFolder/PhotoFolder";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -9,6 +8,7 @@ export type ImageType = {
 
 export async function PUT(req: NextRequest, res: Response) { 
     try { 
+      await connectToDB();
       const id=req.url.split("id=")[1];
       const PhotoFolderExists = await PhotoFolder.find({ _id:id });
       if (!PhotoFolderExists) {

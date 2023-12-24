@@ -1,5 +1,7 @@
-import { authMiddleware } from "@/app/api/middleware/AuthMiddleware";
+ 
+import connectToDB from "@/app/api/Db";
 import VideoFolder from "@/app/api/models/VideoFolder/VideoFolder";
+import { connect } from "http2";
 import { NextRequest, NextResponse } from "next/server";
 
 export type ImageType = {
@@ -8,6 +10,7 @@ export type ImageType = {
 
 export const POST = async (req: NextRequest, res: Response) => { 
     try {
+      await connectToDB();
       const reqBody = await req.json();
       const { name, url } = reqBody;
       const VideoFolderExists = await VideoFolder.findOne({ name: name  });

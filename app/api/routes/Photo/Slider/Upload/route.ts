@@ -1,11 +1,11 @@
-import { authMiddleware } from "@/app/api/middleware/AuthMiddleware";
+ 
+import connectToDB from "@/app/api/Db";
 import Slider from "@/app/api/models/Slider/Slider";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, res: Response) {
-  const isAuthenticated = await authMiddleware(req);
-  if (isAuthenticated) {
+export async function POST(req: NextRequest, res: Response) { 
     try {
+      await connectToDB();
       const reqBody = await req.json();
       const { image } = reqBody;
       const imageExists = await Slider.findOne({ image: image });
@@ -24,10 +24,4 @@ export async function POST(req: NextRequest, res: Response) {
         { status: 400 }
       );
     }
-  } else {
-    return NextResponse.json(
-      { success: false, message: "You don't have access to this resource" },
-      { status: 400 }
-    );
-  }
-}
+  } 

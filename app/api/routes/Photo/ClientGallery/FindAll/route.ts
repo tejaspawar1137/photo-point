@@ -1,8 +1,10 @@
+import connectToDB from "@/app/api/Db";
 import ClientGallery from "@/app/api/models/ClientGallery/ClientGallery";
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request, res: Response) {
     try {
+        await connectToDB();
         const clientGallery = await ClientGallery.find();
         // Do whatever you want
         return NextResponse.json({ success: true, clientGallery }, { status: 200 });

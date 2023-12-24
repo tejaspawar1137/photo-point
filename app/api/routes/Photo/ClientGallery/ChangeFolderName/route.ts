@@ -1,5 +1,4 @@
-import connectToDB from "@/app/api/Db";
-import { authMiddleware } from "@/app/api/middleware/AuthMiddleware";
+import connectToDB from "@/app/api/Db"; 
 import ClientGallery from "@/app/api/models/ClientGallery/ClientGallery";
 import { NextRequest, NextResponse } from "next/server";
 
