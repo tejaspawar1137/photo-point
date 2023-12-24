@@ -1,36 +1,36 @@
 import React from "react";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+
 
 const Footer = () => {
   return (
-    <footer className="bg-black bg-opacity-80 text-white py-7 overflow-y-hidden">
+    <footer className="bg-black text-center bg-opacity-80 text-white py-7 overflow-y-hidden">
       <div className="container mx-auto flex flex-col items-center ">
-        <p className="text-4xl font-bold   font-sans">Dheeraj Photo Studio</p>
-        <p className="mb-4 font-sans"> create Something Special</p>
+        <p className="text-4xl font-bold font-Audrey">Dheeraj Photo Point</p>
+        <p className="mb-4 font-sans"> create something Special</p>
+        <div className=" flex flex-row  space-x-4 mb-4 sm:items-center sm:justify-center">
+          <a href="#" target="_blank" className="text-gray-300 hover:text-white">
+            <FaFacebookF size={30} /> {/* Facebook icon */}
+          </a>
+          <a href="#" target="_blank" className="text-gray-300 hover:text-white">
+            <FaTwitter size={30} /> {/* Twitter icon */}
+          </a>
+          <a href="#" target="_blank" className="text-gray-300 hover:text-white">
+            <FaInstagram size={30} /> {/* Instagram icon */}
+          </a>
+          <a href="#" target="_blank" className="text-gray-300 hover:text-white">
+            <FaYoutube size={30} /> {/* YouTube icon */}
+          </a>
+        </div>
         <p className="text-lg mb-2 ">Email: info@example.com</p>
         <p className="text-lg mb-6">Phone: (123) 456-7890</p>
         <p className="mb-4">
         Hardoi Rd, Thakurganj, Chauraha, Thana, Lucknow, Uttar Pradesh 226003
         </p>
 
-        <div className="lg: flex lg:flex-row sm: flex-col space-x-4 mb-8 sm: items-center sm: justify-center">
-          <a href="#" className="text-gray-300 hover:text-white">
-            <i className="fab fa-facebook-f">Facebook</i>
-          </a>
-          <a href="#" className="text-gray-300 hover:text-white">
-            <i className="fab fa-twitter">X</i>
-          </a>
-          <a href="#" className="text-gray-300 hover:text-white">
-            <i className="fab fa-instagram">Instagram</i>
-          </a>
-          <a href="#" className="text-gray-300 hover:text-white">
-            <i className="fab fa-twitter">X</i>
-          </a>
-          <a href="#" className="text-gray-300 hover:text-white">
-            <i className="fab fa-twitter">Youtube</i>
-          </a>
-        </div>
+ 
         <p className="text-sm text-gray-500 mb-4">
-          &copy; 2023 Your Website. All rights reserved Dheeraj Studio.
+          &copy; 2023 Your Website. All rights reserved Dheeraj Photo Studio.
         </p>
         <p className="text-sm text-gray-500">
           &copy; Creator of this Website :

@@ -166,8 +166,8 @@ const Photos = () => {
       <h1 className="flex justify-center w-full text-5xl my-5 font-bold tracking-wide">
         {photos?.name || "Client Gallery"}
       </h1>{" "}
-      <div className=" flex justify-between px-4 py-2 items-center ">
-        <div className="hover:bg-gray-200 mx-4 p-2 focus:bg-gray-200  rounded-lg">
+      <div className=" flex justify-between px-4 sm:px-4 py-2 items-center ">
+        <div className="hover:bg-gray-200 p-2 focus:bg-gray-200  rounded-lg">
           {role && (
             <UploadPhotoModal
               sethitRedux={sethitRedux}
@@ -179,7 +179,7 @@ const Photos = () => {
         <div className="flex">
           <button
             onClick={() => navigateToGdrive()}
-            className=" hidden cursor-pointer lg:inline-block py-3 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+            className="   cursor-pointer text-xs lg:inline-block sm:py-3 px-3 py-2 sm:px-6 bg-blue-500 hover:bg-blue-600 sm:text-sm text-white font-bold rounded-md sm:rounded-xl transition duration-200"
           >
             Download all
           </button>

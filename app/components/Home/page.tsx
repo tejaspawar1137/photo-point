@@ -10,36 +10,43 @@ import NavBar from "../Navbar/page";
 import { easeIn, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ServiceCard } from "./ServiceCard";
+import RatingStars from "../RatingStars";
 
 const HomePage = () => {
   const testimonialData = [
     {
       id: 1,
-      name: "John Doe",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      name: "Sneha Deshmukh",
+      text: "I'm extremely pleased with the exceptional photography services provided by Dheeraj Photo Studio. They beautifully captured the essence of our special moments.",
+      rating: 5,
     },
     {
       id: 2,
-      name: "Jane Smith",
-      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      name: "Rahul Kapoor",
+      text: "Dheeraj Photo Studio truly goes above and beyond. Their team ensured our wedding memories were flawlessly preserved through their outstanding photography skills.",
+      rating: 4,
     },
     {
-      id: 1,
-      name: "John Doe",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      id: 3,
+      name: "Priya Singhania",
+      text: "Incredible experience! The team's dedication and creativity made our family portraits memorable. Highly recommend their services.",
+      rating: 4.5,
     },
     {
-      id: 1,
-      name: "John Doe",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      id: 4,
+      name: "Aarav Mehta",
+      text: "Dheeraj Photo Studio is top-notch! Their professionalism and attention to detail in capturing our events were truly commendable.",
+      rating: 4.8,
     },
     {
-      id: 1,
-      name: "John Doe",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      id: 5,
+      name: "Neha Reddy",
+      text: "We're delighted with the moments captured by the team. Their expertise in photography is evident in every shot taken.",
+      rating: 4.3,
     },
     // Add more testimonials as needed
   ];
+  
 
   const settings = {
     infinite: true,
@@ -47,7 +54,7 @@ const HomePage = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 1500,
     responsive: [
       {
         breakpoint: 768, // Breakpoint for mobile devices
@@ -89,7 +96,7 @@ const HomePage = () => {
   // }
 
   return (
-    <div className="absolute bg-gray-100 w-full min-h-screen overflow-x-hidden ">
+    <div className="absolute bg-white w-full min-h-screen overflow-x-hidden ">
       {/* Main Section */}
       <NavBar></NavBar>
       <div
@@ -133,13 +140,18 @@ const HomePage = () => {
       </div>
 
       {/* Studio Rental */}
+      <h2 className="text-5xl flex justify-center font-Revaux font-bold text-indigo-800 mb-5 mt-16">
+            Studio
+          </h2>
+          <hr></hr>
       <motion.div
         ref={ref}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={fadeIn}
-        className="bg-gray-200 text-black flex flex-col md:flex-row items-center justify-evenly p-8 md:p-6 lg:p-10 mb-8 mt-16"
+        className="bg-gray-200 text-black flex flex-col md:flex-row items-center justify-evenly p-8 md:p-6 lg:p-10 mt-10 mb-8"
       >
+        
         <div className="md:order-2 md:ml-4 lg:ml-10 md:mt-4 lg:mt-10 relative">
           <div className="overflow-y-hidden">
             {/* Responsive YouTube video iframe */}
@@ -151,7 +163,7 @@ const HomePage = () => {
             ></iframe>
           </div>
         </div>
-
+         
         <div className="md:order-1 md:mt-10 md:text-center md:p-4 lg:p-8">
           <div className="text-lg md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 text-indigo-800 sm: mt-[60px]">
             Studio Rental
@@ -175,8 +187,8 @@ const HomePage = () => {
       {/* Services section */}
       <section className="bg-white w-full py-10 mt-20 p-4 ">
         <div className="container mx-auto text-center mt-10">
-          <h2 className="text-5xl font-Revaux font-bold text-indigo-800 mb-10 mt-10">
-            Our Photography Services
+          <h2 className="text-5xl upper font-Revaux font-bold text-indigo-800 mb-10 mt-10">
+            Services
           </h2>
           <hr></hr>
 
@@ -210,37 +222,40 @@ const HomePage = () => {
 
       {/* Testimonial Section */}
       <section className="bg-gray-300 mt-20 py-16 p-10">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-Revaux font-extrabold text-indigo-800 mb-10">
-            Testimonials
-          </h2>
-          {/* <p className="text-2xl ">Over the last decade we've worked with hundreds of happy couples. Here's what a few of them had to say!</p> */}
-          <Slider
-            infinite
-            speed={500}
-            slidesToShow={1}
-            slidesToScroll={1}
-            autoplay
-            autoplaySpeed={3000}
-          >
-            {testimonialData.map((testimonial) => (
-              <div key={testimonial.id} className="mx-auto ">
-                <p className="text-lg text-gray-800 mb-4">{testimonial.text}</p>
-                <p className="text-md font-semibold text-indigo-500">
-                  {testimonial.name}
-                </p>
+      <div className="container mx-auto text-center">
+        <h2 className="text-4xl font-Revaux font-extrabold text-indigo-800 mb-10">
+          Testimonials
+        </h2>
+        <Slider
+          infinite
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          autoplay
+          autoplaySpeed={4000}
+        >
+          {testimonialData.map((testimonial) => (
+            <div key={testimonial.id} className="mx-auto">
+              <p className="text-xl font-Ikaros text-gray-800 mb-4">
+                "{testimonial.text}"
+              </p>
+              <div className="flex items-center justify-center mb-2">
+                <RatingStars rating={testimonial.rating} />
               </div>
-            ))}
-          </Slider>
-        </div>
-      </section>
-
+              <p className="text-xl font-Audrey  text-indigo-500">
+                {testimonial.name}
+              </p>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </section>
       {/* {brand section } */}
       {/* {brand section } */}
       <section className="bg-gray-100 py-16 mt-20">
         <div className="mx-auto text-center">
-          <h2 className="text-5xl sm:text-5xl font-Revaux uppercase font-bold font-sans text-gray-800 mb-8 sm:mb-20">
-            Have a look !!
+          <h2 className="text-5xl sm:text-5xl font-Revaux uppercase font-bold  text-gray-800 mb-8 sm:mb-15">
+            Have a look !
           </h2>
           <hr></hr>
 
@@ -327,7 +342,7 @@ const HomePage = () => {
             <div className="w-full flex justify-center">
               <h1
                 style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.5)" }}
-                className="text-lg brightness-200 lg:w-[50%] md:text-xl  font-bold mb-6"
+                className="text-lg brightness-200 lg:w-[50%] md:text-xl px-2 font-bold mb-6"
               >
                 Your special moments deserve exceptional capture. Let us turn
                 your vision into timeless artistry. From weddings to creative
