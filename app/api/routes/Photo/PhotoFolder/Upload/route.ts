@@ -9,7 +9,6 @@ export type ImageType = {
 
 export const PUT = async (req: NextRequest, res: Response) => { 
     try {
-      await connectToDB();
       const reqBody = await req.json();
       const {url} = reqBody;
       const id=req.url.split("id=")[1]
@@ -49,3 +48,5 @@ export const PUT = async (req: NextRequest, res: Response) => {
       );
     } 
 };
+
+connectToDB();
