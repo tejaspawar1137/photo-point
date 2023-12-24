@@ -7,12 +7,17 @@ export type ImageType = {
 };
 
 export const POST = async (req: NextRequest, res: Response) => { 
-    try {
+    try { 
+      console.log("request hit");
       await connectToDB();
+      console.log("db hit");
       const reqBody = await req.json();
       const { name, url } = reqBody;
+      console.log("body hit");
       const PhotoFolderExists = await PhotoFolder.findOne({ name: name  });
+      console.log("hello from existing check");
       if (PhotoFolderExists) {
+      console.log("hello from existing check again");
         return NextResponse.json(
           { success: false, message: "Folder already exists." },
           { status: 400 }
@@ -27,16 +32,19 @@ export const POST = async (req: NextRequest, res: Response) => {
         name: name,
         images: imageArray,
       });
-
+      console.log("hello from created folder",photoFolder);
       // Do whatever you want
       return NextResponse.json(
         { success: true, photoFolder },
         { status: 200 }
       );
     } catch (error) {
+      console.log("error occured")
       return NextResponse.json(
         { success: false, message: (error as Error).message },
         { status: 400 }
       );
     } 
 };
+
+connectToDB();

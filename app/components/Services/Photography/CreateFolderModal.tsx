@@ -53,6 +53,7 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
       );
       const res = await createdFolder.json();
       console.log(res.photoFolder);
+      console.log("create folder",res);
       return res; // Return the created folder
     } catch (error) {
       console.log(error);
@@ -73,7 +74,9 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
           return alert("Folder with the same name already exists.");
         } else {
           const createdPhotoFolder = response.photoFolder;
+          console.log("createdPhotoFolder",createdPhotoFolder)
           dispatch(createFolder(createdPhotoFolder));
+          console.log("createdPhotoFolder DISPATCHED")
           closeModal();
           setImageUrl(null);
           setFolderName(null);
