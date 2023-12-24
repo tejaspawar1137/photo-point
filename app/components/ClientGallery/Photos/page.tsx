@@ -131,8 +131,8 @@ const Photos = () => {
   }, [hitRedux]);
 
   const downloadImage = (url: string, index: number) => {
-    console.log("Downloading image from URL:", url); // Log URL for debugging
-    fetch(url)
+    console.log("Downloading image from URL:", url.replace('http://', 'https://')); // Log URL for debugging
+    fetch(url.replace('http://', 'https://'))
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok');
