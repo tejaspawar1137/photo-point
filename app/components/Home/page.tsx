@@ -15,7 +15,7 @@ import Loader from "../Loader/Loader";
 
 const HomePage = () => {
 
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(false);
    const testimonialData = [
     {
       id: 1,
