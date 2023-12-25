@@ -136,7 +136,7 @@ const Login: React.FC = () => {
               whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
               onClick={() => setTextload(!textload)}
             >
-              Dheeraj Photo Studio
+              Dheeraj Photo Point
             </motion.p>
           </a>
           <motion.div
