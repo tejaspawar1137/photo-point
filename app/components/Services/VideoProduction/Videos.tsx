@@ -72,7 +72,7 @@ const Videos: React.FC<VideoProps> = ({ videos, folderName }) => {
                           setIsLoading(false);
                         }}
                         src={video.url}
-                        className="cursor-pointer w-full  shadow-md object-cover h-[14rem] xs:h-[17rem] sm:h-[14rem] md:h-[17rem]"
+                        className="cursor-pointer mb-1 sm:mb-0 w-full  shadow-md object-cover h-[14rem] xs:h-[17rem] sm:h-[14rem] md:h-[17rem]"
                         title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen;"
                       ></iframe>
