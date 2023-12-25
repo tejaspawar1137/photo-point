@@ -178,7 +178,7 @@ const Photography = () => {
                         </div>
                       );
                     })
-                  : ""}
+                  : <div className=" text-3xl text-center sm:text-5xl mt-10 font-extrabold justify-center px-2 sm:w-[70%] items-center">{role ?"There are no current galleries existing. Start by adding them.":"There are no current galleries existing."}</div>}
               </div>
             </div>
             {/* Header  */}

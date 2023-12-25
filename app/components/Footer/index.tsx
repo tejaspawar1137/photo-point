@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaWhatsapp, FaInstagram, FaYoutube } from "react-icons/fa";
 
 
 const Footer = () => {
@@ -9,28 +9,29 @@ const Footer = () => {
         <p className="text-4xl font-bold font-Audrey">Dheeraj Photo Point</p>
         <p className="mb-4 font-sans"> create something Special</p>
         <div className=" flex flex-row  space-x-4 mb-4 sm:items-center sm:justify-center">
-          <a href="#" target="_blank" className="text-gray-300 hover:text-white">
+          <a href="https://www.facebook.com/Dheerajphotopoint/" target="_blank" className="text-gray-300 hover:text-white">
             <FaFacebookF size={30} /> {/* Facebook icon */}
-          </a>
-          <a href="#" target="_blank" className="text-gray-300 hover:text-white">
-            <FaTwitter size={30} /> {/* Twitter icon */}
-          </a>
-          <a href="#" target="_blank" className="text-gray-300 hover:text-white">
+          </a> 
+          <a href="https://www.instagram.com/dheerajphotopoint/" target="_blank" className="text-gray-300 hover:text-white">
             <FaInstagram size={30} /> {/* Instagram icon */}
           </a>
-          <a href="#" target="_blank" className="text-gray-300 hover:text-white">
+          <a href="youtube.com/channel/UCnt-ChxgdqiBkPioJqbhQ0g" target="_blank" className="text-gray-300 hover:text-white">
             <FaYoutube size={30} /> {/* YouTube icon */}
           </a>
+          <a  href="https://wa.me/919335531881" target="_blank" className="text-gray-300 hover:text-white">
+  <FaWhatsapp size={30} /> {/* WhatsApp icon */}
+</a>
+
         </div>
         <p className="text-lg mb-2 ">Email: info@example.com</p>
-        <p className="text-lg mb-6">Phone: (123) 456-7890</p>
+        <p className="text-lg mb-6">Phone: +91 9335531881</p>
         <p className="mb-4">
         Hardoi Rd, Thakurganj, Chauraha, Thana, Lucknow, Uttar Pradesh 226003
         </p>
 
  
         <p className="text-sm text-gray-500 mb-4">
-          &copy; 2023 Your Website. All rights reserved Dheeraj Photo Studio.
+          &copy; 2023 Your Website. All rights reserved Dheeraj Photo Point.
         </p>
         <p className="text-sm text-gray-500">
           &copy; Creator of this Website :

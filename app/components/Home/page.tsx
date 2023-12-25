@@ -15,7 +15,7 @@ import Loader from "../Loader/Loader";
 
 const HomePage = () => {
 
-  const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(true);
    const testimonialData = [
     {
       id: 1,
@@ -110,7 +110,7 @@ const HomePage = () => {
       <NavBar></NavBar>
       <div
         style={{
-          background: 'url("/assets/bg4.webp")no-repeat center center/cover',
+          background: 'url("/assets/Image/home.jpg")no-repeat center center/cover',
         }}
         className="bg-cover  text-center bg-center min-h-screen flex flex-col items-center justify-center text-white sm:p-10"
       >
@@ -122,7 +122,7 @@ const HomePage = () => {
         </h1>
         <i
           style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-          className="text-xl font-Ikaros sm:text-2xl font-sans font-semibold my-6"
+          className="text-xl font-Ikaros sm:text-2xl font-sans font-semibold mt-16"
         >
           "Capturing Moments, Creating Memories"
         </i>
@@ -204,7 +204,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 mt-10">
             {/* Service 1 */}
             <ServiceCard
-              imageUrl="/assets/service1.webp"
+              imageUrl="/assets/Image/service1.jpg"
               title="Photgraphy"
               description="Capture beautiful and timeless portraits that tell your unique story."
               link="/components/Services/Photography"
@@ -212,7 +212,7 @@ const HomePage = () => {
 
             {/* Service 2 */}
             <ServiceCard
-              imageUrl="/assets/service2.webp"
+              imageUrl="/assets/Image/service2.jpg"
               title="Videography"
               description="Animating Timeless Narratives: Portraying Your Unique Tale"
               link="/components/Services/Photography"
@@ -220,7 +220,7 @@ const HomePage = () => {
 
             {/* Service 3 */}
             <ServiceCard
-              imageUrl="/assets/service3.webp"
+              imageUrl="/assets/Image/service3.jpg"
               title="And more"
               description="We are open to unique requests. Let us know what you guys need !"
               link="/components/Contact"
@@ -272,21 +272,13 @@ const HomePage = () => {
             {...settings}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 mt-8 p-5 " // Add gap between images
           >
-            {/* Branded Image 1 */}
-            <div className="relative overflow-hidden rounded-lg shadow-md object-contain">
-              <img
-                src="/assets/slider1.webp"
-                alt="Branded Image 1"
-                className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
-              />
-            </div>
 
             {/* Branded Image 2 */}
             <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
               {" "}
               {/* Add margin between images */}
               <img
-                src="/assets/slider2.webp"
+                src="/assets/Image/slider1.jpg"
                 alt="Branded Image 2"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
@@ -297,7 +289,7 @@ const HomePage = () => {
               {" "}
               {/* Add margin between images */}
               <img
-                src="/assets/slider3.webp"
+                src="/assets/Image/slider2.jpg"
                 alt="Branded Image 3"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
@@ -306,7 +298,7 @@ const HomePage = () => {
             <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
               {/* Add margin between images */}
               <img
-                src="/assets/slider4.webp"
+                src="/assets/Image/slider3.jpg"
                 alt="Branded Image 4"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
@@ -317,7 +309,7 @@ const HomePage = () => {
               {" "}
               {/* Add margin between images */}
               <img
-                src="/assets/slider5.webp"
+                src="/assets/Image/slider4.jpg"
                 alt="Branded Image 5"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
@@ -327,7 +319,25 @@ const HomePage = () => {
               {" "}
               {/* Add margin between images */}
               <img
-                src="/assets/slider6.webp"
+                src="/assets/Image/slider5.jpg"
+                alt="Branded Image 6"
+                className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
+              {" "}
+              {/* Add margin between images */}
+              <img
+                src="/assets/Image/slider6.jpg"
+                alt="Branded Image 6"
+                className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
+              {" "}
+              {/* Add margin between images */}
+              <img
+                src="/assets/Image/slider7.jpg"
                 alt="Branded Image 6"
                 className="w-full h-full object-cover transition-transform transform-gpu hover:scale-105 hover:shadow-lg"
               />
