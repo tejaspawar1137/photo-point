@@ -90,7 +90,7 @@ const HomePage = () => {
   useEffect(() => {
     setloading(true)
     const img = new Image();
-    img.src = '/assets/bg4.webp';
+    img.src = '/assets/Image/home.jpg';
 
     img.onload = () => {
       setloading(false);
