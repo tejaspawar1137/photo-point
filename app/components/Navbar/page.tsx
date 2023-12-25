@@ -88,7 +88,7 @@ const NavBar = () => {
                 className="mr-auto text-3xl font-bold leading-none"
                 href="#"
               >
-                <p  className="text-xl NavHeader font-bold text-black font-sans mt-10 mb-5">
+                <p  className="text-xl NavHeader font-bold text-black  mt-10 mb-5">
                   Dheeraj Photo Point
                 </p>
                 <hr></hr>
@@ -210,8 +210,8 @@ const NavBar = () => {
       ) : ( 
     <nav className="relative w-full top-0 px-4 py-4 flex sm:justify-unset items-center bg-white lg:justify-between ">
           <Link className="text-3xl flex  font-bold leading-none" href="/">
-            <p className=" text-[1.2rem] flex sm:text-xl translate-y-1 lg:text-[1.75rem] uppercase font-extrabold NavHeader  text-black font-sans">
-            Dheeraj Photo Point <img src="/assets/Icons/camera.svg" className= "h-4 w-4 sm:h-5 sm:w-5 translate-x-1 -translate-y-2" alt="" />
+            <p className=" text-[1.2rem] flex sm:text-xl translate-y-1 lg:text-[1.75rem] font-extrabold NavHeader  text-black">
+            Dheeraj Photo Point <img src="/assets/Icons/camera.svg" className= "h-4 w-4 hidden sm:h-5 sm:w-5 translate-x-1 -translate-y-2" alt="" />
             </p>
             {/* <svg className="h-10" viewBox="0 0 10240 10240">
             <path
