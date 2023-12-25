@@ -3,30 +3,27 @@ import { Fragment, useEffect, useState } from "react";
 import AddImage from "@/public/assets/Icons/AddImage";
 import { useDispatch, useSelector } from "react-redux";
 import ImageUpload from "../Services/ImageUpload";
-import ImageUploadTwo from "../Services/ImageUploadTwo";
 import ProgressBarComponent from "../ProgressBar/ProgressBar";
 import { uploadPhotoClientGallery } from "@/app/redux/actions/clientGalleryAction";
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomAlert from "../Alert/Alert";
 
 export default function UploadPhotoModal({
   id,
   index,
   sethitRedux,
+  length,
 }: {
   id: any;
   index: any;
   sethitRedux: any;
+  length: any;
 }) {
   const dispatch = useDispatch();
   let [isOpen, setIsOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
   const [progressBarDisplay, setprogressBarDisplay] = useState(false);
   const [progress, setprogress] = useState(0);
-  const authtoken = useSelector(
-    (state) => (state as any).userReducer?.authtoken
-  );
-
   function closeModal() {
     setprogressBarDisplay(false);
     setIsOpen(false);
@@ -36,12 +33,8 @@ export default function UploadPhotoModal({
     setIsOpen(true);
   }
 
-  const updateProgressDispatch = (progress: any) => {
-    setprogress(progress);
-  };
-
   useEffect(() => {
-    console.log(imageUrl);
+    console.log("this", imageUrl);
   }, [imageUrl]);
 
   const uploadImageApi = async () => {
@@ -69,23 +62,22 @@ export default function UploadPhotoModal({
     uploadPreset: any,
     cloudname: any
   ) => {
-    if (index === 0 || index === 1 || index === 2 || index >= 6) {
-      updateProgressDispatch(0);
-      setprogressBarDisplay(true);
-      updateProgressDispatch(30);
-      let tempUrl = await ImageUpload(e, `${uploadPreset}`, `${cloudname}`);
-      updateProgressDispatch(100);
-      if (tempUrl === "Error") {
+    console.log(index);
+    setprogressBarDisplay(true);
+    setprogress(0);
+    setprogress(30);
+    let tempUrl = await ImageUpload(e, `${uploadPreset}`, `${cloudname}`);
+    setprogress(100);
+    if (tempUrl === "Error") {
+      setprogressBarDisplay(false);
+      return CustomAlert("Error uploading image, please try again.", "error");
+    } else if (tempUrl === "File size exceeds the maximum limit of 5 MB.") {
+      {
         setprogressBarDisplay(false);
-        toast.error("Error uploading image, please try again.");
-      } else if (tempUrl === "File size exceeds the maximum limit of 5 MB.") {
-        {
-          setprogressBarDisplay(false);
-          toast.error(`${tempUrl}`);
-        }
-      } else {
-        setImageUrl(tempUrl);
+        return CustomAlert(`${tempUrl}`, "error");
       }
+    } else {
+      setImageUrl(tempUrl);
     }
   };
 
@@ -97,13 +89,14 @@ export default function UploadPhotoModal({
           setImageUrl(null);
           setprogress(0);
           setprogressBarDisplay(false);
-          return toast.error("This image already exists.");
+          return CustomAlert("This image already exists.", "error");
         } else {
           setprogressBarDisplay(true);
           const temp = response.clientGallery.images;
           const uploadedImage = temp[temp.length - 1];
           console.log(uploadedImage);
           dispatch(uploadPhotoClientGallery({ UfId: id, Uurl: uploadedImage }));
+          CustomAlert("Success", "success");
           closeModal();
           sethitRedux((prev: any) => prev + 1);
           setImageUrl(null);
@@ -118,16 +111,20 @@ export default function UploadPhotoModal({
     } else {
       setprogress(0);
       setprogressBarDisplay(false);
-      return toast.error("Please fill all the details");
+      return CustomAlert("Please fill all the details", "error");
     }
   };
   return (
     <>
       <button
-        onClick={openModal}
+        onClick={() => {
+          console.log("l",length)
+          length < 6
+            ?openModal()
+            : CustomAlert("Max of 6 images can be uploaded", "info") ;
+        }}
         className="flex w-full   text-lg text-black items-end gap-1"
       >
-        <ToastContainer></ToastContainer>
         <AddImage h={27} w={27} fill="black" />
         <span className=" translate-y-1">Add a photo</span>
       </button>
@@ -147,68 +144,66 @@ export default function UploadPhotoModal({
                   image <span className="text-red-600">*</span>
                 </label>
                 <input
-                  onChange={async (e: any) => {
-                    let newIndex = index % 7;
-                    if (newIndex === 0) {
-                      uplaodImageHelper(
-                        newIndex,
-                        e,
-                        "DHEERAJ_PHOTO_POINT",
-                        "ds5fdn2yu"
-                      );
-
-                      updateProgressDispatch(100);
-                    } else if (newIndex === 1) {
-                      uplaodImageHelper(
-                        newIndex,
-                        e,
-                        "DHEERAJ_PHOTO_POINT",
-                        "dnr7thjlu"
-                      );
-                    } else if (newIndex === 2) {
-                      uplaodImageHelper(
-                        newIndex,
-                        e,
-                        "DHEERAJ_PHOTO_POINT",
-                        "dimv7myy9"
-                      );
-                    } else if (newIndex === 3) {
-                      uplaodImageHelper(
-                        newIndex,
-                        e,
-                        "DHEERAJ_PHOTO",
-                        "dimv7y9"
-                      );
-                    } else if (newIndex === 4) {
-                      uplaodImageHelper(
-                        newIndex,
-                        e,
-                        "DHEERAJ_PHOTO_POINT",
-                        "ds5fdn2yu"
-                      );
-                    } else if (newIndex === 5) {
-                      uplaodImageHelper(
-                        newIndex,
-                        e,
-                        "DHEERAJ_PHOTO_POINT",
-                        "dnr7thjlu"
-                      );
-                    } else if (newIndex === 6) {
-                      uplaodImageHelper(
-                        newIndex,
-                        e,
-                        "DHEERAJ_PHOTO_POINT",
-                        "dimv7myy9"
-                      );
-                    } else {
-                      uplaodImageHelper(
-                        newIndex,
-                        e,
-                        "DHEERAJ_PHOTO_POINT",
-                        "dnsydvkyd"
-                      );
-                    }
-                  }}
+                    onChange={async (e: any) => {
+                      let newIndex = index % 7;
+                      if (newIndex === 0) {
+                        uplaodImageHelper(
+                          newIndex,
+                          e,
+                          "DHEERAJ_PHOTO_POINT",
+                          "ds5fdn2yu", 
+                        ); 
+                      } else if (index === 1) {
+                        uplaodImageHelper(
+                          newIndex,
+                          e,
+                          "DHEERAJ_PHOTO_POINT",
+                          "dnr7thjlu", 
+                        );
+                      } else if (index === 2) {
+                        uplaodImageHelper(
+                          newIndex,
+                          e,
+                          "DHEERAJ_PHOTO_POINT",
+                          "dimv7myy9", 
+                        );
+                      } else if (index === 3) {
+                        uplaodImageHelper(
+                          newIndex,
+                          e,
+                          "DHEERAJ_PHOTO",
+                          "dimv7y9", 
+                        );
+                      } else if (index === 4) {
+                        uplaodImageHelper(
+                          newIndex,
+                          e,
+                          "DHEERAJ_PHOTO",
+                          "ds5fdn2yu", 
+                        );
+                      } else if (index === 5) {
+                        uplaodImageHelper(
+                          newIndex,
+                          e,
+                          "DHEERAJ_PHOTO",
+                          "dnr7thjlu", 
+                        );
+                      } else if (index === 6) {
+                        uplaodImageHelper(
+                          newIndex,
+                          e,
+                          "DHEERAJ_PHOTO_POINT",
+                          "dnsydvkyd", 
+                        );
+                      } else {
+                        uplaodImageHelper(
+                          newIndex,
+                          e,
+                          "DHEERAJ_PHOTO_POINT",
+                          "dnsydvkyd", 
+                        );
+                      }
+                    }}
                   type="file"
                   className="rounded-sm text-gray-800 p-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteAFolderClientGallery } from "@/app/redux/actions/clientGalleryAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomAlert from "../Alert/Alert";
 
 export default function DeleteFolderModal({
   fId,
@@ -40,7 +41,7 @@ export default function DeleteFolderModal({
         }
       );
       const res = await deletedFolder.json();
-      toast.success("Client Gallery Deleted Successfully")
+      CustomAlert("Client Gallery Deleted Successfully","success")
       console.log(res);
     } catch (error) {
       console.log(error);

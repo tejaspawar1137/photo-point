@@ -2,11 +2,11 @@
 import { useState } from "react";
 import NavBar from "../Navbar/page";
 import Footer from "../Footer";
-import { useDispatch, useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
+import {  useSelector } from "react-redux"; 
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader/Loader";
 import { motion } from "framer-motion";
+import CustomAlert from "../Alert/Alert";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ const Contact = () => {
 
       const res = await response.json();
       if (res.success) {
-        toast.success("Mail send to your registerd Email");
+        CustomAlert("Mail sent successfully","success");
         setFormData({
           name: "",
           email: "",
@@ -91,8 +91,7 @@ const Contact = () => {
   return (
     <div >
       <NavBar />
-      <section className=" z-10 overflow-hidden h-screen dark:bg-dark py-20 lg:py-[120px] relative contect-img ">
-        <ToastContainer></ToastContainer>
+      <section className=" z-10 overflow-hidden h-screen dark:bg-dark py-20 lg:py-[120px] relative contect-img "> 
         <div>
           {/* Your existing contact form JSX */}
           {loading && <Loader />}

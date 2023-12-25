@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Footer from "../Footer";
 import NavBar from "../Navbar/page";
-import { useRouter } from "next/navigation";
-import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation"; 
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { updateUserRole } from "@/app/redux/actions/userAction";
+import CustomAlert from "../Alert/Alert";
 
 type formDataType = {
   email: any | null;
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
       typeof formData.email !== "string" &&
       typeof formData.password !== "string"
     ) {
-      return toast.error("Fill the credentials");
+      return CustomAlert("Fill the credentials","info");
     } else {
       setLoading(true);
       try {
@@ -85,7 +85,7 @@ const Login: React.FC = () => {
               e.email === formData.email && e.password === formData.password
           );
           if (foundUser) {
-            toast.success("Welcome Back");
+            CustomAlert("Welcome Back","success");
             const role = foundUser.role;
             setCookie("role", role, 1);
             let storedRole = getCookie("role");
@@ -93,14 +93,14 @@ const Login: React.FC = () => {
             console.log(storedRole);
             router.push("/");
           } else {
-            toast.error("Incorrect email or password");
+            CustomAlert("Incorrect email or password","error");
           }
         } else {
-          toast.error("Incorrect email or password");
+          CustomAlert("Incorrect email or password","error");
         }
         return res;
       } catch (error: any) {
-        toast.error("Server error, please try again");
+        CustomAlert("Server error, please try again","error");
       } finally {
         setLoading(false);
       }
@@ -123,8 +123,7 @@ const Login: React.FC = () => {
     <>
       <section className="login-img bg-gray-500 ">
         <NavBar></NavBar>
-        <div className="flex flex-col items-baseline justify-center sm:ml-0 px-6 py-8 mx-auto md:h-screen lg:py-0 lg:ml-20">
-          <ToastContainer></ToastContainer>
+        <div className="flex flex-col items-baseline justify-center sm:ml-0 px-6 py-8 mx-auto md:h-screen lg:py-0 lg:ml-20"> 
           {/* Your existing contact form JSX */}
           <a
             href="/"
@@ -137,7 +136,7 @@ const Login: React.FC = () => {
               whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
               onClick={() => setTextload(!textload)}
             >
-              Abhay Studio
+              Dheeraj Photo Studio
             </motion.p>
           </a>
           <motion.div
@@ -184,30 +183,7 @@ const Login: React.FC = () => {
                     value={formData.password}
                     onChange={handleChange}
                   />
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-start">
-                    <div className="flex items-center h-5">
-                      <input
-                        id="remember"
-                        aria-describedby="remember"
-                        type="checkbox"
-                        className="w-4 h-4 border border-gray-300 rounded bg-white focus:ring-3 focus:ring-primary-300"
-                      />
-                    </div>
-                    <div className="ml-3 text-sm">
-                      <label id="remember" className="text-gray-500 ">
-                        Remember me
-                      </label>
-                    </div>
-                  </div>
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-black hover:underline  "
-                  >
-                    Forgot password?
-                  </a>
-                </div>
+                </div> 
                 <button
                   type="submit"
                   className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-700 "
@@ -215,15 +191,6 @@ const Login: React.FC = () => {
                 >
                   Login
                 </button>
-                <p className="text-sm font-light text-gray-500 ">
-                  Don’t have an account yet?{" "}
-                  <a
-                    href="/components/SignUp"
-                    className="font-medium text-primary-600 hover:underline text-black"
-                  >
-                    Sign up
-                  </a>
-                </p>
               </form>
             </div>
           </motion.div>

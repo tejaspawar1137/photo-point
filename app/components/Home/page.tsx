@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";  
+import React, { useEffect, useState } from "react";  
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,13 +7,16 @@ import Footer from "../Footer";
 import Typed from "react-typed";
 import Link from "next/link";
 import NavBar from "../Navbar/page";
-import { easeIn, motion, useAnimation } from "framer-motion";
+import {  motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ServiceCard } from "./ServiceCard";
 import RatingStars from "../RatingStars";
+import Loader from "../Loader/Loader";
 
 const HomePage = () => {
-  const testimonialData = [
+
+  const [loading, setloading] = useState(false);
+   const testimonialData = [
     {
       id: 1,
       name: "Sneha Deshmukh",
@@ -84,19 +87,25 @@ const HomePage = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 3 } },
   };
+  useEffect(() => {
+    setloading(true)
+    const img = new Image();
+    img.src = '/assets/bg4.webp';
+
+    img.onload = () => {
+      setloading(false);
+    };
+  }, []);
 
   useEffect(() => {
     if (TextView) {
       controls.start("visible");
     }
   }, [controls, TextView]);
-
-  // .homePage{
-  //   background: url("/assets/bg2.jpg")no-repeat center center/cover;
-  // }
+ 
 
   return (
-    <div className="absolute bg-white w-full min-h-screen overflow-x-hidden ">
+    !loading?<div className="absolute bg-white w-full min-h-screen overflow-x-hidden ">
       {/* Main Section */}
       <NavBar></NavBar>
       <div
@@ -365,6 +374,9 @@ const HomePage = () => {
 
       {/* Footer */}
       <Footer />
+    </div>
+    :<div className="h-[90vh]">
+      <Loader/>
     </div>
   );
 };

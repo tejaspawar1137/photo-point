@@ -2,9 +2,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import PlusIcon from "@/public/assets/Icons/PlusIcon";
 import { useDispatch, useSelector } from "react-redux"; 
-import { createVideoFolder } from "@/app/redux/actions/videoAction";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { createVideoFolder } from "@/app/redux/actions/videoAction"; 
+import CustomAlert from "../../Alert/Alert";
 export default function CreateFolderModal({}: {}) {
   const dispatch = useDispatch();
   let [isOpen, setIsOpen] = useState(false);
@@ -44,7 +43,7 @@ export default function CreateFolderModal({}: {}) {
       return res.videoFolder; // Return the created folder
     } catch (error) {
       console.log(error);
-      toast.error("Failed to create the folder, please try again.")
+      CustomAlert("Failed to create the folder, please try again.","error")
       throw new Error("Failed to create folder"); // Throw an error for better handling
     }
   };
@@ -55,13 +54,12 @@ export default function CreateFolderModal({}: {}) {
       dispatch(createVideoFolder(createdFolder));
       closeModal(); 
     }else{
-      return toast.error("Please fill both the details")
+      return CustomAlert("Please fill both the details","info")
     }
   };
   return (
     <>
-      <div className="">
-        <ToastContainer></ToastContainer>
+      <div className=""> 
         <button
           onClick={openModal}
           className=" items-center gap-3 hidden md:flex text-white rounded-full  "

@@ -26,7 +26,7 @@ const ImageUpload = async (event:any, uploadPreset:any, cloudname:any) => {
     formData.append('upload_preset', `${uploadPreset}`);
 
     try {
-      const response = await axios.post(
+      const response:any = await axios.post(
         `https://api.cloudinary.com/v1_1/${cloudname}/image/upload`,
         formData,
         {

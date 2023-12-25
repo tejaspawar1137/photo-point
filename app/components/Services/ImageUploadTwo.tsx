@@ -1,5 +1,6 @@
 import { uploadFile } from "@uploadcare/upload-client";
 import Compressor from 'compressorjs';
+import CustomAlert from "../Alert/Alert";
 
 const MAX_FILE_SIZE_MB = 20;
 
@@ -36,7 +37,7 @@ const ImageUploadTwo = async (event:any, ak:any) => {
   const selectedFile = event.target.files[0];
 
   if (!selectedFile) {
-    alert("Please select a file first");
+    CustomAlert("Please select a file first","warning");
     return;
   }
 

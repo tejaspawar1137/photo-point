@@ -10,9 +10,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { inititalizeClientGallery } from "@/app/redux/actions/clientGalleryAction";
 import Loader from "../Loader/Loader";
 import AccessConfirmationModal from "./AccessConfirmationModal";
-import { CircularLoader } from "../Services/Photography/Photos";
-import "react-toastify/dist/ReactToastify.css";
-import { toast, ToastContainer } from "react-toastify";
+import { CircularLoader } from "../Services/Photography/Photos"; 
 import { motion } from "framer-motion"; 
 
 const isLoggedIn =
@@ -88,8 +86,7 @@ const Photography = () => {
     <div className="bg-white  w-full text-black ">
       <div style={{ zIndex: 30 }} className="fixed top-0 w-full">
         <NavBar />
-      </div>
-      <ToastContainer></ToastContainer>
+      </div> 
       {!loading ? (
         <>
           <div className="py-6 mt-16 min-h-[100vh]">

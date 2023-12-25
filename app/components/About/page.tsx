@@ -48,21 +48,20 @@ const About = () => {
           </h1>
           <hr className="mt-10"></hr>
           <p className="text-lg text-gray-800 mt-10">
-            [Your Wedding Photography Studio] is committed to providing
+            Dheeraj Photo Point is committed to providing
             high-quality photography and videography services. Our team is
             dedicated to capturing the essence of your love story and creating
             memories that last a lifetime.
           </p>
           <p className="text-gray-800">
-            Congratulations on your upcoming celebration of love! At [Your
-            Wedding Photography Studio], we understand the significance of your
+            Congratulations on your upcoming celebration of love! At Dheeraj Photo Point, we understand the significance of your
             wedding day, and we're here to transform it into a timeless
-            masterpiece. Why Choose [Your Wedding Photography Studio]? Capturing
+            masterpiece. Why Choose Dheeraj Photo Point? Capturing
             Moments, Creating Memories
           </p>
           <p className="text-gray-800 mt-20">
             <span className="font-bold text-2xl font-sans">
-              Why Choose [Your Wedding Photography Studio] ?
+              Why Choose Dheeraj Photo Point ?
             </span>
           </p>
           <ul className="list-disc list-inside text-gray-800 mt-10 ml-6">

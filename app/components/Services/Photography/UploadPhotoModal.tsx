@@ -2,15 +2,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import AddImage from "@/public/assets/Icons/AddImage";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  createFolder,
+import { 
   uploadPhoto,
 } from "@/app/redux/actions/photographyReducerAction";
 import ImageUpload from "../ImageUpload";
 import ProgressBarComponent from "../../ProgressBar/ProgressBar";
-import ImageUploadTwo from "../ImageUploadTwo";
-import "react-toastify/dist/ReactToastify.css";
-import { toast, ToastContainer } from "react-toastify";
+import ImageUploadTwo from "../ImageUploadTwo"; 
+import CustomAlert from "../../Alert/Alert";
 
 export default function UploadPhotoModal({
   id,
@@ -81,14 +79,14 @@ export default function UploadPhotoModal({
         tempUrl = await ImageUpload(e, uploadPreset, cloudname);
         setprogress(100);
       } catch (error) { 
-        toast.error("Error uploading image, please try again.");
+        CustomAlert("Error uploading image, please try again.","error");
       }
       if (tempUrl === "Error") {
-        toast.error("Error uploading image, please try again.");
+        CustomAlert("Error uploading image, please try again.","error");
         setprogressBarDisplay(false);
       } else if (tempUrl === "File size exceeds the maximum limit of 20 MB.") {
         {
-          toast.error(`${tempUrl}`);
+         CustomAlert(`${tempUrl}`,"error");
           setprogressBarDisplay(false);
         }
       } else {
@@ -101,11 +99,11 @@ export default function UploadPhotoModal({
       let tempUrl = await ImageUploadTwo(e, `${apiKey}`);
       setprogress(100);
       if (tempUrl === "Error") {
-        toast.error("Error uploading image, please try again.");
+        CustomAlert("Error uploading image, please try again.","error");
         setprogressBarDisplay(false);
       } else if (tempUrl === "File size exceeds the maximum limit of 10 MB.") {
         {
-          toast.error(`${tempUrl}`);
+          CustomAlert(`${tempUrl}`,"error");
           setprogressBarDisplay(false);
         }
       } else {
@@ -124,11 +122,12 @@ export default function UploadPhotoModal({
           setprogress(0);
           setprogressBarDisplay(false);
           setloading(false);
-          return toast.error("This image already exists.");
+          return CustomAlert("This image already exists.","info");
         } else {
           const temp = response.photoFolder.images;
           const uploadedImage = temp[temp.length - 1];
           dispatch(uploadPhoto({ UfId: id, Uurl: uploadedImage }));
+          CustomAlert("Success","success")
           closeModal();
           setImageUrl(null);
           setprogress(0);
@@ -145,7 +144,7 @@ export default function UploadPhotoModal({
       setprogress(0);
       setprogressBarDisplay(false);
       setloading(false);
-      return toast.error("Please fill all the details");
+      return CustomAlert("Please fill all the details","error");
     }
   };
   return (

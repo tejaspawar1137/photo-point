@@ -80,7 +80,7 @@ const NavBar = () => {
       {loading ? (
         <Loader></Loader>
       ) : (
-        <div className="navbar-menu relative z-50 hidden overflow-y-hidden">
+        <div   className="navbar-menu relative z-50 hidden overflow-y-hidden">
           <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
           <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
             <div className="flex items-center mb-8">
@@ -207,8 +207,8 @@ const NavBar = () => {
 
       {loading ? (
         <Loader></Loader>
-      ) : (
-        <nav className="relative px-4 py-4 flex sm:justify-unset items-center bg-white lg:justify-between ">
+      ) : ( 
+    <nav className="relative w-full top-0 px-4 py-4 flex sm:justify-unset items-center bg-white lg:justify-between ">
           <Link className="text-3xl flex  font-bold leading-none" href="/">
             <p className=" text-[1.2rem] flex sm:text-xl translate-y-1 lg:text-[1.75rem] uppercase font-extrabold NavHeader  text-black font-sans">
             Dheeraj Photo Point <img src="/assets/Icons/camera.svg" className= "h-4 w-4 sm:h-5 sm:w-5 translate-x-1 -translate-y-2" alt="" />
@@ -361,7 +361,7 @@ const NavBar = () => {
                 Client Gallery
               </Link>
             </li>
-            <li className="text-gray-300">
+            <li className="text-gray-300  ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -391,7 +391,7 @@ const NavBar = () => {
           </ul>
           {role ? (
             <button
-              className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-blue-500 text-white hover:bg-blue-300 text-sm font-bold  rounded-xl transition duration-200"
+              className="hidden xl:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-blue-500 text-white hover:bg-blue-300 text-sm font-bold  rounded-xl transition duration-200"
               onClick={HandleLoggout}
             >
               Logout
@@ -406,7 +406,8 @@ const NavBar = () => {
               </Link>
             </div>
           )}
-        </nav>
+        </nav> 
+    
       )}
     </div>
   );

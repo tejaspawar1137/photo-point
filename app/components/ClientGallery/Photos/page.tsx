@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import DownloadIcon from "@/public/assets/Icons/DownloadIcon"; 
+import DownloadIcon from "@/public/assets/Icons/DownloadIcon";
 import MyModal from "../DeleteImageModal";
 import { useSearchParams } from "next/navigation";
 import NavBar from "../../Navbar/page";
@@ -11,11 +11,6 @@ import Loader from "../../Loader/Loader";
 import UploadPhotoModal from "../UploadPhotoModal";
 import { useDispatch, useSelector } from "react-redux";
 import { initializeFolderClientGallery } from "@/app/redux/actions/clientGalleryAction";
-
-interface PhotoProps {
-  photos: any[];
-  folderName: number;
-}
 
 // Circular loader component
 const CircularLoader: React.FC = () => {
@@ -39,7 +34,7 @@ const FullScreenImageModal: React.FC<FullScreenImageModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
       <div className="max-w-3xl max-h-3/4">
         <button
-          style={{zIndex:100}}
+          style={{ zIndex: 100 }}
           className="absolute top-2 right-2 text-white text-4xl"
           onClick={onClose}
         >
@@ -87,12 +82,12 @@ const Photos = () => {
     }
     return null;
   };
-  
+
   useEffect(() => {
     const userRole = getCookie("role");
     setRole(userRole);
   }, [userRoleFromRedux]);
-  
+
   const handleImageLoad = () => {
     setIsLoading(false);
   };
@@ -131,11 +126,14 @@ const Photos = () => {
   }, [hitRedux]);
 
   const downloadImage = (url: string, index: number) => {
-    console.log("Downloading image from URL:", url.replace('http://', 'https://')); // Log URL for debugging
-    fetch(url.replace('http://', 'https://'))
+    console.log(
+      "Downloading image from URL:",
+      url.replace("http://", "https://")
+    ); // Log URL for debugging
+    fetch(url.replace("http://", "https://"))
       .then((res) => {
         if (!res.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return res.blob();
       })
@@ -150,7 +148,6 @@ const Photos = () => {
       })
       .catch((error) => console.error("Error downloading image:", error));
   };
-  
 
   const openFullScreenImage = (imageUrl: string) => {
     setFullScreenImage(imageUrl);
@@ -165,7 +162,7 @@ const Photos = () => {
       <NavBar />
       <h1 className="flex justify-center w-full text-5xl my-5 font-bold tracking-wide">
         {photos?.name || "Client Gallery"}
-      </h1>{" "}
+      </h1>
       <div className=" flex justify-between px-4 sm:px-4 py-2 items-center ">
         <div className="hover:bg-gray-200 p-2 focus:bg-gray-200  rounded-lg">
           {role && (
@@ -173,6 +170,7 @@ const Photos = () => {
               sethitRedux={sethitRedux}
               index={index}
               id={photos?._id}
+              length={photos?.images.length}
             />
           )}
         </div>
@@ -185,19 +183,74 @@ const Photos = () => {
           </button>
         </div>
       </div>
-      <div className="min-h-[90vh]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 justify-center">
+      <div className="min-h-[90vh] flex justify-center items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 lg:gap-10 xl:gap-14 w-full justify-center items-center">
           {photos?.images.map((image: any, index: number) => {
             return (
-              <div className="m-4 md:h-[20rem]" key={image.url}>
-                <div className="relative md:h-[20rem] ">
+              <div className="m-4 md:h-[20rem] mb-1 sm:mb-10" key={image.url}>
+                <div
+                  className="sm:h-[18rem]  md:h-[20rem] xl:h-[23rem]  flex justify-center"
+                  key={image.url}
+                >
+                  <div className="relative h-full ">
+                    <div className="z-20 h-full ">
+                      <LazyLoadImage
+                        src={image.url}
+                        effect="blur"
+                        beforeLoad={() => {
+                          setIsLoading(true);
+                        }}
+                        onLoad={handleImageLoad}
+                        className="cursor-pointer shadow-md object-cover sm:h-[18rem] md:h-[20rem] xl:h-[23rem] "
+                        alt={`Image ${index}`}
+                        onClick={() => openFullScreenImage(image.url)}
+                      />
+                    </div>
+
+                    {isLoading && (
+                      <div className=" absolute inset-0 flex items-center justify-center">
+                        <div>
+                          <CircularLoader />
+                        </div>
+                      </div>
+                    )}
+                    {!isLoading && (
+                      <div className="absolute right-2 top-2">
+                        <div>
+                          {role && (
+                            <MyModal
+                              id={id}
+                              url={image.url}
+                              sethitRedux={sethitRedux}
+                            />
+                          )}
+                        </div>
+                        <button
+                          className="bg-blue-500 bg-opacity-60 mt-1 flex justify-center md:w-[2.5rem] px-2 py-2 rounded-sm"
+                          onClick={() => downloadImage(image.url, index)}
+                        >
+                          <DownloadIcon height={20} width={20} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {fullScreenImage === image.url && (
+                    <FullScreenImageModal
+                      imageUrl={image.url}
+                      onClose={closeFullScreenImage}
+                    />
+                  )}
+                </div>
+                {/* //end  */}
+                {/* <div className="relative  border md:h-[20rem] ">
                   <div className="z-20">
                     <LazyLoadImage
                       src={image.url}
                       effect="blur"
                       beforeLoad={() => setIsLoading(true)}
                       onLoad={handleImageLoad}
-                      className="cursor-pointer md:h-[20rem] w-full object-cover"
+                      className="cursor-pointer md:h-[20rem] object-cover"
                       alt={`Image ${index}`}
                       onClick={() => openFullScreenImage(image.url)}
                     />
@@ -232,7 +285,7 @@ const Photos = () => {
                       onClose={closeFullScreenImage}
                     />
                   )}
-                </div>
+                </div> */}
               </div>
             );
           })}

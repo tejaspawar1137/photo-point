@@ -4,6 +4,7 @@ import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify"; 
+import CustomAlert from "../Alert/Alert";
 
 export default function AccessConfirmationModal({
   photos,
@@ -27,7 +28,7 @@ export default function AccessConfirmationModal({
         `/components/ClientGallery/Photos?id=${photos?._id}&index=${index}`
       );
     } else {
-      toast.error("Access Denied You have enter the Wrong password");
+      CustomAlert("Access Denied You have enter the Wrong password","error");
     }
   };
 

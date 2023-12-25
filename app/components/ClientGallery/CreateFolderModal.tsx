@@ -1,13 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment,  useState } from "react";
 import PlusIcon from "@/public/assets/Icons/PlusIcon";
-import { useDispatch, useSelector } from "react-redux";
-import { createFolder } from "@/app/redux/actions/photographyReducerAction";
+import { useDispatch, useSelector } from "react-redux"; 
 import ImageUpload from "../Services/ImageUpload";
 import ProgressBarComponent from "../ProgressBar/ProgressBar"; 
-import { createFolderClientGallery } from "@/app/redux/actions/clientGalleryAction";
-import "react-toastify/dist/ReactToastify.css";
-import { toast, ToastContainer } from "react-toastify";
+import { createFolderClientGallery } from "@/app/redux/actions/clientGalleryAction"; 
+import CustomAlert from "../Alert/Alert";
 
 export default function CreateFolderModal({}: {}) {
   const dispatch = useDispatch();
@@ -71,7 +69,7 @@ export default function CreateFolderModal({}: {}) {
           setFolderName(null);
           setprogress(0);
           setprogressBarDisplay(false)
-          return alert("Folder with the same name already exists.");
+          return ("Folder with the same name already exists.");
         } else {
           const createdPhotoFolder = response.clientGallery;
           dispatch(createFolderClientGallery(createdPhotoFolder));
@@ -89,13 +87,12 @@ export default function CreateFolderModal({}: {}) {
     } else {
       setprogress(0);
       setprogressBarDisplay(false)
-      return toast.error("Please fill all the details");
+      return CustomAlert("Please fill all the details","error");
     }
   };
   return (
     <>
-      <div className="text-black">
-      <ToastContainer></ToastContainer>
+      <div className="text-black"> 
         <button
           onClick={openModal}
           className="flex items-center z-30 gap-3 text-white rounded-full  "

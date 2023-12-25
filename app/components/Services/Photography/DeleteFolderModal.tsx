@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteAFolder } from "@/app/redux/actions/photographyReducerAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomAlert from "../../Alert/Alert";
 export default function DeleteFolderModal({
   fId,
   setFoldername,
@@ -43,8 +44,9 @@ export default function DeleteFolderModal({
       );
       const res = await deletedFolder.json();
       console.log(res);
-      toast.success("Photography Folder Deleted Successfully")
+      CustomAlert("Photography Folder Deleted Successfully","success")
     } catch (error) {
+      CustomAlert("Error, try again","error")
       console.log(error);
     }
   };

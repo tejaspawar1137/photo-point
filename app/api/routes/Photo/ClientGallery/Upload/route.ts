@@ -6,14 +6,18 @@ import { NextRequest, NextResponse } from "next/server";
 export type ImageType = {
   url: string;
 };
-
+function getUrlParam(url:string, param:any) {
+  const urlSearchParams = new URLSearchParams(new URL(url).search);
+  return urlSearchParams.get(param);
+}
 export const dynamic = 'force-dynamic';
 export const PUT = async (req: NextRequest, res: Response) => { 
     try {
       await connectToDB();
+       const queryUrl=req.url;   
+      const id = getUrlParam(queryUrl, 'id');
       const reqBody = await req.json();
       const {  url } = reqBody;
-      const id=req.url.split("id=")[1]
       const clientGalleryExists = await ClientGallery.findOne({_id:id });
       if (!clientGalleryExists) {
         return NextResponse.json(

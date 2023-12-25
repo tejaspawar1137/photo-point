@@ -109,7 +109,7 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
     setIsLoading(false);
   };
   return !loading ? (
-    <div className="min-h-[80vh]">
+    <div className="min-h-[80vh] flex justify-center items-center">
       <div className="flex w-full justify-center px-5 lg:px-10 xl:px-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 lg:gap-10 xl:gap-14 w-full justify-center items-center">
           {(photos || []).length > 0
@@ -118,7 +118,7 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
                 ?.images.map((image: any, index: number) => {
                   return (
                     <div
-                      className="sm:h-[15rem] md:h-[11.5rem] xl:h-[17rem] border-red-500 flex justify-center"
+                      className="sm:h-[18rem]  md:h-[23rem] xl:h-[23rem]  border-red-500 flex justify-center"
                       key={image.url}
                     >
                       <div className="relative h-full ">
@@ -130,7 +130,7 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
                               setIsLoading(true);
                             }}
                             onLoad={handleImageLoad}
-                            className="cursor-pointer shadow-md object-cover sm:h-[15rem] md:h-[11.5rem] xl:h-[17rem] "
+                            className="cursor-pointer shadow-md object-cover sm:h-[18rem] md:h-[23rem] xl:h-[23rem] "
                             alt={`Image ${index}`}
                             onClick={() => openFullScreenImage(image.url)}
                           />

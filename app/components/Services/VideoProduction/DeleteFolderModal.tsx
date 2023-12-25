@@ -6,6 +6,7 @@ import { deleteAFolder } from "@/app/redux/actions/photographyReducerAction";
 import { deleteAVideoFolder } from "@/app/redux/actions/videoAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomAlert from "../../Alert/Alert";
 
 export default function DeleteFolderModal({
   fId,
@@ -41,7 +42,7 @@ export default function DeleteFolderModal({
         }
       );
       const res = await deletedFolder.json();
-      toast.success("Videography Folder Deleted Successfully")
+      CustomAlert("Videography Folder Deleted Successfully","success")
       console.log(res);
 
     } catch (error) {

@@ -6,6 +6,7 @@ import { deleteAPhoto } from "@/app/redux/actions/photographyReducerAction";
 import { deleteAVideo } from "@/app/redux/actions/videoAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomAlert from "../../Alert/Alert";
 
 export default function DeleteVideoModal({ id, url }: { id: any; url: any }) {
   let [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,7 @@ export default function DeleteVideoModal({ id, url }: { id: any; url: any }) {
         }
       );
       const res = await deletedImage.json();
-      toast.success("Video deleted successfully")
+      CustomAlert("Video deleted successfully","success")
       console.log(res);
     } catch (error) {
       console.log(error);

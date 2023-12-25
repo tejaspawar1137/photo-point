@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createFolder } from "@/app/redux/actions/photographyReducerAction";
 import ImageUpload from "../ImageUpload";
 import ProgressBarComponent from "../../ProgressBar/ProgressBar";  
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import CustomAlert from "../../Alert/Alert";
 
 export default function CreateFolderModal({h,w}: {h:any,w:any}) {
   const dispatch = useDispatch();
@@ -71,7 +70,7 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
           setFolderName(null);
           setprogress(0);
           setprogressBarDisplay(false)
-          return alert("Folder with the same name already exists.");
+          return CustomAlert("Folder with the same name already exists.","error");
         } else {
           const createdPhotoFolder = response.photoFolder;
           console.log("createdPhotoFolder",createdPhotoFolder)
@@ -91,13 +90,12 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
     } else {
       setprogress(0);
       setprogressBarDisplay(false)
-      return toast.error("Please fill all the details");
+      return CustomAlert("Please fill all the details","info");
     }
   };
   return (
     <>
-      <div className="">
-        <ToastContainer></ToastContainer>
+      <div className=""> 
         <button
           onClick={openModal}
           className="flex items-center gap-3 text-white rounded-full  "
