@@ -109,7 +109,7 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
     setIsLoading(false);
   };
   return !loading ? (
-    <div className="min-h-[80vh] flex justify-center items-center">
+    <div className="min-h-[80vh]  ">
       <div className="flex w-full justify-center px-5 lg:px-10 xl:px-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 lg:gap-10 xl:gap-14 w-full justify-center items-center">
           {(photos || []).length > 0

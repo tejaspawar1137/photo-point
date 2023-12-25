@@ -97,14 +97,14 @@ const Contact = () => {
   return (
     <div>
       <NavBar />
-      <section className=" z-10 overflow-hidden h-screen dark:bg-dark py-20 lg:py-[120px] relative contect-img ">
+      <section className=" z-10 overflow-hidden h-[110vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
         <div>
           {/* Your existing contact form JSX */}
           {loading && <Loader />}
         </div>
         <div className="container mx-auto">
-          <div className="flex flex-wrap   mt-28"> 
-            <div className="lg:hidden flex flex-col sm: ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg opacity-80 ">
+          <div className="flex flex-wrap  mt-5 sm:mt-28"> 
+            <div className="lg:hidden flex flex-col sm: ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg sm:opacity-80 ">
                <span className=" text-opacity-100 flex flex-row items-center  space-x-4 ">
                       <a
                         href="https://www.facebook.com/Dheerajphotopoint/"

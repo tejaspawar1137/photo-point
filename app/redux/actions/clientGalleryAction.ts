@@ -1,5 +1,5 @@
 const UPLOAD_PHOTO = "UPLOAD_PHOTO";
-const INITIALZE = "INITIALZE";
+const INITIALZE_CG = "INITIALZE_CG";
 const DELETE_PHOTO = "DELETE_PHOTO";
 const DELETE_FOLDER = "DELETE_FOLDER";
 const CHANGE_FOLDER_NAME = "CHANGE_FOLDER_NAME";
@@ -9,7 +9,7 @@ const INITIALZE_FOLDER="INITIALZE_FOLDER"
 
 // Actions
 export const inititalizeClientGallery = (payload: any) => ({
-  type: INITIALZE,
+  type: INITIALZE_CG,
   payload, // Include the payload here
 });
 

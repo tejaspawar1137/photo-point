@@ -20,7 +20,7 @@ console.log(isLoggedIn);
 
 const Photography = () => {
   const [folderName, setFolderName] = useState<any>(null);
-  const photos = useSelector((state) => (state as any).photosReducer?.photos);
+  const photos = useSelector((state) => (state as any).clientGalleryReducer?.photos);
   const dispatch = useDispatch();
   const [loading, setloading] = useState(false);
   const [isAccessConfirmationModalOpen, setisAccessConfirmationModalOpen] =
@@ -68,8 +68,7 @@ const Photography = () => {
         if (
           Array.isArray(resPhotos.clientGallery) &&
           resPhotos.clientGallery.length > 0
-        ) {
-          const photosLength = resPhotos.clientGallery.length;
+        ) { 
           dispatch(inititalizeClientGallery(resPhotos.clientGallery));
         }
         setloading(false);
@@ -152,7 +151,7 @@ const Photography = () => {
                                 onLoad={() => {
                                   setIsImageLoading(false);
                                 }}
-                                className="shadow-md  h-[17rem] object-cover "
+                                className="shadow-md w-[25rem] h-[17rem] object-cover "
                                 alt={`Image not found`}
                               /> 
                               <AccessConfirmationModal
@@ -178,7 +177,7 @@ const Photography = () => {
                         </div>
                       );
                     })
-                  : <div className=" text-3xl text-center sm:text-5xl mt-10 font-extrabold justify-center px-2 sm:w-[70%] items-center">{role ?"There are no current galleries existing. Start by adding them.":"There are no current galleries existing."}</div>}
+                  :""}
               </div>
             </div>
             {/* Header  */}

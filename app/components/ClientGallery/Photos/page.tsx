@@ -183,7 +183,7 @@ const Photos = () => {
           </button>
         </div>
       </div>
-      <div className="min-h-[90vh] flex justify-center items-center">
+      <div className="min-h-[90vh]  ">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 lg:gap-10 xl:gap-14 w-full justify-center items-center">
           {photos?.images.map((image: any, index: number) => {
             return (

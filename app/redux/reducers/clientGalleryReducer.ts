@@ -3,7 +3,7 @@ const initialState: any = {
   };
   
   const UPLOAD_PHOTO = "UPLOAD_PHOTO";
-  const INITIALZE = "INITIALZE";
+  const INITIALZE_CG = "INITIALZE_CG";
   const DELETE_PHOTO = "DELETE_PHOTO";
   const DELETE_FOLDER = "DELETE_FOLDER";
   const CHANGE_FOLDER_NAME = "CHANGE_FOLDER_NAME";
@@ -12,7 +12,7 @@ const initialState: any = {
   
   export const clientGalleryReducer = (state = initialState, action: any) => {
     switch (action.type) {
-      case INITIALZE:
+      case INITIALZE_CG:
         const fetchedPhotos = action.payload;
         if (Array.isArray(fetchedPhotos)) {
           return {

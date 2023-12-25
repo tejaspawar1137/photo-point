@@ -19,8 +19,7 @@ const Photography = () => {
   const [folderName, setFolderName] = useState(0);
   const [loading, setloading] = useState(false);
   const photos = useSelector((state) => (state as any).photosReducer?.photos);
-  const dispatch = useDispatch();
-  const [lastIndex, setlastIndex] = useState(0);
+  const dispatch = useDispatch(); 
   const userRoleFromRedux = useSelector(
     (state) => (state as any).userReducer.role
   );
@@ -64,10 +63,8 @@ const Photography = () => {
         if (
           Array.isArray(resPhotos.photoFolder) &&
           resPhotos.photoFolder.length > 0
-        ) {
-          setlastIndex(resPhotos.photoFolder.length);
-          dispatch(inititalizePhotography(resPhotos.photoFolder));
-          console.log("dipatched ALL PHOTOS", resPhotos.photoFolder);
+        ) { 
+          dispatch(inititalizePhotography(resPhotos.photoFolder)); 
         }
       } catch (error) {
         console.log("nahi");

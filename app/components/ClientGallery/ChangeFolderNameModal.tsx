@@ -11,7 +11,7 @@ const ChangeFolderNameModal = ({changeNameFid}:{changeNameFid:any}) => {
         (state) => (state as any).userReducer?.authtoken
         );
         
-        const photos = useSelector((state) => (state as any).photosReducer?.photos);
+        const photos = useSelector((state) => (state as any).clientGalleryReducer?.photos);
         const [newFolderName, setNewFolderName] = useState(photos.find((e:any)=>e._id===changeNameFid).name);
         const [newFolderGDriveLink, setNewFolderGDriveLink] = useState(photos.find((e:any)=>e._id===changeNameFid).link);
     function closeModal() {
