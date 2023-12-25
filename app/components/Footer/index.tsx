@@ -15,7 +15,7 @@ const Footer = () => {
           <a href="https://www.instagram.com/dheerajphotopoint/" target="_blank" className="text-gray-300 hover:text-white">
             <FaInstagram size={30} /> {/* Instagram icon */}
           </a>
-          <a href="youtube.com/channel/UCnt-ChxgdqiBkPioJqbhQ0g" target="_blank" className="text-gray-300 hover:text-white">
+          <a href="https://www.youtube.com/channel/UCnt-ChxgdqiBkPioJqbhQ0g" target="_blank" className="text-gray-300 hover:text-white">
             <FaYoutube size={30} /> {/* YouTube icon */}
           </a>
           <a  href="https://wa.me/919335531881" target="_blank" className="text-gray-300 hover:text-white">

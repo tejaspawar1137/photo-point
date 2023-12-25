@@ -2,11 +2,17 @@
 import { useState } from "react";
 import NavBar from "../Navbar/page";
 import Footer from "../Footer";
-import {  useSelector } from "react-redux"; 
+import { useSelector } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader/Loader";
 import { motion } from "framer-motion";
 import CustomAlert from "../Alert/Alert";
+import {
+  FaFacebookF,
+  FaWhatsapp,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +64,7 @@ const Contact = () => {
 
       const res = await response.json();
       if (res.success) {
-        CustomAlert("Mail sent successfully","success");
+        CustomAlert("Mail sent successfully", "success");
         setFormData({
           name: "",
           email: "",
@@ -85,42 +91,73 @@ const Contact = () => {
 
   const inputVariants = {
     hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 10 , transition: { duration: 1 } },
+    visible: { opacity: 1, x: 10, transition: { duration: 1 } },
   };
 
   return (
-    <div >
+    <div>
       <NavBar />
-      <section className=" z-10 overflow-hidden h-screen dark:bg-dark py-20 lg:py-[120px] relative contect-img "> 
+      <section className=" z-10 overflow-hidden h-screen dark:bg-dark py-20 lg:py-[120px] relative contect-img ">
         <div>
           {/* Your existing contact form JSX */}
           {loading && <Loader />}
         </div>
         <div className="container mx-auto">
-          <div className="flex flex-wrap   mt-28">
-            <span className="lg:hidden sm: ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg opacity-80 ">
-            GET IN TOUCH WITH US
-            </span>
+          <div className="flex flex-wrap   mt-28"> 
+            <div className="lg:hidden flex flex-col sm: ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg opacity-80 ">
+               <span className=" text-opacity-100 flex flex-row items-center  space-x-4 ">
+                      <a
+                        href="https://www.facebook.com/Dheerajphotopoint/"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white"
+                      >
+                        <FaFacebookF size={30} /> {/* Facebook icon */}
+                      </a>
+                      <a
+                        href="https://www.instagram.com/dheerajphotopoint/"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white"
+                      >
+                        <FaInstagram size={30} /> {/* Instagram icon */}
+                      </a>
+                      <a
+                        href="https://www.youtube.com/channel/UCnt-ChxgdqiBkPioJqbhQ0g"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white"
+                      >
+                        <FaYoutube size={30} /> {/* YouTube icon */}
+                      </a>
+                      <a
+                        href="https://wa.me/919335531881"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white"
+                      >
+                        <FaWhatsapp size={30} /> {/* WhatsApp icon */}
+                      </a>
+                    </span>
+               <span className="text-base mt-2 mb-5">Phone : +91 9335531881</span>
+              <span className="mt-10">GET IN TOUCH WITH US</span>
+            
+            </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className=" max-w-[570px] lg:mb-0 sm: hidden lg:flex lg:flex-col">
-                
-                <motion.h2 
-                initial="hidden"
-                animate="visible"
-                variants={contactVariants}
-                transition={{ duration: 0.3, delay: 0.1 }}
-                className="font-sans lg:flex sm: hidden rounded-md items-center justify-center text-center dark:text-white mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
+                <motion.h2
+                  initial="hidden"
+                  animate="visible"
+                  variants={contactVariants}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  className="font-sans lg:flex sm: hidden rounded-md items-center justify-center text-center dark:text-white mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]"
+                >
                   GET IN TOUCH WITH US
                 </motion.h2>
-                <motion.p 
-                 initial="hidden"
-                animate="visible"
-                variants={contactVariants}
-                transition={{ duration: 0.3, delay: 0.1 }}
-                className="text-base leading-relaxed text-body-color dark:text-dark-6 mb-9 text-white lg:flex sm: hidden">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eius tempor incididunt ut labore et dolore magna aliqua. Ut
-                  enim adiqua minim veniam quis nostrud exercitation ullamco
+                <motion.p
+                  initial="hidden"
+                  animate="visible"
+                  variants={contactVariants}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  className="text-base text-center leading-relaxed text-body-color dark:text-dark-6 mb-9 text-white lg:flex sm: hidden"
+                >
+                  Feel free to reach out to us for any questions or inquiries. We'd love to hear from you!
                 </motion.p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"></div>
@@ -166,7 +203,7 @@ const Contact = () => {
                       Phone Number
                     </h4>
                     <p className="text-base text-body-color text-white">
-                      (+62)81 414 257 9980
+                    +91 9335531881
                     </p>
                   </div>
                 </motion.div>
@@ -197,7 +234,7 @@ const Contact = () => {
                       Our Location
                     </h4>
                     <p className="text-base text-body-color text-white">
-                      99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                     Hardoi Rd, Thakurganj, Chauraha, Thana, Lucknow, Uttar Pradesh 226003
                     </p>
                   </div>
                 </motion.div>
@@ -222,13 +259,37 @@ const Contact = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-white">
-                      Another Block
-                    </h4>
-                    <p className="text-base text-body-color text-white">
-                      Another piece of information
-                    </p>
+                  <div className="w-full flex">  
+                    <div className=" text-opacity-100 flex flex-row items-center  space-x-4 ">
+                      <a
+                        href="https://www.facebook.com/Dheerajphotopoint/"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white"
+                      >
+                        <FaFacebookF size={30} /> {/* Facebook icon */}
+                      </a>
+                      <a
+                        href="https://www.instagram.com/dheerajphotopoint/"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white"
+                      >
+                        <FaInstagram size={30} /> {/* Instagram icon */}
+                      </a>
+                      <a
+                        href="https://www.youtube.com/channel/UCnt-ChxgdqiBkPioJqbhQ0g"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white"
+                      >
+                        <FaYoutube size={30} /> {/* YouTube icon */}
+                      </a>
+                      <a
+                        href="https://wa.me/919335531881"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white"
+                      >
+                        <FaWhatsapp size={30} /> {/* WhatsApp icon */}
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -236,11 +297,12 @@ const Contact = () => {
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative bg-white p-8 dark:bg-dark-2 lg:mt-0 sm: mt-[12px]">
                 <form onSubmit={handleSubmit}>
-                  <motion.div 
-                   initial="hidden"
-                   animate="visible"
-                   variants={contactVariants}
-                  className="mb-6">
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={contactVariants}
+                    className="mb-6"
+                  >
                     <motion.input
                       required
                       type="text"
@@ -252,11 +314,12 @@ const Contact = () => {
                       variants={inputVariants}
                     />
                   </motion.div>
-                  <motion.div 
-                  initial="hidden"
-                  animate="visible"
-                  variants={contactVariants}
-                  className="mb-6">
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={contactVariants}
+                    className="mb-6"
+                  >
                     <motion.input
                       required
                       type="email"
@@ -269,10 +332,11 @@ const Contact = () => {
                     />
                   </motion.div>
                   <motion.div
-                   initial="hidden"
-                   animate="visible"
-                   variants={contactVariants}
-                    className="mb-6">
+                    initial="hidden"
+                    animate="visible"
+                    variants={contactVariants}
+                    className="mb-6"
+                  >
                     <motion.input
                       required
                       type="text"
@@ -284,11 +348,12 @@ const Contact = () => {
                       variants={inputVariants}
                     />
                   </motion.div>
-                  <motion.div 
-                   initial="hidden"
-                   animate="visible"
-                   variants={contactVariants}
-                  className="mb-6">
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={contactVariants}
+                    className="mb-6"
+                  >
                     <motion.textarea
                       required
                       name="message"
@@ -300,10 +365,10 @@ const Contact = () => {
                     ></motion.textarea>
                   </motion.div>
                   <motion.div
-                   initial="hidden"
-                   animate="visible"
-                   variants={contactVariants}
-                   >
+                    initial="hidden"
+                    animate="visible"
+                    variants={contactVariants}
+                  >
                     <button
                       type="submit"
                       className="bg-blue-700 w-full p-3 text-white transition border rounded border-primary bg-primary hover:bg-opacity-90"
