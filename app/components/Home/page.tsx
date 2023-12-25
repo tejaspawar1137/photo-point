@@ -215,7 +215,7 @@ const HomePage = () => {
               imageUrl="/assets/Image/service2.jpg"
               title="Videography"
               description="Animating Timeless Narratives: Portraying Your Unique Tale"
-              link="/components/Services/Photography"
+              link="/components/Services/VideoProduction"
             />
 
             {/* Service 3 */}
