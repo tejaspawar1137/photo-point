@@ -64,7 +64,7 @@ const Contact = () => {
 
       const res = await response.json();
       if (res.success) {
-        CustomAlert("Mail sent successfully", "success");
+        CustomAlert("Message sent, we'll reach out to you soon! ", "success");
         setFormData({
           name: "",
           email: "",
