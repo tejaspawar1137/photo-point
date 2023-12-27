@@ -79,10 +79,10 @@ const Photography = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar content={"black"}/>
       {!loading ? (
         <div>
-          <div className="bg-white text-black py-6  min-h-[100vh]">
+          <div className="bg-white pt-[8rem] text-black py-6  min-h-[100vh]">
             <motion.h1
               className="font-sans flex justify-center text-4xl md:text-5xl font-bold tracking-wide"
               initial={{ opacity: 0, y: -20 }}

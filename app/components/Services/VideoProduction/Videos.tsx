@@ -60,7 +60,7 @@ const Videos: React.FC<VideoProps> = ({ videos, folderName }) => {
             .find((_, i) => i === folderName)
             ?.images.map((video: any, index: number) => {
               return (
-                <div className="flex h-[14rem] xs:h-[17rem] sm:h-[14rem] md:h-[17rem] px-4 lg:px-0" key={video.url}>
+                <div className="flex h-[14rem] mb-4 xs:h-[17rem] sm:h-[14rem] md:h-[17rem] px-4 lg:px-0" key={video.url}>
                   <div className="relative h-[14rem] xs:h-[17rem] sm:h-[14rem] md:h-[17rem] w-full">
                     <div className="z-20 pb-3">
                       <iframe

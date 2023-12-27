@@ -5,8 +5,8 @@ import Footer from "../Footer";
 
 const About = () => {
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <NavBar />
+    <div className="bg-gray-100  pt-24 min-h-screen">
+      <NavBar content="black"/>
       <div className="container mx-auto p-10 text-black">
         <h1 className="text-4xl font-bold mb-8 text-black">About Us</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

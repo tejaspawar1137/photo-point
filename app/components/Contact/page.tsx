@@ -12,6 +12,7 @@ import {
   FaWhatsapp,
   FaInstagram,
   FaYoutube,
+  FaPhone,
 } from "react-icons/fa";
 
 const Contact = () => {
@@ -95,49 +96,54 @@ const Contact = () => {
   };
 
   return (
-    <div>
-      <NavBar />
-      <section className=" z-10 overflow-hidden h-[110vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
+    <div className="absolute top-0 w-full">
+      <NavBar content={"white"} />
+      <section className=" z-10 pt-28 sm:pt-0 overflow-hidden h-[100vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
         <div>
           {/* Your existing contact form JSX */}
           {loading && <Loader />}
         </div>
         <div className="container mx-auto">
-          <div className="flex flex-wrap  mt-5 sm:mt-28"> 
-            <div className="lg:hidden flex flex-col sm: ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg sm:opacity-80 ">
-               <span className=" text-opacity-100 flex flex-row items-center  space-x-4 ">
-                      <a
-                        href="https://www.facebook.com/Dheerajphotopoint/"
-                        target="_blank"
-                        className="text-gray-300 hover:text-white"
-                      >
-                        <FaFacebookF size={30} /> {/* Facebook icon */}
-                      </a>
-                      <a
-                        href="https://www.instagram.com/dheerajphotopoint/"
-                        target="_blank"
-                        className="text-gray-300 hover:text-white"
-                      >
-                        <FaInstagram size={30} /> {/* Instagram icon */}
-                      </a>
-                      <a
-                        href="https://www.youtube.com/channel/UCnt-ChxgdqiBkPioJqbhQ0g"
-                        target="_blank"
-                        className="text-gray-300 hover:text-white"
-                      >
-                        <FaYoutube size={30} /> {/* YouTube icon */}
-                      </a>
-                      <a
-                        href="https://wa.me/919335531881"
-                        target="_blank"
-                        className="text-gray-300 hover:text-white"
-                      >
-                        <FaWhatsapp size={30} /> {/* WhatsApp icon */}
-                      </a>
-                    </span>
-               <span className="text-base mt-2 mb-5">Phone : +91 9335531881</span>
+          <div className="flex flex-wrap  mt-5 sm:mt-28">
+            <div className="lg:hidden flex flex-col sm: pt-10 ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg sm:opacity-80 ">
+              <span className=" text-opacity-100 flex flex-row items-center  space-x-4 ">
+                <a
+                  href="https://www.facebook.com/Dheerajphotopoint/"
+                  target="_blank"
+                  className="text-gray-300 hover:text-white"
+                >
+                  <FaFacebookF size={30} /> {/* Facebook icon */}
+                </a>
+                <a
+                  href="https://www.instagram.com/dheerajphotopoint/"
+                  target="_blank"
+                  className="text-gray-300 hover:text-white"
+                >
+                  <FaInstagram size={30} /> {/* Instagram icon */}
+                </a>
+                <a
+                  href="https://www.youtube.com/channel/UCnt-ChxgdqiBkPioJqbhQ0g"
+                  target="_blank"
+                  className="text-gray-300 hover:text-white"
+                >
+                  <FaYoutube size={30} /> {/* YouTube icon */}
+                </a>
+                <a
+                  href="https://wa.me/919335531881"
+                  target="_blank"
+                  className="text-gray-300 hover:text-white"
+                >
+                  <FaWhatsapp size={30} /> {/* WhatsApp icon */}
+                </a>
+              </span>
+              <p className="text-sm mt-3 mb-3 flex items-center gap-2">
+                <FaPhone size={18} />
+                <a href="tel:+919335531881" className="ml-2">
+                  +91 9335531881
+                </a>
+                , <a href="tel:+917905200245">+91 7905200245</a>
+              </p>
               <span className="mt-10">GET IN TOUCH WITH US</span>
-            
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className=" max-w-[570px] lg:mb-0 sm: hidden lg:flex lg:flex-col">
@@ -157,7 +163,8 @@ const Contact = () => {
                   transition={{ duration: 0.3, delay: 0.1 }}
                   className="text-base text-center leading-relaxed text-body-color dark:text-dark-6 mb-9 text-white lg:flex sm: hidden"
                 >
-                  Feel free to reach out to us for any questions or inquiries. We'd love to hear from you!
+                  Feel free to reach out to us for any questions or inquiries.
+                  We'd love to hear from you! You can send us your message by filling out this form. We'll reach back to you in a short while.
                 </motion.p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"></div>
@@ -202,9 +209,12 @@ const Contact = () => {
                     <h4 className="mb-1 text-xl font-bold text-white">
                       Phone Number
                     </h4>
-                    <p className="text-base text-body-color text-white">
-                    +91 9335531881
-                    </p>
+                    <a href="tel:+919335531881" className="text-base text-body-color text-white">
+                      +91 9335531881,{" "}
+                    </a>
+                    <a href="tel:+919335531881" className="text-base text-body-color text-white">
+                     +91 7905200245
+                    </a>
                   </div>
                 </motion.div>
                 {/* Contact Block 4 */}
@@ -234,7 +244,8 @@ const Contact = () => {
                       Our Location
                     </h4>
                     <p className="text-base text-body-color text-white">
-                     Hardoi Rd, Thakurganj, Chauraha, Thana, Lucknow, Uttar Pradesh 226003
+                     
+          Dheeraj Photo Point, Thakurganj Chauraha, Chowk, Lucknow, 226003
                     </p>
                   </div>
                 </motion.div>
@@ -259,7 +270,7 @@ const Contact = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full flex">  
+                  <div className="w-full flex">
                     <div className=" text-opacity-100 flex flex-row items-center  space-x-4 ">
                       <a
                         href="https://www.facebook.com/Dheerajphotopoint/"

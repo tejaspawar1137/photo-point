@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";  
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,16 +7,33 @@ import Footer from "../Footer";
 import Typed from "react-typed";
 import Link from "next/link";
 import NavBar from "../Navbar/page";
-import {  motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ServiceCard } from "./ServiceCard";
 import RatingStars from "../RatingStars";
 import Loader from "../Loader/Loader";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+const HomePageImages = [
+  // { url: "/assets/NewImage/newImage1.jpg" },
+  // { url: "/assets/NewImage/newImage2.jpg" },
+  // { url: "/assets/Image/newImage3.jpg" },
+  { url: "/assets/NewImage/newImage8.jpg" },
+  { url: "/assets/NewImage/newImage6.jpg" },
+  { url: "/assets/Image/home.jpg" },
+  { url: "/assets/NewImage/newImage4.jpg" },
+  { url: "/assets/NewImage/newImage7.jpg" },
+  { url: "/assets/NewImage/newImage9.jpg" },
+  { url: "/assets/NewImage/newImage11.jpg" },
+  { url: "/assets/NewImage/newImage5.jpg" },
+  // { url: "/assets/NewImage/newImage10.jpg" },
+];
 
 const HomePage = () => {
-
   const [loading, setloading] = useState(true);
-   const testimonialData = [
+  const [activeIndex, setActiveIndex] = useState(0);
+  const testimonialData = [
     {
       id: 1,
       name: "Sneha Deshmukh",
@@ -49,7 +66,6 @@ const HomePage = () => {
     },
     // Add more testimonials as needed
   ];
-  
 
   const settings = {
     infinite: true,
@@ -88,9 +104,9 @@ const HomePage = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 3 } },
   };
   useEffect(() => {
-    setloading(true)
+    setloading(true);
     const img = new Image();
-    img.src = '/assets/Image/home.jpg';
+    img.src = "/assets/NewImage/newImage8.jpg";
 
     img.onload = () => {
       setloading(false);
@@ -102,57 +118,86 @@ const HomePage = () => {
       controls.start("visible");
     }
   }, [controls, TextView]);
- 
 
-  return (
-    !loading?<div className="absolute bg-white w-full min-h-screen overflow-x-hidden ">
+  return !loading ? (
+    <div className="absolute top-0 bg-white w-full min-h-screen overflow-x-hidden ">
       {/* Main Section */}
-      <NavBar></NavBar>
+      <NavBar content={"white"}></NavBar>
       <div
-        style={{
-          background: 'url("/assets/Image/home.jpg")no-repeat center center/cover',
-        }}
-        className="bg-cover  text-center bg-center min-h-screen flex flex-col items-center justify-center text-white sm:p-10"
+        // style={{
+        //   background:
+        //     'url("/assets/Image/home.jpg")no-repeat center center/cover',
+        // }}
+        className="bg-cover text-center bg-center h-screen flex flex-col items-center justify-center sm:py-10"
       >
-        <h1
-          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-          className="text-4xl font-Ikaros sm:text-5xl font-[800] font-sans md:text-6xl lg:max-w-[60%] text-center leading-none sm:leading-[3.5rem] md:leading-[4.5rem]"
-        >
-          Elevating <br /> Moments Through Artistry
-        </h1>
-        <i
-          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-          className="text-xl font-Ikaros sm:text-2xl font-sans font-semibold mt-16"
-        >
-          "Capturing Moments, Creating Memories"
-        </i>
-        <div
-          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-          className="text-2xl font-[800] font-Ikaros uppercase sm:text-3xl md:text-4xl font-sans text-blue-400 p-5"
-        >
-          <Typed
-            strings={[
-              "Photography",
-              "Videography",
-              "Portrait Sessions",
-              "Event Coverage",
-              "Fine Art Photography",
-              "Drone Photography",
-              "Product Photography",
-            ]}
-            typeSpeed={100}
-            backSpeed={30}
-            backDelay={1000}
-            loop
-          />
+        <div>
+          <Carousel
+          showArrows={false}
+            className="absolute z-50 top-0 w-full left-0 h-[100vh]"
+            autoPlay={true}
+            interval={5000}
+            infiniteLoop={true}
+            showThumbs={false}
+            showStatus={false}
+            selectedItem={activeIndex}
+            onChange={(index) => setActiveIndex(index)}
+          >
+            {HomePageImages.map((image, index) => (
+              <div key={index} className="">
+                <img
+                  src={image.url}
+                  className="h-[100vh] object-cover"
+                  alt={`Slide  ${index}`}
+                />
+              </div>
+            ))}
+          </Carousel>
+          <div
+            className="absolute  w-full left-0 top-[35vh] flex flex-col text-center items-center justify-center "
+            style={{ zIndex: 60 }}
+          >
+            <h1
+              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              className="text-4xl font-Ikaros sm:text-5xl font-[800] font-sans md:text-6xl lg:max-w-[60%] text-center leading-none sm:leading-[3.5rem] md:leading-[4.5rem]"
+            >
+              Elevating <br /> Moments Through Artistry
+            </h1>
+            <i
+              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              className="text-xl font-Ikaros sm:text-2xl font-sans font-semibold mt-16"
+            >
+              "Capturing Moments, Creating Memories"
+            </i>
+            <div
+              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              className="text-2xl font-[800] font-Ikaros uppercase sm:text-3xl md:text-4xl font-sans text-blue-400 p-5"
+            >
+              <Typed
+                strings={[
+                  "Photography",
+                  "Event Shoot",
+                  "Candid Photography",
+                  "Cinematography",
+                  "Wedding photography",
+                  "Pre Wedding Shoot",
+                  "Meternity Shoot",
+                  "Baby Shoot",
+                ]}
+                typeSpeed={50}
+                backSpeed={30}
+                backDelay={1000}
+                loop
+              />
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Studio Rental */}
-      <h2 className="text-5xl flex justify-center font-Revaux font-bold text-indigo-800 mb-5 mt-16">
-            Studio
-          </h2>
-          <hr></hr>
+      <h2 className="text-5xl flex justify-center font-Ikaros uppercase font-bold text-indigo-800 mb-5 mt-16">
+        Studio
+      </h2>
+      <hr></hr>
       <motion.div
         ref={ref}
         initial="hidden"
@@ -160,7 +205,6 @@ const HomePage = () => {
         variants={fadeIn}
         className="bg-gray-200 text-black flex flex-col md:flex-row items-center justify-evenly p-8 md:p-6 lg:p-10 mt-10 mb-8"
       >
-        
         <div className="md:order-2 md:ml-4 lg:ml-10 md:mt-4 lg:mt-10 relative">
           <div className="overflow-y-hidden">
             {/* Responsive YouTube video iframe */}
@@ -172,7 +216,7 @@ const HomePage = () => {
             ></iframe>
           </div>
         </div>
-         
+
         <div className="md:order-1 md:mt-10 md:text-center md:p-4 lg:p-8">
           <div className="text-lg md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 text-indigo-800 sm: mt-[60px]">
             Studio Rental
@@ -196,7 +240,7 @@ const HomePage = () => {
       {/* Services section */}
       <section className="bg-white w-full py-10 mt-20 p-4 ">
         <div className="container mx-auto text-center mt-10">
-          <h2 className="text-5xl upper font-Revaux font-bold text-indigo-800 mb-10 mt-10">
+          <h2 className="text-5xl upper font-Ikaros uppercase font-bold text-indigo-800 mb-10 mt-10">
             Services
           </h2>
           <hr></hr>
@@ -231,39 +275,38 @@ const HomePage = () => {
 
       {/* Testimonial Section */}
       <section className="bg-gray-300 mt-20 py-16 p-10">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-Revaux font-extrabold text-indigo-800 mb-10">
-          Testimonials
-        </h2>
-        <Slider
-          infinite
-          speed={500}
-          slidesToShow={1}
-          slidesToScroll={1}
-          autoplay
-          autoplaySpeed={4000}
-        >
-          {testimonialData.map((testimonial) => (
-            <div key={testimonial.id} className="mx-auto">
-              <p className="text-xl font-Ikaros text-gray-800 mb-4">
-                "{testimonial.text}"
-              </p>
-              <div className="flex items-center justify-center mb-2">
-                <RatingStars rating={testimonial.rating} />
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl font-Revaux   font-extrabold text-indigo-800 mb-10">
+            Testimonials
+          </h2>
+          <Slider
+            infinite
+            speed={500}
+            slidesToShow={1}
+            slidesToScroll={1}
+            autoplay
+            autoplaySpeed={4000}
+          >
+            {testimonialData.map((testimonial) => (
+              <div key={testimonial.id} className="mx-auto">
+                <p className="text-xl font-Ikaros text-gray-800 mb-4">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center justify-center mb-2">
+                  <RatingStars rating={testimonial.rating} />
+                </div>
+                <p className="text-xl font-Audrey  text-indigo-500">
+                  {testimonial.name}
+                </p>
               </div>
-              <p className="text-xl font-Audrey  text-indigo-500">
-                {testimonial.name}
-              </p>
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </section>
-      {/* {brand section } */}
+            ))}
+          </Slider>
+        </div>
+      </section>
       {/* {brand section } */}
       <section className="bg-gray-100 py-16 mt-20">
         <div className="mx-auto text-center">
-          <h2 className="text-5xl sm:text-5xl font-Revaux uppercase font-bold  text-gray-800 mb-8 sm:mb-15">
+          <h2 className="text-5xl sm:text-5xl font-Ikaros uppercase font-bold  text-gray-800 mb-8 sm:mb-15">
             Have a look !
           </h2>
           <hr></hr>
@@ -272,7 +315,6 @@ const HomePage = () => {
             {...settings}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 mt-8 p-5 " // Add gap between images
           >
-
             {/* Branded Image 2 */}
             <div className="relative overflow-hidden rounded-lg shadow-md  mx-4">
               {" "}
@@ -346,10 +388,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section
-        ref={Textref}
-        className="bg-gray-400 text-white  mt-10 hireUs"
-      >
+      <section ref={Textref} className="bg-gray-400 text-white  mt-10 hireUs">
         <div className="   flex  justify-center items-center h-[800px] text-center">
           <div className=" py-10 rounded-xl   flex flex-col  justify-center items-center h-full w-full bg-black bg-opacity-10">
             <h1
@@ -385,8 +424,9 @@ const HomePage = () => {
       {/* Footer */}
       <Footer />
     </div>
-    :<div className="h-[90vh]">
-      <Loader/>
+  ) : (
+    <div className="h-[90vh]">
+      <Loader />
     </div>
   );
 };

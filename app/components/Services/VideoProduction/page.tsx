@@ -72,15 +72,15 @@ const Videography = () => {
 
   return !loading ? (
     <div>
-      <NavBar />
-      <div className="bg-white text-black py-6  min-h-[100vh]">
+    <NavBar content={"black"}/>
+      <div className="bg-white text-black  pt-[8rem] pb-6  min-h-[100vh]">
         <motion.h1
           className="font-sans flex justify-center text-4xl md:text-5xl font-bold tracking-wide"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          VideoGraphy
+          Videography
         </motion.h1>
         {/* Header  */}
         <div className="flex justify-between items-center px-2 py-8">

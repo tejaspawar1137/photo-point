@@ -158,9 +158,9 @@ const Photos = () => {
   };
 
   return !loading ? (
-    <div className="bg-white text-black">
-      <NavBar />
-      <h1 className="flex justify-center w-full text-5xl my-5 font-bold tracking-wide">
+    <div className="bg-white absolute top-0 pt-[7rem] text-black">
+      <NavBar content="black"/>
+      <h1 className="flex justify-center w-full text-3xl sm:text-5xl my-5 font-bold tracking-wide">
         {photos?.name || "Client Gallery"}
       </h1>
       <div className=" flex justify-between px-4 sm:px-4 py-2 items-center ">

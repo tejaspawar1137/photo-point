@@ -82,9 +82,9 @@ const Photography = () => {
   }, []);
 
   return (
-    <div className="bg-white  w-full text-black ">
+    <div className="bg-white top-0 absolute  pt-[3.5rem] sm:pt-[5rem]  w-full text-black ">
       <div style={{ zIndex: 30 }} className="fixed top-0 w-full">
-        <NavBar />
+        <NavBar content="black"/>
       </div> 
       {!loading ? (
         <>
@@ -116,7 +116,7 @@ const Photography = () => {
                             setFolderName(i);
                           }}
                         >
-                          <div className="flex relative w-96 h-[17rem]">
+                          <div className="flex relative w-full sm:w-96 h-[17rem]">
                             {isImageLoading ? (
                               ""
                             ) : (

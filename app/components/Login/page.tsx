@@ -121,8 +121,8 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <section className="login-img bg-gray-500 ">
-        <NavBar></NavBar>
+      <section className="login-img pt-24 bg-gray-500 ">
+        <NavBar content={"white"}></NavBar>
         <div className="flex flex-col items-baseline justify-center sm:ml-0 px-6 py-8 mx-auto md:h-screen lg:py-0 lg:ml-20"> 
           {/* Your existing contact form JSX */}
           <a
@@ -130,7 +130,7 @@ const Login: React.FC = () => {
             className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
           >
             <motion.p
-              className="font-bold text-6xl opacity-70 text-black font-sans mt-10 mb-5"
+              className="font-bold text-6xl opacity-70 text-white font-sans mt-10 mb-5"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: textload ? 1 : 0, y: textload ? 0 : -20 }}
               whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
