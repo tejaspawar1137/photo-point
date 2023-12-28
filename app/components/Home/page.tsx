@@ -106,7 +106,7 @@ const HomePage = () => {
   useEffect(() => {
     setloading(true);
     const img1 = new Image();
-    img1.src = "/assets/Icons/logo.png";
+    img1.src = "/assets/NewImage/newImage8.jpg";
     const img2 = new Image();
     img2.src = "/assets/Icons/logo.png";
     const onLoadHandler = () => {
