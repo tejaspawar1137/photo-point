@@ -26,7 +26,7 @@ const HomePageImages = [
   { url: "/assets/NewImage/newImage7.jpg" },
   { url: "/assets/NewImage/newImage9.jpg" },
   { url: "/assets/NewImage/newImage11.jpg" },
-  { url: "/assets/NewImage/newImage5.jpg" },
+  // { url: "/assets/NewImage/newImage5.jpg" },
   // { url: "/assets/NewImage/newImage10.jpg" },
 ];
 
@@ -161,7 +161,7 @@ const HomePage = () => {
             ))}
           </Carousel>
           <div
-            className="absolute  w-full left-0 top-[35vh] flex flex-col text-center items-center justify-center "
+            className="absolute  w-full left-0 top-[60vh] flex flex-col text-center items-center justify-center "
             style={{ zIndex: 60 }}
           >
             <h1

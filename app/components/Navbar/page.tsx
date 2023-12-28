@@ -89,7 +89,7 @@ const NavBar = ({ content }: any) => {
               >
                 <img
                   src="/assets/Icons/logo.png"
-                  className="h-[9rem] xs:h-[10rem] w-[25rem]"
+                  className="h-[11rem] xs:h-[12rem] object-contain w-[25rem]"
                 ></img>
                 <hr></hr>
                 {/* <svg className="h-12" viewBox="0 0 10240 10240">
@@ -208,17 +208,30 @@ const NavBar = ({ content }: any) => {
       {loading ? (
         <Loader></Loader>
       ) : (
-        <nav className="relative  w-full top-0 px-4 py-8 flex sm:justify-unset items-center from-transparent to-black bg-opacity-30 backdrop-blur-[2px] lg:justify-between ">
-          <Link className="text-3xl flex  font-bold leading-none" href="/">
-            <img
+        <nav className="relative   w-full top-0 px-1 xs:px-4 py-8 flex sm:justify-unset items-center from-transparent to-black bg-opacity-30 backdrop-blur-[2px] lg:justify-between ">
+          <Link className=" flex  items-center font-bold leading-none" href="/">
+          <img
               src="/assets/Icons/logo.png"
-              className="absolute top-0  left-0 -translate-y-4 -translate-x-11  xs:-translate-y-8 sm:-translate-y-12 xs:-translate-x-16 h-[8rem] w-[18rem] xs:h-[10rem] xs:w-[21rem] sm:h-[13rem] sm:w-[28rem] "
+              className="absolute top-0 object-contain left-0 translate-y-2  -translate-x-[4.3rem] sm:-translate-y-1  sm:-translate-x-[5rem] h-[5rem] w-[13rem]   sm:h-[7rem]  sm:w-[18rem] "
             ></img>
+            <span
+              style={{
+                textShadow:
+                  content === "black"
+                    ? "2px 2px 4px rgba(0, 0, 0, 0.1)"
+                    : "2px 2px 4px rgba(0, 0, 0, 0.1)",
+              }}
+              className=" pl-[4.3rem] xs:pl-[3.5rem] sm:pl-[6.3rem] pt-2 font-Audrey font-extrabold text-[#cc9933] uppercase text-2xl  sm:text-4xl "
+            >
+              Photography
+            </span>
           </Link>
-          <div className="ml-auto xl:hidden">
+          <div className="ml-auto   xl:hidden">
             <button
               onClick={toggleMobileMenu}
-              className={`navbar-burger flex items-center p-2 ${content!=="black"?"bg-gray-800 bg-opacity-[0.25]":""} rounded-md text-blue-600 sm:ml-96`}
+              className={`navbar-burger flex items-center p-2 ${
+                content !== "black" ? "bg-gray-800 bg-opacity-[0.25]" : ""
+              } rounded-md text-blue-600 `}
             >
               <svg
                 className="block h-5 w-5 sm:h-6 sm:w-6 fill-current"
@@ -226,19 +239,19 @@ const NavBar = ({ content }: any) => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill={content==="black"?`black`:"white"}
+                  fill={content === "black" ? `black` : "white"}
                   d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
                   // style={{ filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))" }}
                 ></path>
               </svg>
             </button>
           </div>
-          <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 xl:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-2 2xl:space-x-6">
+          <ul className="hidden  pl-16  w-[50%]  absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 xl:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-2 2xl:space-x-6">
             <li>
               <Link
                 style={{
                   textShadow:
-                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 }}
                 className={`text-sm font-bold ${
                   activeOption === "home"
@@ -256,7 +269,7 @@ const NavBar = ({ content }: any) => {
             <li
               style={{
                 textShadow:
-                content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
               }}
               className="text-gray-300"
             >
@@ -279,7 +292,7 @@ const NavBar = ({ content }: any) => {
               <Link
                 style={{
                   textShadow:
-                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 }}
                 className={`text-sm font-bold ${
                   activeOption === "About"
@@ -295,12 +308,12 @@ const NavBar = ({ content }: any) => {
               </Link>
             </li>
             <li
-            style={{
-              textShadow:
-              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-            }}
-            className="text-gray-300"
-          >
+              style={{
+                textShadow:
+                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              }}
+              className="text-gray-300"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -320,7 +333,7 @@ const NavBar = ({ content }: any) => {
               <Link
                 style={{
                   textShadow:
-                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 }}
                 className={`text-sm font-bold ${
                   activeOption === "photography"
@@ -336,12 +349,12 @@ const NavBar = ({ content }: any) => {
               </Link>
             </li>
             <li
-            style={{
-              textShadow:
-              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-            }}
-            className="text-gray-300"
-          >
+              style={{
+                textShadow:
+                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              }}
+              className="text-gray-300"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -361,7 +374,7 @@ const NavBar = ({ content }: any) => {
               <Link
                 style={{
                   textShadow:
-                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 }}
                 className={`text-sm font-bold ${
                   activeOption === "videography"
@@ -377,12 +390,12 @@ const NavBar = ({ content }: any) => {
               </Link>
             </li>
             <li
-            style={{
-              textShadow:
-              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-            }}
-            className="text-gray-300"
-          >
+              style={{
+                textShadow:
+                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              }}
+              className="text-gray-300"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -418,12 +431,12 @@ const NavBar = ({ content }: any) => {
               </Link>
             </li>
             <li
-           style={{
-            textShadow:
-            content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-          }}
-          className="text-gray-300"
-        >
+              style={{
+                textShadow:
+                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              }}
+              className="text-gray-300"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -443,7 +456,7 @@ const NavBar = ({ content }: any) => {
               <Link
                 style={{
                   textShadow:
-                  content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 }}
                 className={`text-sm font-bold ${
                   activeOption === "Contact"
@@ -483,4 +496,3 @@ const NavBar = ({ content }: any) => {
 };
 
 export default NavBar;
- 
