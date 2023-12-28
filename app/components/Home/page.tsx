@@ -157,13 +157,13 @@ const HomePage = () => {
             style={{ zIndex: 60 }}
           >
             <h1
-              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",color:'white' }}
               className="text-4xl font-Ikaros sm:text-5xl font-[800] font-sans md:text-6xl lg:max-w-[60%] text-center leading-none sm:leading-[3.5rem] md:leading-[4.5rem]"
             >
               Elevating <br /> Moments Through Artistry
             </h1>
             <i
-              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",color:'white' }}
               className="text-xl font-Ikaros sm:text-2xl font-sans font-semibold mt-16"
             >
               "Capturing Moments, Creating Memories"
@@ -221,7 +221,7 @@ const HomePage = () => {
           <div className="text-lg md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 text-indigo-800 sm: mt-[60px]">
             Studio Rental
           </div>
-          <p className="text-sm md:text-base lg:text-lg mb-4 md:mb-6">
+          <p style={{color:'black'}} className="text-sm md:text-base lg:text-lg mb-4 md:mb-6">
             "Capture the moments that matter most in our premier photo studio,
             specializing in exquisite wedding photoshoots, enchanting
             pre-wedding sessions, and unforgettable birthday celebrations. Let
@@ -289,7 +289,7 @@ const HomePage = () => {
           >
             {testimonialData.map((testimonial) => (
               <div key={testimonial.id} className="mx-auto">
-                <p className="text-xl font-Ikaros text-gray-800 mb-4">
+                <p style={{color:'black'}} className="text-xl font-Ikaros text-gray-800 mb-4">
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center justify-center mb-2">
@@ -306,7 +306,7 @@ const HomePage = () => {
       {/* {brand section } */}
       <section className="bg-gray-100 py-16 mt-20">
         <div className="mx-auto text-center">
-          <h2 className="text-5xl sm:text-5xl font-Ikaros uppercase font-bold  text-gray-800 mb-8 sm:mb-15">
+          <h2 style={{color:'black',opacity:'0.8'}} className="text-5xl sm:text-5xl font-Ikaros uppercase font-bold  mb-8 sm:mb-15">
             Have a look !
           </h2>
           <hr></hr>
@@ -392,14 +392,14 @@ const HomePage = () => {
         <div className="   flex  justify-center items-center h-[800px] text-center">
           <div className=" py-10 rounded-xl   flex flex-col  justify-center items-center h-full w-full bg-black bg-opacity-10">
             <h1
-              style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.5)" }}
+              style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.5)",color:'white' }}
               className="text-4xl font-Revaux brightness-200 md:text-5xl font-extrabold mb-4 font-sans"
             >
               Elevate Your Moments with Us
             </h1>
             <div className="w-full flex justify-center">
               <h1
-                style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.5)" }}
+                style={{ textShadow: "2px 2px 6px rgba(0, 0, 0, 0.5)",color:'white' }}
                 className="text-lg brightness-200 lg:w-[50%] md:text-xl px-2 font-bold mb-6"
               >
                 Your special moments deserve exceptional capture. Let us turn

@@ -138,12 +138,12 @@ const Contact = () => {
               </span>
               <p className="text-sm mt-3 mb-3 flex items-center gap-2">
                 <FaPhone size={18} />
-                <a href="tel:+919335531881" className="ml-2">
+                <a style={{color:'white'}} href="tel:+919335531881" className="ml-2">
                   +91 9335531881
                 </a>
-                , <a href="tel:+917905200245">+91 7905200245</a>
+                , <a style={{color:'white'}} href="tel:+917905200245">+91 7905200245</a>
               </p>
-              <span className="mt-10">GET IN TOUCH WITH US</span>
+              <span style={{color:'white'}} className="mt-10">GET IN TOUCH WITH US</span>
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className=" max-w-[570px] lg:mb-0 sm: hidden lg:flex lg:flex-col">
@@ -152,6 +152,7 @@ const Contact = () => {
                   animate="visible"
                   variants={contactVariants}
                   transition={{ duration: 0.3, delay: 0.1 }}
+                  style={{color:'white'}}
                   className="font-sans lg:flex sm: hidden rounded-md items-center justify-center text-center dark:text-white mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]"
                 >
                   GET IN TOUCH WITH US
@@ -161,6 +162,7 @@ const Contact = () => {
                   animate="visible"
                   variants={contactVariants}
                   transition={{ duration: 0.3, delay: 0.1 }}
+                  style={{color:'white'}}
                   className="text-base text-center leading-relaxed text-body-color dark:text-dark-6 mb-9 text-white lg:flex sm: hidden"
                 >
                   Feel free to reach out to us for any questions or inquiries.
@@ -206,13 +208,13 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-white">
+                    <h4 style={{color:'white'}} className="mb-1 text-xl font-bold text-white">
                       Phone Number
                     </h4>
-                    <a href="tel:+919335531881" className="text-base text-body-color text-white">
+                    <a style={{color:'white'}} href="tel:+919335531881" className="text-base text-body-color text-white">
                       +91 9335531881,{" "}
                     </a>
-                    <a href="tel:+919335531881" className="text-base text-body-color text-white">
+                    <a style={{color:'white'}} href="tel:+919335531881" className="text-base text-body-color text-white">
                      +91 7905200245
                     </a>
                   </div>
@@ -240,10 +242,10 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-white">
+                    <h4 style={{color:'white'}} className="mb-1 text-xl font-bold text-white">
                       Our Location
                     </h4>
-                    <p className="text-base text-body-color text-white">
+                    <p style={{color:'white'}} className="text-base text-body-color text-white">
                      
           Dheeraj Photo Point, Thakurganj Chauraha, Chowk, Lucknow, 226003
                     </p>

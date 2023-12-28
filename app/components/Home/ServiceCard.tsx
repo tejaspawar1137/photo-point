@@ -14,7 +14,7 @@ export const ServiceCard = ({ imageUrl , title, description, link }:any) => {
           alt={title}
           className="mb-8 rounded-md w-full h-64 object-cover" />
         <h3 className="text-3xl font-Gentona uppercase font-semibold text-indigo-800 pb-2 sm:pb-0 px-2 ">{title}</h3>
-        <p className="text-black font-Ikaros text-xl p1-2 sm:p-[27px] px-2">{description}</p>
+        <p style={{color:'black'}} className="text-black font-Ikaros text-xl p1-2 sm:p-[27px] px-2">{description}</p>
       </div>
     </Link>
   );

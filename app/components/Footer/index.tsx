@@ -11,10 +11,22 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-center bg-opacity-80 text-white py-7 overflow-y-hidden">
+    <footer
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+      }}
+      className="bg-black text-center bg-opacity-80 text-white py-7 overflow-y-hidden"
+    >
       <div className="container mx-auto flex flex-col items-center ">
-        <p className="text-4xl font-bold font-Audrey">Dheeraj Photo Point</p>
-        <p className="mb-4 font-sans"> create something Special</p>
+        <p
+          style={{ color: "white" }}
+          className="text-4xl font-bold font-Audrey"
+        >
+          Dheeraj Photo Point
+        </p>
+        <p style={{ color: "white" }} className="mb-4 font-sans"> 
+          create something Special
+        </p>
         <div className=" flex flex-row  space-x-4 mb-4 sm:items-center sm:justify-center">
           <a
             href="https://www.facebook.com/Dheerajphotopoint/"
@@ -46,20 +58,24 @@ const Footer = () => {
           </a>
         </div>
         <a
+          style={{ color: "white" }}
           href="mailto:dheerajphotopoint@gmail.com"
           className="text-lg mb-2 flex items-center gap-2 "
         >
           <FaMailBulk size={18} />
           dheerajphotopoint@gmail.com
         </a>
-        <p className="text-lg mb-6 flex items-center gap-2">
+        <p
+          style={{ color: "white" }}
+          className="text-lg mb-6 flex items-center gap-2"
+        >
           <FaPhone size={18} />
           <a href="tel:+919335531881" className="ml-2">
             +91 9335531881
           </a>
           , <a href="tel:+917905200245">+91 7905200245</a>
         </p>
-        <p className="mb-4 flex items-center  gap-2">
+        <p style={{ color: "white" }} className="mb-4 flex items-center  gap-2">
           <span className=" sm:block hidden">
             <FaSearchLocation size={18} />
           </span>
@@ -67,11 +83,13 @@ const Footer = () => {
         </p>
 
         <p className="text-sm text-gray-500 mb-4">
-          &copy; 2023 Your Website. All rights reserved Dheeraj Photo Point.
+          &copy; 2023 Dheeraj Photo Point. All rights reserved Dheeraj Photo
+          Point.
         </p>
         <p className="text-sm text-gray-500">
           &copy; Creator of this Website:{" "}
           <a
+            style={{ color: "white" }}
             href="https://www.linkedin.com/in/abhay-ratnakar-4925b221b/"
             target="_blank"
             className="text-white ml-2 mr-2"
@@ -80,6 +98,7 @@ const Footer = () => {
           </a>
           X
           <a
+            style={{ color: "white" }}
             className="text-white ml-2"
             href="https://www.linkedin.com/in/dhruv-kumar-sharma-419a4a204/"
             target="_blank"
@@ -87,11 +106,19 @@ const Footer = () => {
             @Dhruv Kumar Sharma{" "}
           </a>
           Contact Us -{" "}
-          <a href="tel:+916397618319" className="text-white ml-2">
+          <a
+            style={{ color: "white" }}
+            href="tel:+916397618319"
+            className="text-white ml-2"
+          >
             +91 6397618319
           </a>
           ,{" "}
-          <a href="tel:+919548673363" className="text-white ml-2">
+          <a
+            style={{ color: "white" }}
+            href="tel:+919548673363"
+            className="text-white ml-2"
+          >
             +91 9548673363
           </a>
           .
