@@ -98,7 +98,7 @@ const Contact = () => {
   return (
     <div className="absolute top-0 w-full">
       <NavBar content={"white"} />
-      <section className=" z-10 pt-28 sm:pt-0 overflow-hidden h-[100vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
+      <section className=" z-10 pt-28 pb-8 sm:pb-0 sm:pt-0 overflow-hidden h-[120vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
         <div>
           {/* Your existing contact form JSX */}
           {loading && <Loader />}

@@ -83,7 +83,7 @@ const Photography = () => {
 
   return (
     <div className="bg-white top-0 absolute  pt-[3.5rem] sm:pt-[5rem]  w-full text-black ">
-      <div style={{ zIndex: 30 }} className="fixed top-0 w-full">
+    <div style={{ zIndex: 30 }} className="absolute top-0 w-full">
         <NavBar content="black"/>
       </div> 
       {!loading ? (
