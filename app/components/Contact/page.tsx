@@ -408,9 +408,9 @@ const Contact = () => {
                   >
                     <button
                       type="submit"
-                      className="bg-blue-700 w-full p-3 text-center flex justify-center text-white transition border rounded border-primary bg-primary hover:bg-opacity-90"
+                      className="bg-blue-700 w-full p-3 h-14 items-center text-center flex justify-center text-white transition border rounded border-primary bg-primary hover:bg-opacity-90"
                     >
-                      {!mailLoading ? (
+                      {mailLoading ? (
                         <svg
                           className="animate-spin h-5 w-5 mr-3 border-l-[3px]  border-white rounded-full"
                           viewBox="0 0 24 24"
