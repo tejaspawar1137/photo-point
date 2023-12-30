@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import type { ReactNode } from "react"; 
+import type { ReactNode } from "react";
 import "./globals.css";
 import StoreProvider from "./redux/StoreProvider";
 import { ToastContainer } from "react-toastify";
@@ -10,15 +10,14 @@ interface Metadata {
   imageUrl: string;
   url: string;
 }
- 
 
 const metadata: Metadata = {
   title:
     "Dheeraj Photo Point - Best Photography & Videography Services in Lucknow, India",
   description:
-    "Dheeraj Photo Point offers top-notch photography, videography, image retouching, studio rental and more in Lucknow, Uttar Pradesh, India.",
-  imageUrl: "/assets/Icons/logo.png", // Replace with the URL of an image representing your studio
-  url: "https://www.example.com/dheeraj-photo-studio", // Replace with the actual URL of your page
+    "Dheeraj Photo Point offers top-notch Photography, Videography, Image retouching, Studio rental and more in Lucknow, Uttar Pradesh, India.",
+  imageUrl: "/assets/Icons/logo.png",
+  url: "https://www.dheerajphotopoint.com",
 };
 
 interface RootLayoutProps {
@@ -45,7 +44,7 @@ const RootLayout: NextPage<RootLayoutProps> = ({
           <meta name="twitter:description" content={metadata.description} />
           <meta name="twitter:image" content={metadata.imageUrl} />
         </head>
-        <body >
+        <body>
           <div>
             <div>{children}</div>
             <ToastContainer />
