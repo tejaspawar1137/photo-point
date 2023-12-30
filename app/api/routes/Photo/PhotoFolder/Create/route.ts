@@ -8,17 +8,12 @@ export type ImageType = {
 
 export const dynamic = 'force-dynamic';
 export const POST = async (req: NextRequest, res: Response) => { 
-    try { 
-      console.log("request hit");
-      await connectToDB();
-      console.log("db hit");
+    try {  
+      await connectToDB(); 
       const reqBody = await req.json();
-      const { name, url } = reqBody;
-      console.log("body hit");
-      const PhotoFolderExists = await PhotoFolder.findOne({ name: name  });
-      console.log("hello from existing check");
-      if (PhotoFolderExists) {
-      console.log("hello from existing check again");
+      const { name, url } = reqBody;  
+      const PhotoFolderExists = await PhotoFolder.findOne({ name: name  }); 
+      if (PhotoFolderExists) { 
         return NextResponse.json(
           { success: false, message: "Folder already exists." },
           { status: 400 }
@@ -32,15 +27,13 @@ export const POST = async (req: NextRequest, res: Response) => {
       const photoFolder = await PhotoFolder.create({
         name: name,
         images: imageArray,
-      });
-      console.log("hello from created folder",photoFolder);
+      }); 
       // Do whatever you want
       return NextResponse.json(
         { success: true, photoFolder },
         { status: 200 }
       );
-    } catch (error) {
-      console.log("error occured")
+    } catch (error) { 
       return NextResponse.json(
         { success: false, message: (error as Error).message },
         { status: 400 }

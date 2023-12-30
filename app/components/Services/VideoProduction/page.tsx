@@ -51,9 +51,7 @@ const Videography = () => {
         const response = await fetch("/api/routes/Video/VideoFolder/FindAll", {
           method: "GET",
         });
-        const resVideos = await response.json();
-
-        console.log(resVideos);
+        const resVideos = await response.json(); 
         if (
           Array.isArray(resVideos.videoFolder) &&
           resVideos.videoFolder.length > 0
@@ -62,7 +60,7 @@ const Videography = () => {
           setloading(false);
         }
       } catch (error) {
-        console.error("Error fetching photos:", error);
+        console.error("Error");
         setloading(false);
       }
     };

@@ -12,8 +12,7 @@ export const GET = async (req: NextRequest, res: Response) => {
     try { 
       await connectToDB();
        const queryUrl=req.url;   
-      const id = getUrlParam(queryUrl, 'id');
-      console.log(id);
+      const id = getUrlParam(queryUrl, 'id'); 
       const clientGalleryExists = await ClientGallery.findOne({_id:id });
       if (!clientGalleryExists) {
         return NextResponse.json(

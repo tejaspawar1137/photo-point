@@ -15,8 +15,7 @@ import { motion } from "framer-motion";
 
 const isLoggedIn =
   typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
-
-console.log(isLoggedIn);
+ 
 
 const Photography = () => {
   const [folderName, setFolderName] = useState<any>(null);
@@ -62,9 +61,7 @@ const Photography = () => {
             method: "GET",
           }
         );
-        const resPhotos = await response.json();
-        console.log(resPhotos);
-        console.log(`pp: ${photos}`);
+        const resPhotos = await response.json(); 
         if (
           Array.isArray(resPhotos.clientGallery) &&
           resPhotos.clientGallery.length > 0
@@ -73,12 +70,11 @@ const Photography = () => {
         }
         setloading(false);
       } catch (error) {
-        console.error("Error fetching photos:", error);
+        console.error("Error ");
         setloading(false);
       }
     };
-    fetchPhotosForInitialization();
-    console.log(photos);
+    fetchPhotosForInitialization(); 
   }, []);
 
   return (

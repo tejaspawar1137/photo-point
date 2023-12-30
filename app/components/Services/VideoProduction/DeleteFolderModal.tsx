@@ -42,11 +42,10 @@ export default function DeleteFolderModal({
         }
       );
       const res = await deletedFolder.json();
-      CustomAlert("Videography Folder Deleted Successfully","success")
-      console.log(res);
+      CustomAlert("Videography Folder Deleted Successfully","success") 
 
     } catch (error) {
-      console.log(error);
+      console.log("error");
     }
   };
 

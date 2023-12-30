@@ -36,10 +36,9 @@ export default function MyModal({ id, url }: { id: any; url: any }) {
           body: JSON.stringify(sentBody),
         }
       );
-      const res = await deletedImage.json();
-      console.log(res);
+      const res = await deletedImage.json(); 
     } catch (error) {
-      console.log(error);
+      console.log("error");
     }
   };
 

@@ -34,11 +34,7 @@ export default function UploadPhotoModal({
 
   function openModal() {
     setIsOpen(true);
-  }
- 
-  useEffect(() => {
-    console.log(imageUrl);
-  }, [imageUrl]);
+  } 
 
   const uploadImageApi = async () => {
     try {
@@ -135,7 +131,7 @@ export default function UploadPhotoModal({
           setloading(false);
         }
       } catch (error) {
-        console.log(error);
+        console.log("error");
         setprogress(0);
         setprogressBarDisplay(false);
         setloading(false);

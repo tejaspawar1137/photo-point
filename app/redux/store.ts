@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"; 
-import { createLogger } from "redux-logger"; 
+// import { createLogger } from "redux-logger"; 
 import { photosReducer } from "./reducers/photographyReducer";
 import { userReducer } from "./reducers/userReducer";
 import { clientGalleryReducer } from "./reducers/clientGalleryReducer";
 import { videosReducer } from "./reducers/videoReducer";
  
 
-const logger = createLogger();
+// const logger = createLogger();
 
 export const store = configureStore({
   reducer: {
@@ -14,8 +14,8 @@ export const store = configureStore({
     clientGalleryReducer,
     userReducer,
     videosReducer
-  },
-  middleware: [logger],
+  }
+  // middleware: [logger],
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

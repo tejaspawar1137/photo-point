@@ -89,8 +89,7 @@ const Login: React.FC = () => {
             const role = foundUser.role;
             setCookie("role", role, 1);
             let storedRole = getCookie("role");
-            dispatch(updateUserRole(storedRole));
-            console.log(storedRole);
+            dispatch(updateUserRole(storedRole)); 
             router.push("/");
           } else {
             CustomAlert("Incorrect email or password","error");

@@ -64,8 +64,7 @@ const initialState: any = {
           }),
         };
       case CREATE_FOLDER:
-        const folder = action.payload;
-        console.log(folder)
+        const folder = action.payload; 
         return {
           ...state,
           photos: [...state.photos, folder], // Creates a new array with the new folder appended
@@ -77,8 +76,7 @@ const initialState: any = {
           photos: state.photos.filter((e: any) => e._id !== fId),
         };
       case INITIALZE_FOLDER:
-        const theFolder=action.payload;
-        console.log(theFolder)
+        const theFolder=action.payload; 
         return {
           ...state,
           photos:[...state.photos,theFolder]

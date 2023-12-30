@@ -77,9 +77,7 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
     if (photos) {
       setloading(false);
     }
-    setloading(false);
-    console.log(photos);
-    console.log("thos os", isLoading);
+    setloading(false); 
   }, [photos]);
 
   const downloadImage = (url: string, index: number) => {
@@ -94,7 +92,7 @@ const Photos: React.FC<PhotoProps> = ({ photos, folderName }) => {
         link.click();
         document.body.removeChild(link);
       })
-      .catch((error) => console.error("Error downloading image:", error));
+      .catch((error) => console.error("Error"));
   };
 
   const openFullScreenImage = (imageUrl: string) => {

@@ -63,8 +63,7 @@ export const photosReducer = (state = initialState, action: any) => {
         }),
       };
     case CREATE_FOLDER:
-      const folder = action.payload;
-      console.log(folder)
+      const folder = action.payload; 
       return {
         ...state,
         photos: [...state.photos, folder], // Creates a new array with the new folder appended

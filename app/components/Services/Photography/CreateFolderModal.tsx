@@ -25,10 +25,7 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
   function openModal() {
     setIsOpen(true);
   }
-
-  useEffect(() => { 
-    console.log(imageUrl)
-  }, [imageUrl])
+ 
   
   const updateProgressDispatch=(progress:any)=>{
     setprogress(progress)
@@ -50,13 +47,10 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
           body: JSON.stringify(sendBody),
         }
       );
-      const res = await createdFolder.json();
-      console.log(res.photoFolder);
-      console.log("create folder",res);
+      const res = await createdFolder.json(); 
       return res; // Return the created folder
     } catch (error) {
-      console.log(error);
-      throw new Error("Failed to create folder"); // Throw an error for better handling
+      console.log("error"); 
     }
   };
 
@@ -72,10 +66,8 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
           setprogressBarDisplay(false)
           return CustomAlert("Folder with the same name already exists.","error");
         } else {
-          const createdPhotoFolder = response.photoFolder;
-          console.log("createdPhotoFolder",createdPhotoFolder)
-          dispatch(createFolder(createdPhotoFolder));
-          console.log("createdPhotoFolder DISPATCHED")
+          const createdPhotoFolder = response.photoFolder; 
+          dispatch(createFolder(createdPhotoFolder)); 
           closeModal();
           setImageUrl(null);
           setFolderName(null);
@@ -83,7 +75,7 @@ export default function CreateFolderModal({h,w}: {h:any,w:any}) {
           setprogressBarDisplay(false)
         }
       } catch (error) {
-        console.log(error);
+        console.log("error");
         setprogress(0);
         setprogressBarDisplay(false)
       }

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../Navbar/page";
 import Footer from "../Footer";
 import { useSelector } from "react-redux";
@@ -29,6 +29,18 @@ const Contact = () => {
     (state) => (state as any).userReducer?.authtoken
   );
 
+  useEffect(() => {
+    setLoading(true);
+    const img1 = new Image();
+    img1.src = "/assets/contect.jpg";
+    const onLoadHandler = () => {
+      if (img1.complete) {
+        setLoading(false);
+      }
+    };
+    img1.onload = onLoadHandler;
+  }, []);
+
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -42,16 +54,9 @@ const Contact = () => {
 
     setLoading(true);
 
-    // Do something with the form data (e.g., send it to a server)
-    console.log("Name:", formData.name);
-    console.log("Email:", formData.email);
-    console.log("Phone Number:", formData.phoneNumber);
-    console.log("Message:", formData.message);
-
     const sendBody = {
       formData,
     };
-    console.log("sendBody", sendBody);
 
     try {
       const response = await fetch("/api/routes/Email/Send", {
@@ -61,7 +66,6 @@ const Contact = () => {
         },
         body: JSON.stringify(sendBody),
       });
-      console.log("Response", response);
 
       const res = await response.json();
       if (res.success) {
@@ -76,13 +80,8 @@ const Contact = () => {
       return res; // Return the created folder
     } catch (error) {
     } finally {
-      // Set loading to false after the email is sent (whether successful or not)
       setLoading(false);
     }
-
-    // You can also perform validation or other actions here
-
-    // Optionally, reset the form
   };
 
   const contactVariants = {
@@ -98,7 +97,7 @@ const Contact = () => {
   return (
     <div className="absolute top-0 w-full">
       <NavBar content={"white"} />
-      <section className=" z-10 pt-28 pb-8 sm:pb-0 sm:pt-0 overflow-hidden h-[120vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
+      <section className=" z-10 pt-16 pb-8 sm:pb-0 sm:pt-0 overflow-hidden h-[120vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
         <div>
           {/* Your existing contact form JSX */}
           {loading && <Loader />}
@@ -138,12 +137,21 @@ const Contact = () => {
               </span>
               <p className="text-sm mt-3 mb-3 flex items-center gap-2">
                 <FaPhone size={18} />
-                <a style={{color:'white'}} href="tel:+919335531881" className="ml-2">
+                <a
+                  style={{ color: "white" }}
+                  href="tel:+919335531881"
+                  className="ml-2"
+                >
                   +91 9335531881
                 </a>
-                , <a style={{color:'white'}} href="tel:+917905200245">+91 7905200245</a>
+                ,{" "}
+                <a style={{ color: "white" }} href="tel:+917905200245">
+                  +91 7905200245
+                </a>
               </p>
-              <span style={{color:'white'}} className="mt-10">GET IN TOUCH WITH US</span>
+              <span style={{ color: "white" }} className="mt-10">
+                GET IN TOUCH WITH US
+              </span>
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className=" max-w-[570px] lg:mb-0 sm: hidden lg:flex lg:flex-col">
@@ -152,7 +160,7 @@ const Contact = () => {
                   animate="visible"
                   variants={contactVariants}
                   transition={{ duration: 0.3, delay: 0.1 }}
-                  style={{color:'white'}}
+                  style={{ color: "white" }}
                   className="font-sans lg:flex sm: hidden rounded-md items-center justify-center text-center dark:text-white mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]"
                 >
                   GET IN TOUCH WITH US
@@ -162,11 +170,13 @@ const Contact = () => {
                   animate="visible"
                   variants={contactVariants}
                   transition={{ duration: 0.3, delay: 0.1 }}
-                  style={{color:'white'}}
+                  style={{ color: "white" }}
                   className="text-base text-center leading-relaxed text-body-color dark:text-dark-6 mb-9 text-white lg:flex sm: hidden"
                 >
                   Feel free to reach out to us for any questions or inquiries.
-                  We'd love to hear from you! You can send us your message by filling out this form. We'll reach back to you in a short while.
+                  We'd love to hear from you! You can send us your message by
+                  filling out this form. We'll reach back to you in a short
+                  while.
                 </motion.p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"></div>
@@ -208,14 +218,25 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 style={{color:'white'}} className="mb-1 text-xl font-bold text-white">
+                    <h4
+                      style={{ color: "white" }}
+                      className="mb-1 text-xl font-bold text-white"
+                    >
                       Phone Number
                     </h4>
-                    <a style={{color:'white'}} href="tel:+919335531881" className="text-base text-body-color text-white">
+                    <a
+                      style={{ color: "white" }}
+                      href="tel:+919335531881"
+                      className="text-base text-body-color text-white"
+                    >
                       +91 9335531881,{" "}
                     </a>
-                    <a style={{color:'white'}} href="tel:+919335531881" className="text-base text-body-color text-white">
-                     +91 7905200245
+                    <a
+                      style={{ color: "white" }}
+                      href="tel:+919335531881"
+                      className="text-base text-body-color text-white"
+                    >
+                      +91 7905200245
                     </a>
                   </div>
                 </motion.div>
@@ -242,12 +263,18 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 style={{color:'white'}} className="mb-1 text-xl font-bold text-white">
+                    <h4
+                      style={{ color: "white" }}
+                      className="mb-1 text-xl font-bold text-white"
+                    >
                       Our Location
                     </h4>
-                    <p style={{color:'white'}} className="text-base text-body-color text-white">
-                     
-          Dheeraj Photo Point, Thakurganj Chauraha, Chowk, Lucknow, 226003
+                    <p
+                      style={{ color: "white" }}
+                      className="text-base text-body-color text-white"
+                    >
+                      Dheeraj Photo Point, Thakurganj Chauraha, Chowk, Lucknow,
+                      226003
                     </p>
                   </div>
                 </motion.div>

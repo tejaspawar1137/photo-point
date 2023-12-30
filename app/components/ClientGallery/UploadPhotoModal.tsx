@@ -31,12 +31,8 @@ export default function UploadPhotoModal({
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  useEffect(() => {
-    console.log("this", imageUrl);
-  }, [imageUrl]);
-
+  } 
+  
   const uploadImageApi = async () => {
     try {
       const sendBody = {
@@ -52,7 +48,7 @@ export default function UploadPhotoModal({
       const res = await createdFolder.json();
       return res; // Return the created folder
     } catch (error) {
-      console.log(error); // Throw an error for better handling
+      console.log("error"); // Throw an error for better handling
     }
   };
 
@@ -61,8 +57,7 @@ export default function UploadPhotoModal({
     e: any,
     uploadPreset: any,
     cloudname: any
-  ) => {
-    console.log(index);
+  ) => { 
     setprogressBarDisplay(true);
     setprogress(0);
     setprogress(30);
@@ -93,8 +88,7 @@ export default function UploadPhotoModal({
         } else {
           setprogressBarDisplay(true);
           const temp = response.clientGallery.images;
-          const uploadedImage = temp[temp.length - 1];
-          console.log(uploadedImage);
+          const uploadedImage = temp[temp.length - 1]; 
           dispatch(uploadPhotoClientGallery({ UfId: id, Uurl: uploadedImage }));
           CustomAlert("Success", "success");
           closeModal();
@@ -104,7 +98,7 @@ export default function UploadPhotoModal({
           setprogressBarDisplay(false);
         }
       } catch (error) {
-        console.log(error);
+        console.log("error");
         setprogress(0);
         setprogressBarDisplay(false);
       }
@@ -117,8 +111,7 @@ export default function UploadPhotoModal({
   return (
     <>
       <button
-        onClick={() => {
-          console.log("l",length)
+        onClick={() => { 
           length < 6
             ?openModal()
             : CustomAlert("Max of 6 images can be uploaded", "info") ;

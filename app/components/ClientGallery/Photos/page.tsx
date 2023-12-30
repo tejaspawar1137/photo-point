@@ -106,30 +106,22 @@ const Photos = () => {
             method: "GET",
           }
         );
-        const res = await response.json();
-        console.log(res.clientGalleryExists);
+        const res = await response.json(); 
         setPhotos(res.clientGalleryExists);
-        gDriveLinkRef.current = res.clientGalleryExists.link;
-        console.log("link", res.clientGalleryExists.link);
+        gDriveLinkRef.current = res.clientGalleryExists.link; 
         dispatch(initializeFolderClientGallery(res.clientGalleryExists));
         setloading(false);
-      } catch (error) {
-        console.log(error);
+      } catch (error) { 
         setloading(false);
       }
     };
     fetchPhotos();
     if (reduxPhotos?.images) {
       setPhotos(reduxPhotos);
-    }
-    console.log(reduxPhotos);
+    } 
   }, [hitRedux]);
 
-  const downloadImage = (url: string, index: number) => {
-    console.log(
-      "Downloading image from URL:",
-      url.replace("http://", "https://")
-    ); // Log URL for debugging
+  const downloadImage = (url: string, index: number) => { 
     fetch(url.replace("http://", "https://"))
       .then((res) => {
         if (!res.ok) {
@@ -146,7 +138,7 @@ const Photos = () => {
         link.click();
         document.body.removeChild(link);
       })
-      .catch((error) => console.error("Error downloading image:", error));
+      .catch((error) => console.error("Error"));
   };
 
   const openFullScreenImage = (imageUrl: string) => {

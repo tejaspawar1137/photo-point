@@ -51,27 +51,23 @@ const Photography = () => {
   useEffect(() => {
     const fetchPhotosForInitialization = async () => {
       setloading(true);
-      try {
-        console.log("yo");
+      try { 
         const response = await fetch("/api/routes/Photo/PhotoFolder/FindAll", {
           method: "GET",
         });
         const resPhotos = await response.json();
-
-        console.log("mil gya");
-        console.log(resPhotos);
+ 
         if (
           Array.isArray(resPhotos.photoFolder) &&
           resPhotos.photoFolder.length > 0
         ) { 
           dispatch(inititalizePhotography(resPhotos.photoFolder)); 
         }
-      } catch (error) {
-        console.log("nahi");
-        console.error("Error fetching photos:", error);
+      } catch (error) { 
+        console.error("Error");
       } finally {
         setloading(false);
-        console.log("finally milgya");
+        console.log("Err");
       }
     };
     fetchPhotosForInitialization();

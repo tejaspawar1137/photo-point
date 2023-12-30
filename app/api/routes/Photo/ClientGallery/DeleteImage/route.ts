@@ -15,8 +15,7 @@ export async function PUT(req: NextRequest, res: Response) {
       const id=req.url.split("id=")[1]
       const clientGalleryExists = await ClientGallery.find({  _id:id });
       let imageArray: ImageType[] = clientGalleryExists[0]?.images || [];
-      const updatedImageArray = imageArray.filter((e) => e.url !== url);
-      console.log(updatedImageArray);
+      const updatedImageArray = imageArray.filter((e) => e.url !== url); 
       const updatedClientGallery = await ClientGallery.findOneAndUpdate(
         { _id:id },
         {  images: updatedImageArray }

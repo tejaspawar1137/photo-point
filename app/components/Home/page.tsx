@@ -130,15 +130,12 @@ const HomePage = () => {
     <div className="absolute top-0 bg-white w-full min-h-screen overflow-x-hidden ">
       {/* Main Section */}
       <NavBar content={"white"}></NavBar>
-      <div
-        // style={{
-        //   background:
-        //     'url("/assets/Image/home.jpg")no-repeat center center/cover',
-        // }}
+      <div 
         className="bg-cover text-center bg-center h-screen flex flex-col items-center justify-center sm:py-10"
       >
         <div>
           <Carousel
+            showIndicators={false}
             swipeable={false}
             showArrows={false}
             className="absolute z-50 top-0 w-full left-0 h-[100vh]"

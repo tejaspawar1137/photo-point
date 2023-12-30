@@ -38,13 +38,10 @@ export default function CreateFolderModal({}: {}) {
           body: JSON.stringify(sendBody),
         }
       );
-      const res = await createdFolder.json();
-      console.log(res.videoFolder);
-      return res.videoFolder; // Return the created folder
+      const res = await createdFolder.json(); 
     } catch (error) {
-      console.log(error);
-      CustomAlert("Failed to create the folder, please try again.","error")
-      throw new Error("Failed to create folder"); // Throw an error for better handling
+      console.log("error");
+      CustomAlert("Failed to create the folder, please try again.","error") 
     }
   };
 

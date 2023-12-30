@@ -41,10 +41,9 @@ export default function DeleteFolderModal({
         }
       );
       const res = await deletedFolder.json();
-      CustomAlert("Client Gallery Deleted Successfully","success")
-      console.log(res);
+      CustomAlert("Client Gallery Deleted Successfully","success") 
     } catch (error) {
-      console.log(error);
+      console.log("error");
     }
 
   };

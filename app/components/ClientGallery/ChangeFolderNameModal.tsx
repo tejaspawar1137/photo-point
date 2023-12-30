@@ -40,10 +40,9 @@ const ChangeFolderNameModal = ({changeNameFid}:{changeNameFid:any}) => {
             body:JSON.stringify(sentBody)
           }
         );
-        const res = await updatedFolder.json();
-        console.log(res);
+        const res = await updatedFolder.json(); 
       } catch (error) {
-        console.log(error);
+        console.log("error");
       }
     };
   

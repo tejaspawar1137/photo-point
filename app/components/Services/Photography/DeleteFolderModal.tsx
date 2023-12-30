@@ -42,12 +42,11 @@ export default function DeleteFolderModal({
           },
         }
       );
-      const res = await deletedFolder.json();
-      console.log(res);
+      const res = await deletedFolder.json(); 
       CustomAlert("Photography Folder Deleted Successfully","success")
     } catch (error) {
       CustomAlert("Error, try again","error")
-      console.log(error);
+      console.log("error");
     }
   };
 

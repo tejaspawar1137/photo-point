@@ -50,12 +50,10 @@ export default function CreateFolderModal({}: {}) {
           body: JSON.stringify(sendBody),
         }
       );
-      const res = await createdFolder.json();
-      console.log(res.photoFolder);
+      const res = await createdFolder.json(); 
       return res; // Return the created folder
     } catch (error) {
-      console.log(error);
-      throw new Error("Failed to create folder"); // Throw an error for better handling
+      console.log("error"); 
     }
   };
 

@@ -63,8 +63,7 @@ const initialState: any = {
           }),
         };
       case CREATE_FOLDER:
-        const folder = action.payload;
-        console.log(folder)
+        const folder = action.payload; 
         return {
           ...state,
           videos: [...state.videos, folder], // Creates a new array with the new folder appended

@@ -27,11 +27,7 @@ export default function UploadVideoModal({
   function openModal() {
     setIsOpen(true);
   }
- 
-  useEffect(() => {
-    console.log(videoUrl);
-    console.log(index);
-  }, [videoUrl, index]);
+  
 
   const uploadVideoApi = async () => {
     try {

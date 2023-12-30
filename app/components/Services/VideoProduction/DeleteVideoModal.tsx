@@ -40,10 +40,9 @@ export default function DeleteVideoModal({ id, url }: { id: any; url: any }) {
         }
       );
       const res = await deletedImage.json();
-      CustomAlert("Video deleted successfully","success")
-      console.log(res);
+      CustomAlert("Video deleted successfully","success") 
     } catch (error) {
-      console.log(error);
+      console.log("error");
     }
   };
 
