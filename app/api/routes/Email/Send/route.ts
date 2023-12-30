@@ -6,8 +6,7 @@ export async function POST(req: Request, res: Response) {
   try {
     const reqBody = await req.json();
     const { formData } = reqBody;
-
-    // Create a Nodemailer transporter
+ 
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -15,8 +14,7 @@ export async function POST(req: Request, res: Response) {
         pass: "oyso hcia jpmg rahc",
       },
     });
-
-    // Setup email data
+ 
     const mailOptions = {
       from: formData.email,
       to: "sharmaaniket682@gmail.com",
@@ -26,14 +24,14 @@ export async function POST(req: Request, res: Response) {
            <p>Phone: ${formData.phoneNumber}</p>
            <p>Message: ${formData.message}</p>`,
     };
-
-    // Send the email
-    const info = await transporter.sendMail(mailOptions);
+ 
+   await transporter.sendMail(mailOptions);
     return NextResponse.json(
       { success: true, message: "Email sent successfully" },
       { status: 200 }
     );
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { success: false, message: "Failed to send email, please try again." },
       { status: 500 }

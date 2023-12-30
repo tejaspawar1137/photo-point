@@ -24,7 +24,7 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false); // Added loading state
-
+  const [mailLoading, setmailLoading] = useState(false);
   const authtoken = useSelector(
     (state) => (state as any).userReducer?.authtoken
   );
@@ -52,7 +52,7 @@ const Contact = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    setLoading(true);
+    setmailLoading(true);
 
     const sendBody = {
       formData,
@@ -80,7 +80,7 @@ const Contact = () => {
       return res; // Return the created folder
     } catch (error) {
     } finally {
-      setLoading(false);
+      setmailLoading(false);
     }
   };
 
@@ -94,14 +94,11 @@ const Contact = () => {
     visible: { opacity: 1, x: 10, transition: { duration: 1 } },
   };
 
-  return (
-   !loading? <div className="absolute top-0 w-full">
+  return !loading ? (
+    <div className="absolute top-0 w-full">
       <NavBar content={"white"} />
       <section className=" z-10 pt-16 pb-8 sm:pb-0 sm:pt-0 overflow-hidden h-[120vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
-        <div>
-          {/* Your existing contact form JSX */}
-          {loading && <Loader />}
-        </div>
+        <div></div>
         <div className="container mx-auto">
           <div className="flex flex-wrap  mt-5 sm:mt-28">
             <div className="lg:hidden flex flex-col sm: pt-10 ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg sm:opacity-80 ">
@@ -379,7 +376,7 @@ const Contact = () => {
                   >
                     <motion.input
                       required
-                      type="text"
+                      type="number"
                       name="phoneNumber"
                       placeholder="Your Phone"
                       className="border-stroke text-black dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
@@ -411,9 +408,16 @@ const Contact = () => {
                   >
                     <button
                       type="submit"
-                      className="bg-blue-700 w-full p-3 text-white transition border rounded border-primary bg-primary hover:bg-opacity-90"
+                      className="bg-blue-700 w-full p-3 text-center flex justify-center text-white transition border rounded border-primary bg-primary hover:bg-opacity-90"
                     >
-                      Send Message
+                      {!mailLoading ? (
+                        <svg
+                          className="animate-spin h-5 w-5 mr-3 border-l-[3px]  border-white rounded-full"
+                          viewBox="0 0 24 24"
+                        ></svg>
+                      ) : (
+                        "Send Message"
+                      )}
                     </button>
                   </motion.div>
                 </form>
@@ -459,11 +463,11 @@ const Contact = () => {
         </div>
       </section>
       <Footer></Footer>
-    </div>:
-        <div className="h-full bg-white">
-          <Loader />
-        </div>
-
+    </div>
+  ) : (
+    <div className="h-full bg-white">
+      <Loader />
+    </div>
   );
 };
 
