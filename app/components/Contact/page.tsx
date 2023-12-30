@@ -95,7 +95,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="absolute top-0 w-full">
+   !loading? <div className="absolute top-0 w-full">
       <NavBar content={"white"} />
       <section className=" z-10 pt-16 pb-8 sm:pb-0 sm:pt-0 overflow-hidden h-[120vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
         <div>
@@ -459,7 +459,11 @@ const Contact = () => {
         </div>
       </section>
       <Footer></Footer>
-    </div>
+    </div>:
+        <div className="h-full bg-white">
+          <Loader />
+        </div>
+
   );
 };
 
