@@ -6,10 +6,10 @@ const Loader = dynamic(() => import("../Loader/Loader"), { ssr: false });
 import dynamic from "next/dynamic";
 import { updateUserRole } from "@/app/redux/actions/userAction";
 import { Transition } from "react-transition-group";
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
 
 const NavBar = ({ content }: any) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const dispatch = useDispatch();
   const [activeOption, setActiveOption] = useState("");
   const [loading, setLoading] = useState(false);
@@ -145,7 +145,9 @@ const NavBar = ({ content }: any) => {
                   <ul>
                     <li className="mb-1">
                       <Link
-                        className="block p-4 text-sm font-semibold font-sans text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                        className={`block p-4 text-sm ${
+                          pathname === "/" ? "text-blue-500 " : "text-zinc-700"
+                        } font-semibold font-sans   focus:text-blue-600 rounded`}
                         href="/"
                       >
                         Home
@@ -155,7 +157,9 @@ const NavBar = ({ content }: any) => {
 
                     <li className="mb-1">
                       <Link
-                        className="block p-4 text-sm font-semibold font-sans text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                        className={`block ${
+                          pathname === "/components/About" ? "text-blue-500 " : "text-zinc-700"
+                        } p-4 text-sm font-semibold font-sans focus:text-blue-600 rounded`}
                         href="/components/About"
                       >
                         About Us
@@ -165,7 +169,9 @@ const NavBar = ({ content }: any) => {
 
                     <li className="mb-1">
                       <Link
-                        className="block p-4 text-sm font-semibold text-gray-400 font-sans hover:bg-blue-50 hover:text-blue-600 rounded"
+                        className={`block ${
+                          pathname === "/components/Services/Photography" ? "text-blue-500 " : "text-zinc-700"
+                        } p-4 text-sm font-semibold focus:text-blue-600 rounded`}
                         href="/components/Services/Photography"
                       >
                         Photography
@@ -175,7 +181,9 @@ const NavBar = ({ content }: any) => {
 
                     <li className="mb-1">
                       <Link
-                        className="block p-4 text-sm font-semibold text-gray-400 font-sans hover:bg-blue-50 hover:text-blue-600 rounded"
+                        className={`block ${
+                          pathname === "/components/Services/VideoProduction" ? "text-blue-500 " : "text-zinc-700"
+                        } p-4 text-sm font-semibold focus:text-blue-600 rounded`}
                         href="/components/Services/VideoProduction"
                       >
                         Videography
@@ -184,7 +192,9 @@ const NavBar = ({ content }: any) => {
                     </li>
                     <li className="mb-1">
                       <Link
-                        className="block p-4 text-sm font-semibold text-gray-400 font-sans hover:bg-blue-50 hover:text-blue-600 rounded"
+                        className={`block p-4 text-sm ${
+                          pathname === "/components/ClientGallery" ? "text-blue-500 " : "text-zinc-700"
+                        } font-semibold focus:text-blue-600 rounded`}
                         href="/components/ClientGallery"
                       >
                         Client Gallery
@@ -194,7 +204,7 @@ const NavBar = ({ content }: any) => {
 
                     <li className="mb-1">
                       <Link
-                        className="block p-4 text-sm font-semibold text-gray-400 font-sans hover:bg-blue-50 hover:text-blue-600 rounded"
+                        className={`block ${pathname==="/components/Contact"?"text-blue-500 " : "text-zinc-700"} p-4 text-sm font-semibold focus:text-blue-600 rounded`}
                         href="/components/Contact"
                       >
                         Contact
@@ -267,7 +277,7 @@ const NavBar = ({ content }: any) => {
             </span> */}
           </Link>
           <div className="ml-auto   xl:hidden">
-          {/* ${
+            {/* ${
                 content !== "black" ? "bg-gray-800 bg-opacity-[0.25]" : ""
               }  */}
             <button
