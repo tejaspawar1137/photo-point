@@ -6,10 +6,8 @@ const Loader = dynamic(() => import("../Loader/Loader"), { ssr: false });
 import dynamic from "next/dynamic";
 import { updateUserRole } from "@/app/redux/actions/userAction";
 import { Transition } from "react-transition-group";
-import { usePathname } from 'next/navigation'
 
 const NavBar = ({ content }: any) => {
-  const pathname = usePathname()
   const dispatch = useDispatch();
   const [activeOption, setActiveOption] = useState("");
   const [loading, setLoading] = useState(false);
@@ -236,15 +234,14 @@ const NavBar = ({ content }: any) => {
         <Loader></Loader>
       ) : (
         // from-transparent to-black bg-opacity-30 backdrop-blur-[2px]
-        <nav className="relative bg-white  w-full top-0 px-1 xs:px-4 py-5 flex sm:justify-unset items-center lg:justify-between ">
+        <nav className="relative bg-white   w-full top-0 px-1 xs:px-4 py-5 flex sm:justify-unset items-center lg:justify-between ">
           <Link className=" flex  items-center font-bold leading-none" href="/">
-            <div className="flex flex-col -translate-x-6 xs:-translate-x-7 sm:-translate-x-0 scale-75 sm:scale-100 text-purple-950 items-center">
-              <div className="font-extrabold flex items-center uppercase font-Penna relative text-4xl">
-                <span className=" tracking-wider">Dheeraj </span>
-                <span className=" pl-3  tracking-wider">Photo</span>
-                <div className="absolute w-full -bottom-[0.4rem] h-[2px] bg-purple-950"></div>
-                <div className="  w-full absolute z-10 flex justify-center -bottom-[0.6rem]">
-                  <div className="text-xs bg-white tracking-wider  px-1 text-center  font-Bavro uppercase">
+            <div className="flex flex-col text-purple-950 items-center">
+              <div className="font-extrabold uppercase font-Penna relative text-4xl">
+                Dheeraj Photo
+                <div className="absolute w-full -bottom-[0.3rem] h-[2px] bg-purple-950"></div>
+                <div className="  w-full absolute z-10 flex justify-center -bottom-[0.5rem]">
+                  <div className="text-xs bg-white  px-1 text-center  font-Bavro uppercase">
                     Point
                   </div>
                 </div>
@@ -267,13 +264,11 @@ const NavBar = ({ content }: any) => {
             </span> */}
           </Link>
           <div className="ml-auto   xl:hidden">
-          {/* ${
-                content !== "black" ? "bg-gray-800 bg-opacity-[0.25]" : ""
-              }  */}
             <button
               onClick={toggleMobileMenu}
-              className={`navbar-burger flex items-center p-2 
-            rounded-md text-blue-600 `}
+              className={`navbar-burger flex items-center p-2 ${
+                content !== "black" ? "bg-gray-800 bg-opacity-[0.25]" : ""
+              } rounded-md text-blue-600 `}
             >
               <svg
                 className="block h-5 w-5 sm:h-6 sm:w-6 fill-current"
@@ -281,8 +276,7 @@ const NavBar = ({ content }: any) => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  // fill={content === "black" ? `black` : "white"}
-                  fill="black"
+                  fill={content === "black" ? `black` : "white"}
                   d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
                   // style={{ filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))" }}
                 ></path>
@@ -292,17 +286,17 @@ const NavBar = ({ content }: any) => {
           <ul className="hidden  pl-16  w-[50%]  absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 xl:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-2 2xl:space-x-6">
             <li>
               <Link
-                // style={{
-                //               textShadow:
-                //              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                //       }}
-                className={`text-sm pb-[0.1rem] font-bold ${
-                  pathname === "/"
-                    ? "text-blue-500 border-b border-b-blue-500"
+                style={{
+                  textShadow:
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                }}
+                className={`text-sm font-bold ${
+                  activeOption === "home"
+                    ? "text-blue-600"
                     : content === "black"
-                    ? " text-zinc-700"
-                    : "text-zinc-700"
-                } hover:text-blue-500 hover:border-b hover:border-b-blue-500 transition focus:border-b focus:border-b-blue-500`}
+                    ? "text-black"
+                    : "text-white"
+                } hover:text-blue-400`}
                 href="/"
                 onClick={() => handleOptionClick("home")}
               >
@@ -333,17 +327,17 @@ const NavBar = ({ content }: any) => {
             </li>
             <li>
               <Link
-                // style={{
-                //               textShadow:
-                //              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                //       }}
-                className={`text-sm pb-[0.1rem] font-bold ${
-                  pathname === "/components/About"
-                    ? "text-blue-500 border-b border-b-blue-500"
+                style={{
+                  textShadow:
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                }}
+                className={`text-sm font-bold ${
+                  activeOption === "About"
+                    ? "text-blue-600"
                     : content === "black"
-                    ? "text-zinc-700"
-                    : "text-zinc-700"
-                } hover:text-blue-500 hover:border-b hover:border-b-blue-500 transition focus:border-b focus:border-b-blue-500`}
+                    ? "text-black"
+                    : "text-white"
+                } hover:text-blue-400`}
                 href="/components/About"
                 onClick={() => handleOptionClick("About")}
               >
@@ -374,17 +368,17 @@ const NavBar = ({ content }: any) => {
             </li>
             <li>
               <Link
-                // style={{
-                //               textShadow:
-                //              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                //       }}
-                className={`text-sm pb-[0.1rem] font-bold ${
-                  pathname === "/components/Services/Photography"
-                    ? "text-blue-500 border-b border-b-blue-500"
+                style={{
+                  textShadow:
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                }}
+                className={`text-sm font-bold ${
+                  activeOption === "photography"
+                    ? "text-blue-600"
                     : content === "black"
-                    ? "text-zinc-700"
-                    : "text-zinc-700"
-                } hover:text-blue-500 hover:border-b hover:border-b-blue-500 transition focus:border-b focus:border-b-blue-500`}
+                    ? "text-black"
+                    : "text-white"
+                } hover:text-blue-400`}
                 href="/components/Services/Photography"
                 onClick={() => handleOptionClick("photography")}
               >
@@ -415,17 +409,17 @@ const NavBar = ({ content }: any) => {
             </li>
             <li>
               <Link
-                // style={{
-                //               textShadow:
-                //              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                //       }}
-                className={`text-sm pb-[0.1rem] font-bold ${
-                  pathname === "/components/Services/VideoProduction"
-                    ? "text-blue-500 border-b border-b-blue-500"
+                style={{
+                  textShadow:
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                }}
+                className={`text-sm font-bold ${
+                  activeOption === "videography"
+                    ? "text-blue-600"
                     : content === "black"
-                    ? "text-zinc-700"
-                    : "text-zinc-700"
-                } hover:text-blue-500 hover:border-b hover:border-b-blue-500 transition focus:border-b focus:border-b-blue-500`}
+                    ? "text-black"
+                    : "text-white"
+                } hover:text-blue-400`}
                 href="/components/Services/VideoProduction"
                 onClick={() => handleOptionClick("videography")}
               >
@@ -456,17 +450,17 @@ const NavBar = ({ content }: any) => {
             </li>
             <li>
               <Link
-                // style={{
-                //               textShadow:
-                //              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                //       }}
-                className={`text-sm pb-[0.1rem] font-bold ${
-                  pathname === "/components/ClientGallery"
-                    ? "text-blue-500 border-b border-b-blue-500"
+                style={{
+                  textShadow:
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                }}
+                className={`text-sm font-bold ${
+                  activeOption === "clientGallery"
+                    ? "text-blue-600"
                     : content === "black"
-                    ? "text-zinc-700"
-                    : "text-zinc-700"
-                } hover:text-blue-500 hover:border-b hover:border-b-blue-500 transition focus:border-b focus:border-b-blue-500`}
+                    ? "text-black"
+                    : "text-white"
+                } hover:text-blue-400`}
                 href="/components/ClientGallery"
                 onClick={() => handleOptionClick("clientGallery")}
               >
@@ -497,17 +491,17 @@ const NavBar = ({ content }: any) => {
             </li>
             <li>
               <Link
-                // style={{
-                //               textShadow:
-                //              content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                //       }}
-                className={`text-sm pb-[0.1rem] font-bold ${
-                  pathname === "/components/Contact"
-                    ? "text-blue-500 border-b border-b-blue-500"
+                style={{
+                  textShadow:
+                    content === "black" ? "" : "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                }}
+                className={`text-sm font-bold ${
+                  activeOption === "Contact"
+                    ? "text-blue-600"
                     : content === "black"
-                    ? "text-zinc-700"
-                    : "text-zinc-700"
-                } hover:text-blue-500 hover:border-b hover:border-b-blue-500 transition focus:border-b focus:border-b-blue-500`}
+                    ? "text-black"
+                    : "text-white"
+                } hover:text-blue-400`}
                 href="/components/Contact"
                 onClick={() => handleOptionClick("Contact")}
               >

@@ -47,9 +47,33 @@
   font-family: 'Revaux'; 
   src: url('../public/assets/Fonts/revaux/Revaux-GO0dO.otf') format('opentype');  
 }
+@font-face{
+  font-family: 'Millenia'; 
+  src: url('../public/assets/Fonts/Millenia/MilleniaPersonalUse-w1OB8.ttf') format('opentype');  
+}
+@font-face{
+  font-family: 'Nunito'; 
+  src: url('../public/assets/Fonts/Nunito/static/NunitoSans_10pt-Bold.ttf') format('opentype');  
+}
+@font-face{
+  font-family: 'Avance'; 
+  src: url('../public/assets/Fonts/Avance/Avance.ttf') format('opentype');  
+}
 
 .font-Bavro{
   font-family: 'Bavro', sans-serif;
+}
+.font-Avance{
+  font-family: 'Avance', sans-serif;
+} 
+.font-Nunito{
+  font-family: 'Nunito', sans-serif;
+}
+.font-Penna{
+  font-family: 'Penna', sans-serif;
+}
+.font-Millenia{
+  font-family: 'Millenia', sans-serif;
 }
 .font-Zefani{
   font-family: 'Zefani', sans-serif;
