@@ -25,7 +25,7 @@ const FullScreenImageModal: React.FC<FullScreenImageModalProps> = ({
   onClose,
 }) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
+    <div style={{ zIndex:6100 }} className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
       <div className="max-w-3xl max-h-3/4">
         <button
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",zIndex:6100 }} 
