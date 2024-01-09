@@ -127,18 +127,19 @@ const HomePage = () => {
   }, [controls, TextView]);
 
   return !loading ? (
-    <div className="absolute top-0 bg-white w-full min-h-screen overflow-x-hidden ">
+    <>
+    <NavBar content={"white"}></NavBar>
+    <div className="  bg-white w-full min-h-screen overflow-x-hidden ">
       {/* Main Section */}
-      <NavBar content={"white"}></NavBar>
       <div 
         className="bg-cover text-center bg-center h-screen flex flex-col items-center justify-center sm:py-10"
       >
-        <div>
+        <div className=" ">
           <Carousel
             showIndicators={false}
             swipeable={false}
             showArrows={false}
-            className="absolute z-50 top-0 w-full left-0 h-[100vh]"
+            className="absolute z-50 top-10 w-full left-0 h-[110vh]"
             autoPlay={true}
             interval={5000}
             infiniteLoop={true}
@@ -151,7 +152,7 @@ const HomePage = () => {
               <div key={index} className="">
                 <img
                   src={image.url}
-                  className="h-[100vh] object-cover"
+                  className="h-[110vh] object-cover"
                   alt={`Slide  ${index}`}
                 />
               </div>
@@ -166,7 +167,7 @@ const HomePage = () => {
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 color: "white",
               }}
-              className="text-4xl font-Ikaros sm:text-5xl font-[800] font-sans md:text-6xl lg:max-w-[60%] text-center leading-none sm:leading-[3.5rem] md:leading-[4.5rem]"
+              className="text-4xl font-Nunito sm:text-5xl  md:text-6xl lg:max-w-[70%] text-center leading-none sm:leading-[3.5rem] md:leading-[4.5rem]"
             >
               Elevating <br /> Moments Through Artistry
             </h1>
@@ -175,13 +176,13 @@ const HomePage = () => {
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 color: "white",
               }}
-              className="text-xl font-Ikaros sm:text-2xl font-sans font-semibold mt-16"
+              className="text-xl font-Nunito sm:text-2xl font-sans font-semibold mt-5"
             >
               "Capturing Moments, Creating Memories"
             </i>
             <div
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-              className="text-2xl font-[800] font-Ikaros uppercase sm:text-3xl md:text-4xl font-sans text-blue-400 p-5"
+              className="text-2xl font-[800] font-Nunito uppercase sm:text-3xl md:text-4xl font-sans text-blue-400 p-5"
             >
               <Typed
                 strings={[
@@ -205,7 +206,7 @@ const HomePage = () => {
       </div>
 
       {/* Studio Rental */}
-      <h2 className="text-5xl flex justify-center font-Ikaros uppercase font-bold text-indigo-800 mb-5 mt-16">
+      <h2 className="text-5xl flex justify-center font-Ikaros uppercase font-bold text-indigo-800 mb-5 mt-[10rem]">
         Studio
       </h2>
       <hr></hr>
@@ -223,7 +224,7 @@ const HomePage = () => {
               src="https://www.youtube.com/embed/1jfBjq0LU7k?si=yYWN2zaVhRY_VNA9&amp;autoplay=1"
               title="YouTube video player"
               allow="autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-              className="w-full md:w-96 lg:w-[800px] lg:h-[500px] md:h-72 lg:h-106"
+              className="w-full md:w-96 lg:w-[50vw] lg:h-[50vh] md:h-72 lg:h-106"
             ></iframe>
           </div>
         </div>
@@ -449,6 +450,7 @@ const HomePage = () => {
       {/* Footer */}
       <Footer />
     </div>
+    </>
   ) : (
     <div className="h-[90vh]">
       <Loader />

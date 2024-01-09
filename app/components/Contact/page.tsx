@@ -13,6 +13,7 @@ import {
   FaInstagram,
   FaYoutube,
   FaPhone,
+  FaPhoneAlt
 } from "react-icons/fa";
 
 const Contact = () => {
@@ -95,14 +96,14 @@ const Contact = () => {
   };
 
   return !loading ? (
-    <div className="absolute top-0 w-full">
+    <div className="absolute   top-0 w-full">
       <NavBar content={"white"} />
-      <section className=" z-10 pt-16 pb-8 sm:pb-0 sm:pt-0 overflow-hidden h-[120vh] sm:h-screen dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
+      <section className=" z-10 pt-16 pb-8 sm:pb-0 sm:pt-0 overflow-hidden h-[130vh] lg:h-[120vh] border border-black  dar dark:bg-dark py-4 sm:py-20 lg:py-[120px] relative contect-img ">
         <div></div>
         <div className="container mx-auto">
           <div className="flex flex-wrap  mt-5 sm:mt-28">
             <div className="lg:hidden flex flex-col sm: pt-10 ml-5 sm: text-5xl sm: font-bold sm: mb-0  font-sans shadow-xlg sm:opacity-80 ">
-              <span className=" text-opacity-100 flex flex-row items-center  space-x-4 ">
+              <span className="text-white text-opacity-100 flex flex-row items-center  space-x-4 ">
                 <a
                   href="https://www.facebook.com/Dheerajphotopoint/"
                   target="_blank"
@@ -132,8 +133,8 @@ const Contact = () => {
                   <FaWhatsapp size={30} /> {/* WhatsApp icon */}
                 </a>
               </span>
-              <p className="text-sm mt-3 mb-3 flex items-center gap-2">
-                <FaPhone size={18} />
+              <p className="text-sm mt-3 text-white mb-3 flex items-center gap-2">
+                <FaPhoneAlt size={18} />
                 <a
                   style={{ color: "white" }}
                   href="tel:+919335531881"
@@ -175,11 +176,9 @@ const Contact = () => {
                   filling out this form. We'll reach back to you in a short
                   while.
                 </motion.p>
-                <div className="mb-8 flex w-full max-w-[370px]">
-                  <div className="text-blue-500 bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"></div>
-                </div>
+          
                 <motion.div
-                  className="mb-8 flex w-full max-w-[370px]"
+                  className="mb-8  flex w-full max-w-[370px]"
                   initial="hidden"
                   animate="visible"
                   variants={contactVariants}

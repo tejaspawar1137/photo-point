@@ -90,8 +90,8 @@ const NavBar = ({ content }: any) => {
     setActiveOption(option);
   };
 
-  return (
-    <div style={{ zIndex: 4000 }} className=" absolute top-0 w-full">
+  return ( 
+    <div style={{ zIndex: 4000 }} className=" fixed top-0 w-full">
       {loading ? (
         <Loader></Loader>
       ) : (
@@ -299,7 +299,7 @@ const NavBar = ({ content }: any) => {
               </svg>
             </button>
           </div>
-          <ul className="hidden  pl-16  w-[50%]  absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 xl:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-2 2xl:space-x-6">
+          <ul className="hidden    pl-16  w-[50%]  absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 xl:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-2 2xl:space-x-4">
             <li>
               <Link
                 // style={{
@@ -544,7 +544,7 @@ const NavBar = ({ content }: any) => {
           )}
         </nav>
       )}
-    </div>
+    </div> 
   );
 };
 
