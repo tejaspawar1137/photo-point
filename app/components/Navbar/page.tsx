@@ -91,7 +91,7 @@ const NavBar = ({ content }: any) => {
   };
 
   return (
-    <div style={{ zIndex: 4000 }} className="fixed top-0 w-full">
+    <div style={{ zIndex: 4000 }} className=" top-0 w-full">
       {loading ? (
         <Loader></Loader>
       ) : (
