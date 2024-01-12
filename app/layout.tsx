@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import StoreProvider from "./redux/StoreProvider";
 import { ToastContainer } from "react-toastify";
-import Head from "next/head";
 
 interface Metadata {
   title: string;
@@ -44,20 +43,6 @@ const RootLayout: NextPage<RootLayoutProps> = ({
           <meta name="twitter:title" content={metadata.title} />
           <meta name="twitter:description" content={metadata.description} />
           <meta name="twitter:image" content={metadata.imageUrl} />
-            {/* Additional SEO improvements */}
-        {/* <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "url": "https://www.dheerajphotopoint.com/",
-            "name": "Dheeraj Photo Point",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+91 9335531881",
-              "contactType": "Customer service"
-            }
-          }
-        `}} /> */}
         </head>
         <body>
           <div>
