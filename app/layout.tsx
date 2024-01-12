@@ -17,7 +17,7 @@ const metadata: Metadata = {
   description:
     "Dheeraj Photo Point offers top-notch Photography, Videography, Image retouching, Studio rental and more in Lucknow, Uttar Pradesh, India.",
   imageUrl: "/assets/Icons/logo.png",
-  url: "https://www.dheerajphotopoint.com",
+  url: "https://www.dheerajphotopoint.com/",
 };
 
 interface RootLayoutProps {
