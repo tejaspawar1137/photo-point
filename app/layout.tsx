@@ -33,20 +33,20 @@ const RootLayout: NextPage<RootLayoutProps> = ({
     <StoreProvider>
       <html lang="en">
         <Head>
-          <title>Dheeraj Photo Point - Photography and Videography</title>
+          <title>{metadata.title}</title>
           <meta name="description" content={metadata.description} />
           {/* Open Graph tags */}
           <meta property="og:title" content={metadata.title} />
           <meta property="og:description" content={metadata.description} />
           <meta property="og:image" content={metadata.imageUrl} />
-          <meta property="og:url" content={metadata.url} />
+          {/* <meta property="og:url" content={metadata.url} /> */}
           {/* Twitter Card tags */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={metadata.title} />
           <meta name="twitter:description" content={metadata.description} />
           <meta name="twitter:image" content={metadata.imageUrl} />
             {/* Additional SEO improvements */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `
+        {/* <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `
           {
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -58,7 +58,7 @@ const RootLayout: NextPage<RootLayoutProps> = ({
               "contactType": "Customer service"
             }
           }
-        `}} />
+        `}} /> */}
         </Head>
         <body>
           <div>
