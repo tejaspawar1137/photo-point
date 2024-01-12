@@ -45,7 +45,7 @@ const RootLayout: NextPage<RootLayoutProps> = ({
           <meta name="twitter:description" content={metadata.description} />
           <meta name="twitter:image" content={metadata.imageUrl} />
             {/* Additional SEO improvements */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `
+        {/* <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `
           {
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -57,7 +57,7 @@ const RootLayout: NextPage<RootLayoutProps> = ({
               "contactType": "Customer service"
             }
           }
-        `}} />
+        `}} /> */}
         </Head>
         <body>
           <div>

@@ -116,7 +116,7 @@ const NavBar = ({ content }: any) => {
                 <div className="flex items-center mb-8">
                   <Link
                     className="mr-auto text-3xl font-bold leading-none"
-                    href="#"
+                    href="/"
                   >
                     <img
                       src="/assets/Icons/logo.png"
