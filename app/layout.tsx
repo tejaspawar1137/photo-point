@@ -33,7 +33,7 @@ const RootLayout: NextPage<RootLayoutProps> = ({
     <StoreProvider>
       <html lang="en">
         <Head>
-          <title>{metadata.title}</title>
+          <title>Dheeraj Photo Point - Photography and Videography</title>
           <meta name="description" content={metadata.description} />
           {/* Open Graph tags */}
           <meta property="og:title" content={metadata.title} />
