@@ -31,7 +31,7 @@ const RootLayout: NextPage<RootLayoutProps> = ({
   return (
     <StoreProvider>
       <html lang="en">
-        <Head>
+        <head>
           <title>{metadata.title}</title>
           <meta name="description" content={metadata.description} />
           {/* Open Graph tags */}
@@ -58,7 +58,7 @@ const RootLayout: NextPage<RootLayoutProps> = ({
             }
           }
         `}} /> */}
-        </Head>
+        </head>
         <body>
           <div>
             <div>{children}</div>
