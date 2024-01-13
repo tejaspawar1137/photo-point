@@ -43,6 +43,25 @@ const RootLayout: NextPage<RootLayoutProps> = ({
           <meta name="twitter:title" content={metadata.title} />
           <meta name="twitter:description" content={metadata.description} />
           <meta name="twitter:image" content={metadata.imageUrl} />
+          {/* Additonal SEO  */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: `
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "https://www.dheerajphotopoint.com/",
+        "name": "Dheeraj Photo Point",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91 9335531881",
+          "contactType": "Customer service"
+        }
+      }
+    `,
+            }}
+          />
         </head>
         <body>
           <div>
