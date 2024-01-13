@@ -31,8 +31,10 @@ const RootLayout: NextPage<RootLayoutProps> = ({
     <StoreProvider>
       <html lang="en">
         <head>
-          <title>{metadata.title}</title>
-          <meta name="description" content={metadata.description} />
+          <meta charSet="UTF-8"/>
+          <meta name="description" content={metadata.description} /> 
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="icon" href="/assets/favicon.ico" />
           {/* Open Graph tags */}
           <meta property="og:title" content={metadata.title} />
           <meta property="og:description" content={metadata.description} />
@@ -48,8 +50,8 @@ const RootLayout: NextPage<RootLayoutProps> = ({
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: `
-      {
-        "@context": "https://schema.org",
+              {
+                "@context": "https://schema.org",
         "@type": "Organization",
         "url": "https://www.dheerajphotopoint.com/",
         "name": "Dheeraj Photo Point",
@@ -59,9 +61,10 @@ const RootLayout: NextPage<RootLayoutProps> = ({
           "contactType": "Customer service"
         }
       }
-    `,
-            }}
-          />
+      `,
+    }}
+    />
+    <title>{metadata.title}</title>
         </head>
         <body>
           <div>
