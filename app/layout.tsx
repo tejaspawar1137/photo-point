@@ -1,10 +1,8 @@
 import type { NextPage } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { ToastContainer } from "react-toastify";
-import Head from "next/head";
 import StoreProvider from "./redux/StoreProvider";
-
+import { ToastContainer } from "react-toastify";
 
 interface Metadata {
   title: string;
@@ -39,26 +37,12 @@ const RootLayout: NextPage<RootLayoutProps> = ({
           <meta property="og:title" content={metadata.title} />
           <meta property="og:description" content={metadata.description} />
           <meta property="og:image" content={metadata.imageUrl} />
-          {/* <meta property="og:url" content={metadata.url} /> */}
+          <meta property="og:url" content={metadata.url} />
           {/* Twitter Card tags */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={metadata.title} />
           <meta name="twitter:description" content={metadata.description} />
           <meta name="twitter:image" content={metadata.imageUrl} />
-            {/* Additional SEO improvements */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "url": "https://www.dheerajphotopoint.com/",
-            "name": "Dheeraj Photo Point",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+91 9335531881",
-              "contactType": "Customer service"
-            }
-          }
-        `}} />
         </head>
         <body>
           <div>
