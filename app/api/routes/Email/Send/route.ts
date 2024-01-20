@@ -4,25 +4,31 @@ import nodemailer from "nodemailer";
 export const dynamic = "force-dynamic";
 export async function POST(req: Request, res: Response) {
   try {
+    const email="dheerajstudio96@gmail.com" 
     const reqBody = await req.json();
     const { formData } = reqBody;
  
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "sharmaaniket682@gmail.com",
-        pass: "oyso hcia jpmg rahc",
+        user: `${email}`,
+        pass: "sstb vejn ytjt liqc",
       },
     });
  
     const mailOptions = {
       from: formData.email,
-      to: "sharmaaniket682@gmail.com",
+      to: `${email}`,
       subject: "Dheeraj Photo Point: New Inquiry",
-      html: `<p>Name: ${formData.name}</p>
-           <p>Email: ${formData.email}</p>
-           <p>Phone: ${formData.phoneNumber}</p>
-           <p>Message: ${formData.message}</p>`,
+      html: `
+        <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+          <h2 style="color: #333;">New Inquiry for Dheeraj Photo Point</h2>
+          <p><strong>Name:</strong> ${formData.name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Phone:</strong> ${formData.phoneNumber}</p>
+          <p><strong>Message:</strong> ${formData.message}</p>
+        </div>
+      `,
     };
  
    await transporter.sendMail(mailOptions);

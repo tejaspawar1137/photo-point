@@ -59,11 +59,11 @@ const Footer = () => {
         </div>
         <a
           style={{ color: "white" }}
-          href="mailto:dheerajphotopoint@gmail.com"
+          href="mailto:dheerajstudio96@gmail.com"
           className="text-lg mb-2 flex items-center gap-2 "
         >
           <FaMailBulk size={18} />
-          dheerajphotopoint@gmail.com
+          dheerajstudio96@gmail.com
         </a>
         <p
           style={{ color: "white" }}
