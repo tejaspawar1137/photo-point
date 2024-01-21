@@ -31,9 +31,12 @@ const RootLayout: NextPage<RootLayoutProps> = ({
     <StoreProvider>
       <html lang="en">
         <head>
-          <meta charSet="UTF-8"/>
-          <meta name="description" content={metadata.description} /> 
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta charSet="UTF-8" />
+          <meta name="description" content={metadata.description} />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
           <link rel="icon" href="/assets/favicon.ico" />
           {/* Open Graph tags */}
           <meta property="og:title" content={metadata.title} />
@@ -62,9 +65,9 @@ const RootLayout: NextPage<RootLayoutProps> = ({
         }
       }
       `,
-    }}
-    />
-    <title>{metadata.title}</title>
+            }}
+          />
+          <title>{metadata.title}</title>
         </head>
         <body>
           <div>
