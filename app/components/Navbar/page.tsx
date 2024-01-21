@@ -116,6 +116,7 @@ const NavBar = ({ content }: any) => {
                 <div className="flex items-center mb-8">
                   <Link
                     className="mr-auto text-3xl font-bold leading-none"
+                    onClick={toggleMobileMenu}
                     href="/"
                   >
                     <img
@@ -247,13 +248,17 @@ const NavBar = ({ content }: any) => {
       ) : (
         // from-transparent to-black bg-opacity-30 backdrop-blur-[2px]
         <nav className="relative bg-white  w-full top-0 px-1 xs:px-4 py-5 flex sm:justify-unset items-center lg:justify-between ">
-          <Link className=" flex  items-center font-bold leading-none" href="/">
-            <div className="flex flex-col -translate-x-6 xs:-translate-x-7 sm:-translate-x-0 scale-75 sm:scale-100 text-purple-950 items-center">
+          <Link className="flex relative items-center font-bold leading-none" href="/">
+          <img
+              src="/assets/Icons/logo.png"
+              className="absolute scale-[0.27] sm:scale-[0.35] top-[-5.7rem] xs:top-[-5.8rem] sm:top-[-5.9rem] object-contain left-[-8rem] sm:left-[-8.3rem]"
+            ></img>
+            <div className="flex pl-[3rem] xs:pl-[3.5rem] sm:pl-[4rem] flex-col -translate-x-6 xs:-translate-x-7 sm:-translate-x-0 scale-75 sm:scale-100 text-[#cc9933] items-center">
               <div className="font-extrabold flex items-center uppercase font-Penna relative text-4xl">
                 <span className=" tracking-wider">Dheeraj </span>
                 <span className=" pl-3  tracking-wider">Photo</span>
-                <div className="absolute w-full -bottom-[0.4rem] h-[2px] bg-purple-950"></div>
-                <div className="  w-full absolute z-10 flex justify-center -bottom-[0.6rem]">
+                <div className="absolute w-full -bottom-[0.4rem] h-[2px] bg-[#cc9933]"></div>
+                <div className="  w-full absolute z-10 flex justify-center -bottom-[0.77rem]">
                   <div className="text-xs bg-white tracking-wider  px-1 text-center  font-Bavro uppercase">
                     Point
                   </div>
@@ -276,13 +281,13 @@ const NavBar = ({ content }: any) => {
               Photography
             </span> */}
           </Link>
-          <div className="ml-auto   xl:hidden">
+          <div className="ml-auto absolute right-3 z-50  xl:hidden">
             {/* ${
                 content !== "black" ? "bg-gray-800 bg-opacity-[0.25]" : ""
               }  */}
             <button
               onClick={toggleMobileMenu}
-              className={`navbar-burger flex items-center p-2 
+              className={`navbar-burger mt-2 flex items-center p-2 
             rounded-md text-blue-600 `}
             >
               <svg
