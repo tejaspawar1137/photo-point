@@ -116,7 +116,6 @@ const HomePage = () => {
     };
     img1.onload = onLoadHandler;
     img2.onload = onLoadHandler;
-    setloading(false);
   }, []);
   
 
