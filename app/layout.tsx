@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import StoreProvider from "./redux/StoreProvider";
 import { ToastContainer } from "react-toastify";
+import { Analytics } from "@vercel/analytics/react";
 
 interface Metadata {
   title: string;
@@ -72,6 +73,7 @@ const RootLayout: NextPage<RootLayoutProps> = ({
         <body>
           <div>
             <div>{children}</div>
+            <Analytics />
             <ToastContainer />
           </div>
         </body>
