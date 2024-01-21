@@ -105,17 +105,30 @@ const HomePage = () => {
   };
   useEffect(() => {
     setloading(true);
+  
     const img1 = new Image();
+    const font1 = new FontFace("Penna", "url(/assets/Fonts/penna/penna.regular.otf)");
+  
     img1.src = "/assets/NewImage/newImage8.jpg";
+  
     const img2 = new Image();
     img2.src = "/assets/Icons/logo.png";
-    const onLoadHandler = () => { 
-      if (img1.complete && img2.complete) {
+  
+    const onLoadHandler = () => {
+      if (img1.complete && img2.complete && font1.status === "loaded") {
         setloading(false);
       }
     };
+  
     img1.onload = onLoadHandler;
     img2.onload = onLoadHandler;
+  
+    // Load font asynchronously
+    font1.load().then(() => {
+      document.fonts.add(font1);
+      onLoadHandler();
+    });
+  
   }, []);
   
 
