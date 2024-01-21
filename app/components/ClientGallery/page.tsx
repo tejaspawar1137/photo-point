@@ -78,7 +78,7 @@ const Photography = () => {
   }, []);
 
   return (
-    <div className="bg-white top-0 absolute  pt-[3.5rem] sm:pt-[5rem]  w-full text-black ">
+    <div className="bg-white top-0 absolute  pt-[3.5rem] sm:pt-[2.5rem]  w-full text-black ">
     <div style={{ zIndex: 30 }} className="absolute top-0 w-full">
         <NavBar content="black"/>
       </div> 
@@ -100,7 +100,7 @@ const Photography = () => {
               </div>
               <div
                 style={{ zIndex: 0 }}
-                className="flex flex-row flex-wrap justify-center hover:cursor-pointer gap-12 "
+                className="grid cgone:grid-cols-3  cgtwo:grid-cols-2 justify-center hover:cursor-pointer gap-12 "
               >
                 {(photos as any).length > 0
                   ? photos.map((e: any, i: any) => {
