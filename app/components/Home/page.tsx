@@ -109,14 +109,14 @@ const HomePage = () => {
     img1.src = "/assets/NewImage/newImage8.jpg";
     const img2 = new Image();
     img2.src = "/assets/Icons/logo.png";
-    const onLoadHandler = () => {
-      // Check if both images have loaded
+    const onLoadHandler = () => { 
       if (img1.complete && img2.complete) {
         setloading(false);
       }
     };
     img1.onload = onLoadHandler;
     img2.onload = onLoadHandler;
+    setloading(false);
   }, []);
   
 
@@ -206,7 +206,7 @@ const HomePage = () => {
       </div>
 
       {/* Studio Rental */}
-      <h2 className="text-5xl flex justify-center font-Ikaros uppercase font-bold text-indigo-800 mb-5 mt-[10rem]">
+      <h2 className=" text-4xl sm:text-5xl flex justify-center font-Ikaros uppercase font-bold text-indigo-800 mb-3 sm:mb-5 mt-[10rem]">
         Studio
       </h2>
       <hr></hr>
@@ -255,16 +255,16 @@ const HomePage = () => {
       {/* Services section */}
       <section className="bg-white w-full py-10 mt-20 p-4 ">
         <div className="container mx-auto text-center mt-10">
-          <h2 className="text-5xl upper font-Ikaros uppercase font-bold text-indigo-800 mb-10 mt-10">
+          <h2 className="text-4xl sm:text-5xl upper font-Ikaros uppercase font-bold text-indigo-800 mb-6 sm:mb-10 mt-10">
             Services
           </h2>
           <hr></hr>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-16 mt-10">
             {/* Service 1 */}
             <ServiceCard
               imageUrl="/assets/Image/service1.jpg"
-              title="Photgraphy"
+              title="Photography"
               description="Capture beautiful and timeless portraits that tell your unique story."
               link="/components/Services/Photography"
             />
@@ -289,9 +289,9 @@ const HomePage = () => {
       </section>
 
       {/* Testimonial Section */}
-      <section className="bg-gray-300 mt-20 py-16 p-10">
+      <section className="bg-gray-300 mt-20 py-10 sm:py-16 p-10">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-Revaux   font-extrabold text-indigo-800 mb-10">
+          <h2 className="text-3xl sm:text-4xl font-Revaux font-extrabold text-indigo-800 mb-4 sm:mb-10">
             Testimonials
           </h2>
           <Slider
@@ -306,14 +306,14 @@ const HomePage = () => {
               <div key={testimonial.id} className="mx-auto">
                 <p
                   style={{ color: "black" }}
-                  className="text-xl font-Ikaros text-gray-800 mb-4"
+                  className="text-lg sm:text-xl font-Ikaros text-gray-800 mb-4"
                 >
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center justify-center mb-2">
                   <RatingStars rating={testimonial.rating} />
                 </div>
-                <p className="text-xl font-Audrey  text-indigo-500">
+                <p className="text-lg sm:text-xl font-Audrey  text-indigo-500">
                   {testimonial.name}
                 </p>
               </div>
@@ -322,11 +322,10 @@ const HomePage = () => {
         </div>
       </section>
       {/* {brand section } */}
-      <section className="bg-gray-100 py-16 mt-20">
+      <section className="bg-gray-100 py-10 sm:py-16 mt-20">
         <div className="mx-auto text-center">
-          <h2
-            style={{ color: "black", opacity: "0.8" }}
-            className="text-5xl sm:text-5xl font-Ikaros uppercase font-bold  mb-8 sm:mb-15"
+          <h2 
+            className="text-4xl sm:text-5xl font-Ikaros uppercase text-indigo-800 font-bold mb-5  sm:mb-15"
           >
             Have a look !
           </h2>

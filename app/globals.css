@@ -59,7 +59,21 @@
   font-family: 'Avance'; 
   src: url('../public/assets/Fonts/Avance/Avance.ttf') format('opentype');  
 }
+@font-face{
+  font-family: 'PoppinsRegular'; 
+  src: url('../public/assets/Fonts/Poppins/Poppins-Regular.ttf') format('opentype');  
+}
+@font-face{
+  font-family: 'Poppins'; 
+  src: url('../public/assets/Fonts/Poppins/Poppins-SemiBold.ttf') format('opentype');  
+}
 
+.font-Poppins{
+  font-family: 'Poppins', sans-serif;
+}
+.font-PoppinsRegular{
+  font-family: 'PoppinsRegular', sans-serif;
+}
 .font-Bavro{
   font-family: 'Bavro', sans-serif;
 }

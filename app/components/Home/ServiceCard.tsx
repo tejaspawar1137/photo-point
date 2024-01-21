@@ -12,9 +12,9 @@ export const ServiceCard = ({ imageUrl , title, description, link }:any) => {
         <img
           src={imageUrl}
           alt={title}
-          className="mb-8 rounded-md w-full h-64 object-cover" />
-        <h3 className="text-3xl font-Gentona uppercase font-semibold text-indigo-800 pb-2 sm:pb-0 px-2 ">{title}</h3>
-        <p style={{color:'black'}} className="text-black font-Ikaros text-xl p1-2 sm:p-[27px] px-2">{description}</p>
+          className="mb-5 sm:mb-8 rounded-md w-full h-52 sm:h-64 object-cover" />
+        <h3 className=" text-[1.7rem] sm:text-3xl font-Poppins   text-indigo-800 sm:pb-2 sm:pb-0 px-2 ">{title}</h3>
+        <p style={{color:'black'}} className="text-black font-PoppinsRegular text-[0.9rem] sm:text-lg pl-2 pb-3 sm:pt-2 sm:pb-4 px-2">{description}</p>
       </div>
     </Link>
   );
