@@ -29,7 +29,6 @@ const RootLayout: NextPage<RootLayoutProps> = ({
   children,
 }: RootLayoutProps) => {
   return (
-    <StoreProvider>
       <html lang="en">
         <head>
           <meta charSet="UTF-8" />
@@ -71,14 +70,15 @@ const RootLayout: NextPage<RootLayoutProps> = ({
           <title>{metadata.title}</title>
         </head>
         <body>
+    <StoreProvider>
           <div>
             <div>{children}</div>
             <Analytics />
             <ToastContainer />
           </div>
+    </StoreProvider>
         </body>
       </html>
-    </StoreProvider>
   );
 };
 
